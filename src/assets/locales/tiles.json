@@ -1,0 +1,69 @@
+{
+  "tiles": {
+    "pwn": [
+      {
+        "name": "Angular",
+        "description": "We used Angular to create a whole new frontend with over 5000 urls to support.",
+        "icon": "angular.svg"
+      },
+      {
+        "name": "Dotnet",
+        "description": "We built the backend in C#, enabling a headless structure. I was responsible for creating API endpoints to connect the CMS JSONAPI with the frontend.",
+        "icon": "dotnet.svg"
+      },
+      {
+        "name": "Drupal",
+        "description": "Setting up a headless Drupal 9 system from scratch and configuring the JSONAPI to work in a headless system.",
+        "icon": "drupal.svg"
+      }
+    ],
+    "hot": [
+      {
+        "name": "React",
+        "description": "I learned a lot about React in this project, and this made me realise that I really love working with React. I was also responsible for a part of the state-management, using Redux.",
+        "icon": "react.svg"
+      },
+      {
+        "name": "Redux",
+        "description": "Redux was used for standard e-commerce variables such as items in a cart, but also music related variables such as which song has to be paused.",
+        "icon": "redux.svg"
+      }
+    ],
+    "avanade": [
+      {
+        "name": "Python",
+        "description": "I really enjoyed creating a Python Package for Covid-data analysis, using a lot of Pandas.",
+        "icon": "python.svg"
+      },
+      {
+        "name": "TensorFlow",
+        "description": "TensorFlow enables users to create all kinds of machine learning models.",
+        "icon": "tensorflow.svg"
+      },
+      {
+        "name": "React",
+        "description": "I used React to create a simple dashboard to show a few of my most important results.",
+        "icon": "react.svg"
+      }
+    ],
+    "uva": [
+      {
+        "name": "Django",
+        "description": "I learnt a lot about Django in combination with flask to create a basic restaurant website.",
+
+        "icon": "django.svg"
+      },
+      {
+        "name": "HTML",
+        "description": "Working with Jekyll and Django templating learnt me that HTML is not just HTML, it's actually an amazing language.",
+        "icon": "html.svg"
+      },
+      {
+        "name": "Sass",
+        "description": "I really love working with all kinds of styling. I like to challenge myself to write clean and efficient scss code.",
+        "icon": "css.svg"
+      }
+    ]
+
+  }
+}

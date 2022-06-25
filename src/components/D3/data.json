@@ -1,0 +1,30 @@
+[
+    {
+      "name": "React",
+      "id": "react",
+      "experience": 7,
+      "passion": 9,
+      "group": 4
+    },
+    {
+      "name": "React Native",
+      "id": "react_native",
+      "experience": 6,
+      "passion": 8,
+      "group": 4
+    },
+    {
+      "name": "Angular",
+      "id": "angular",
+      "experience": 8.5,
+      "passion": 8,
+      "group": 4
+    },
+    {
+      "name": "Python",
+      "id": "python",
+      "experience": 8,
+      "passion": 5,
+      "group": 7
+    }
+]
