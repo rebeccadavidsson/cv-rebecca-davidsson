@@ -42,14 +42,14 @@ const Skills = ({
     );
 
     const sectionHeader = {
-        title: 'Skills',
-        paragraph: 'Below you can see a sunburst which I made using D3, representing experience with different languages and tools'
+        title: 'Experience and skills',
+        paragraph: 'Or maybe I should call it passion. Anyway, as you can see, I also love using the D3 library for interactive data visualization!'
     };
     const size = useWindowSize();
 
     const dimensions = {
-        width: size.width / 1.5,
-        height: size.width / 1.5,
+        width: size.width / 1.8,
+        height: size.width / 1.8,
         margin: {
             top: 70,
             right: 70,

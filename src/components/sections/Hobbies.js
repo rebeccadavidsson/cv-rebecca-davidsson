@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { SectionTilesProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
 import Image from "../elements/Image";
-import Cta from "./Cta";
 
 const propTypes = {
     ...SectionTilesProps.types
@@ -101,27 +100,7 @@ const Hobbies = ({
                 </div>
             </section>
 
-            <section
-                {...props}
-                className={outerClasses}
-                id={"contact"}
-            >
-                <div className="container">
-                    <div>
-                          <div className={'split-wrap'}>
 
-
-                            <div className="split-item">
-                                <div className=" center-content-mobile reveal-from-left"
-                                     data-reveal-container=".split-item">
-                                </div>
-
-                            </div>
-                            <Cta />
-                        </div>
-                    </div>
-                </div>
-            </section>
         </>
     );
 }

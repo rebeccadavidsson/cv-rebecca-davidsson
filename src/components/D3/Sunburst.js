@@ -8,29 +8,29 @@ const Sunburst = ({data, dimensions}) => {
     const svgWidth = width + margin.left + margin.right;
     const svgHeight = height + margin.top + margin.bottom;
 
-    const partition = (data) => {
-        const root = d3.hierarchy(data)
-            .sum(d => d.value)
-            .sort((a, b) => b.value - a.value);
-        return d3.partition()
-            .size([2 * Math.PI, root.height + 1])
-            (root);
-    }
-    const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRdYlBu, data.children.length + 1))
-    const format = d3.format(",d");
-    const radius = width / 7;
-    const arc = d3.arc()
-        .startAngle(d => d.x0)
-        .endAngle(d => d.x1)
-        .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
-        .padRadius(radius * 4)
-        .innerRadius(d => d.y0 * radius)
-        .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 3))
-        .cornerRadius(4);
-
-
 
     React.useEffect(() => {
+
+
+        const partition = (data) => {
+            const root = d3.hierarchy(data)
+                .sum(d => d.value)
+                .sort((a, b) => b.value - a.value);
+            return d3.partition()
+                .size([2 * Math.PI, root.height + 1])
+                (root);
+        }
+        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateHcl("#a52626", "#a9a9b4"), 10))
+        const format = d3.format(",d");
+        const radius = width / 7;
+        const arc = d3.arc()
+            .startAngle(d => d.x0)
+            .endAngle(d => d.x1)
+            .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
+            .padRadius(radius * 4)
+            .innerRadius(d => d.y0 * radius)
+            .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 3))
+            .cornerRadius(4);
 
         const svg = d3.select(svgRef.current);
 
@@ -47,7 +47,7 @@ const Sunburst = ({data, dimensions}) => {
             .data(root.descendants().slice(1))
             .join("path")
             .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
-            .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
+            .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.95 : 0.5) : 0)
             .attr("pointer-events", d => arcVisible(d.current) ? "auto" : "none")
             .attr("d", d => arc(d.current));
 
@@ -103,7 +103,7 @@ const Sunburst = ({data, dimensions}) => {
                 .filter(function(d) {
                     return +this.getAttribute("fill-opacity") || arcVisible(d.target);
                 })
-                .attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.6 : 0.4) : 0)
+                .attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.95 : 0.5) : 0)
                 .attr("pointer-events", d => arcVisible(d.target) ? "auto" : "none")
                 .attrTween("d", d => () => arc(d.current));
 

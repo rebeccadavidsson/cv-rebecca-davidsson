@@ -116,10 +116,7 @@ const Header = ({
                       <a href="#education">Education</a>
                     </li>
                     <li>
-                      <a href="#hobbies">Hobbies</a>
-                    </li>
-                    <li>
-                      <a href="#contact">Contact</a>
+                      <a href="#hobbies">About me</a>
                     </li>
                   </ul>
                 </div>
