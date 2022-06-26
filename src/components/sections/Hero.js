@@ -58,8 +58,8 @@ const Hero = ({
             </h1>
             <div className="container-xs">
               <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
-                Hi there! I am Rebecca, IT-consultant with a passion towards frontend development.
-                I am currently working at an amazing company called Navara.
+                Hi there! I am Rebecca, an IT-consultant with a passion for frontend development.
+                I currently work at an amazing company called Navara.
                 At Navara, there are a lot of opportunities to develop skills together with a bunch of very smart
                 and enthusiastic colleagues.
                 </p>

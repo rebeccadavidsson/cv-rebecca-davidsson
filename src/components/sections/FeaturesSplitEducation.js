@@ -73,11 +73,11 @@ const FeaturesSplitWork = ({
                   Avanade - November 2021 until July 2022
                   </div>
                 <h3 className="mt-0 mb-12">
-                  Intern Advanced Analytics
+                  Advanced Analytics Intern
                   </h3>
                 <p className="m-0">
-                  Analysis and comparison of machine learning- and mathematical models, applicable to
-                  Covid-19 data (grade: 9). I mainly used the tool: Python, Tensorflow, Pandas, Plotly, React and PowerBI.
+                  Analysis and comparison of machine learning and mathematical models, applicable to
+                  Covid-19 data (grade: 9). I mainly used the tools: Python, Tensorflow, Pandas, Plotly, React and PowerBI.
                   The project can be viewed here: <a href={"https://thesisproject.vercel.app/"}>https://thesisproject.vercel.app/</a>
                 </p>
               </div>
@@ -103,13 +103,13 @@ const FeaturesSplitWork = ({
                   University of Amsterdam - Sep. 2019 until Nov. 2020
                   </div>
                 <h3 className="mt-0 mb-12">
-                  Teaching Assistent
+                  Teaching Assistant
                   </h3>
                 <p className="m-0">
-                  I was a teaching assistent at the master Software Engineering. Furtheremore, I worked for the minor in programming
+                  I was a teaching assistant at the master Software Engineering. Furthermore, I worked for the minor in programming
                   at the University of Amsterdam.
                   At this minor, students who don’t have any experience with programming learn to write
-                  code in C#, Python and JavaScript. Courses that I teached were the CS50(x) course, Webapps, Databases and webprogramming.
+                  code in C#, Python and JavaScript. Courses that I taught were the CS50(x) course, Webapps, Databases and web programming.
                   Responsibilities included tutoring students (in class and online), grading
                   assignments and working on the UvA website. The website can be viewed here: <a href={"https://www.proglab.nl/keuzehulp/"}>https://www.proglab.nl/keuzehulp/</a>
                 </p>

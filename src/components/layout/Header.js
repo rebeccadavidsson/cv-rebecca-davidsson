@@ -110,13 +110,13 @@ const Header = ({
                       <a href="#work">Work</a>
                     </li>
                     <li>
-                      <a href="#activities">Other activities</a>
+                      <a href="#activities">Other Activities</a>
                     </li>
                     <li>
                       <a href="#education">Education</a>
                     </li>
                     <li>
-                      <a href="#hobbies">About me</a>
+                      <a href="#hobbies">About Me</a>
                     </li>
                   </ul>
                 </div>

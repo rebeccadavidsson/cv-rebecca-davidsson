@@ -72,7 +72,7 @@ const Hobbies = ({
                                     </p>
                                     <p>
                                         Furthermore, I am truly a morning person. I love being outside at (or before)
-                                        sunrise and going for walks in the forest or the heath. I am always in for a walk!
+                                        sunrise and going for walks in the forest. I am always in for a walk!
                                     </p>
                                 </div>
                                 <div className={

@@ -3,12 +3,12 @@
     "pwn": [
       {
         "name": "Angular",
-        "description": "We used Angular to create a whole new frontend with over 5000 urls to support.",
+        "description": "Angular was used to create a whole new frontend with over 5000 urls to support.",
         "icon": "angular.svg"
       },
       {
-        "name": "Dotnet",
-        "description": "We built the backend in C#, enabling a headless structure. I was responsible for creating API endpoints to connect the CMS JSONAPI with the frontend.",
+        "name": "DotNET",
+        "description": "The backend was built in C#, enabling a headless structure. I was responsible for creating API endpoints to connect the CMS JSONAPI with the frontend.",
         "icon": "dotnet.svg"
       },
       {
@@ -20,7 +20,7 @@
     "hot": [
       {
         "name": "React",
-        "description": "I learned a lot about React in this project, and this made me realise that I really love working with React. I was also responsible for a part of the state-management, using Redux.",
+        "description": "I learned a lot about React in this project, sparking the passion that I now have for working with React. I was also responsible for a part of the state-management, using Redux.",
         "icon": "react.svg"
       },
       {
@@ -37,7 +37,7 @@
       },
       {
         "name": "TensorFlow",
-        "description": "TensorFlow enables users to create all kinds of machine learning models.",
+        "description": "TensorFlow enables users to create all kinds of machine learning models. I mainly focussed on training LSTM models.",
         "icon": "tensorflow.svg"
       },
       {

@@ -79,7 +79,7 @@ const FeaturesSplitWork = ({
                   Migration to headless CMS
                   </h3>
                 <p className="m-0">
-                  At PWN (Provinciaal Waterleidingbedrijf Noord-Holland), we have been working hard on modernizing the entire website by
+                  At PWN (Provinciaal Waterleidingbedrijf Noord-Holland), i have been working on modernizing the entire website by
                   building a headless structure with a combination of Angular, .NET and Drupal.
                   This project also gave me the opportunity to learn more about Azure DevOps CI/CD pipelines.
                   </p>
@@ -110,11 +110,11 @@ const FeaturesSplitWork = ({
                   </h3>
                 <p className="m-0">
                   The music marketplace <a href={"https://houseoftracks.com/"}>House Of Tracks</a> launched a new website where I was responsible for
-                  building new features, optimizing the mobile version and website maintenance.
+                  building new features, optimizing the mobile version and maintaining the website.
                   I used React and JavaScript to create dynamic features in
-                  the website. In addition to House Of Tracks,
+                  the website. In addition to the House Of Tracks website,
                   I was responsible for creating a whole new website from scratch, using React. Tasks included
-                  handeling redux store updates
+                  handling redux store updates
                   to provide React apps with APIs, along with building multiple responsive designs.
                 </p>
               </div>
