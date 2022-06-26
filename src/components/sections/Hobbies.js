@@ -56,13 +56,7 @@ const Hobbies = ({
                         <SectionHeader data={sectionHeader} className="center-content"/>
                         <div className={'split-wrap'}>
 
-                            <div className="split-item" style={{paddingTop: 0, paddingBottom: 0}}>
-                                <div className="split-item-content center-content-mobile reveal-from-left"
-                                     data-reveal-container=".split-item">
 
-                                </div>
-
-                            </div>
                             <div className="split-item">
                                 <div className="split-item-content center-content-mobile reveal-from-left"
                                      data-reveal-container=".split-item">
