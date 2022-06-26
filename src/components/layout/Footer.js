@@ -29,6 +29,7 @@ const Footer = ({
   return (
     <footer
       {...props}
+        style={{background: '#151719'}}
       className={classes}
     >
       <div className="container">
