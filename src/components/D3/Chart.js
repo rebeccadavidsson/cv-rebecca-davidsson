@@ -1,8 +1,5 @@
 import React from "react";
 import * as d3 from "d3";
-import SVGImage from '../../assets/images/blob.svg';
-import SVGImage2 from '../../assets/images/blob2.svg';
-
 
 const Chart = ({data, dimensions}) => {
     const svgRef = React.useRef(null);

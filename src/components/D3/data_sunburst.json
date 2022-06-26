@@ -1,0 +1,247 @@
+{
+  "name": "flare",
+  "children": [
+    {
+      "name": "CMS",
+      "children": [
+        {
+          "name": "Drupal",
+          "value": "1500"
+        },
+        {
+          "name": "Strapi",
+          "value": 550
+        },
+        {
+          "name": "WordPress",
+          "value": 300
+        }
+      ]
+    },
+    {
+      "name": "Python",
+      "children": [
+        {
+          "name": "Machine learning",
+          "value": 700,
+          "children": [
+            {
+              "name": "TensorFlow",
+              "value": 900
+            },
+            {
+              "name": "Keras",
+              "value": 500
+            }
+          ]
+        },
+        {
+          "name": "Django",
+          "value": 700
+        },
+        {
+          "name": "Flask",
+          "value": 700
+        },
+        {
+          "name": "Jupyter",
+          "value": 743
+        },
+        {
+          "name": "Pandas",
+          "value": 743
+        },
+        {
+          "name": "Numpy",
+          "value": 743
+        },
+        {
+          "name": "Core",
+          "value": 743,
+          "children": [
+            {
+              "name": "OOP",
+              "value": 743
+            },
+            {
+              "name": "Data structures",
+              "value": 743
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Backend",
+      "children": [
+        {
+          "name": "C#",
+          "children": [
+            {
+              "name": ".NET",
+              "value": 1534
+            }
+          ]
+        },
+
+        {
+          "name": "PHP",
+          "value": 300
+        },
+        {
+          "name": "NodeJS",
+          "value": 500
+        }
+      ]
+    },
+    {
+      "name": "Visualization",
+      "children": [
+        {
+          "name": "JS",
+          "children": [
+            {
+              "name": "D3",
+              "value": 1100
+            },
+            {
+              "name": "ChartJS",
+              "value": 500
+            }
+          ]
+        },
+        {
+          "name": "Python",
+          "children": [
+            {
+              "name": "MatplotLib",
+              "value": 600
+            },
+            {
+              "name": "Seaborn",
+              "value": 750
+            },
+            {
+              "name": "Plotly",
+              "value": 1100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data",
+      "children": [
+        {
+          "name": "SQL",
+          "value": 800
+        },
+        {
+          "name": "Data Science",
+          "children": [
+            {
+              "name": "RStudio",
+              "value": 500
+            },
+            {
+              "name": "ABM",
+              "value": "600"
+            },
+            {
+              "name": "Data Analysis",
+              "value": "600"
+            },
+            {
+              "name": "Simulation",
+              "value": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Frontend",
+      "children": [
+        {
+          "name": "Core",
+          "children": [
+            {
+              "name": "TypeScript",
+              "value": 1200
+            },
+            {
+              "name": "Unit testing",
+              "value": 800
+            },
+            {
+              "name": "Cypress",
+              "value": 400
+            },
+            {
+              "name": "Sass + CSS",
+              "value": 1550
+            },
+            {
+              "name": "HTML",
+              "value": 1500
+            },
+            {
+              "name": "NPM",
+              "value": 950
+            }
+          ]
+        },
+        {
+          "name": "Angular",
+          "children": [
+            {
+              "name": "jest",
+              "value": 1000
+            },
+            {
+              "name": "Universal",
+              "value": 800
+            },
+            {
+              "name": "RxJS",
+              "value": 750
+            },
+            {
+              "name": "Angular CLI",
+              "value": 800
+            },
+            {
+              "name": "Ionic",
+              "value": 800
+            }
+          ]
+        },
+        {
+          "name": "React",
+          "children": [
+            {
+              "name": "React Native",
+              "value": 900
+            },
+            {
+              "name": "Redux",
+              "value": 1300
+            },
+            {
+              "name": "Hooks",
+              "value": 950
+            },
+            {
+              "name": "GraphQL",
+              "value": 700
+            }
+          ]
+        },
+        {
+          "name": "Vue",
+          "value": 500
+        }
+      ]
+    }
+  ]
+}

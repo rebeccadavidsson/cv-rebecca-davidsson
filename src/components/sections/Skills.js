@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { SectionTilesProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
-import Chart from "../D3/Chart";
-import data from '../D3/data.json';
+import Sunburst from "../D3/Sunburst";
+import data from '../D3/data_sunburst.json';
+import { useWindowSize } from "../../utils/useWindowSize";
 
 const propTypes = {
     ...SectionTilesProps.types
@@ -42,12 +43,13 @@ const Skills = ({
 
     const sectionHeader = {
         title: 'Skills',
-        paragraph: ''
+        paragraph: 'Below you can see a sunburst which I made using D3, representing experience with different languages and tools'
     };
+    const size = useWindowSize();
 
     const dimensions = {
-        width: 750,
-        height: 750,
+        width: size.width / 1.5,
+        height: size.width / 1.5,
         margin: {
             top: 70,
             right: 70,
@@ -55,6 +57,12 @@ const Skills = ({
             left: 70
         }
     };
+
+    const [showChart, setShowChart] = useState(false);
+
+    useEffect(() => {
+        setShowChart(true);
+    }, [size])
 
 
     return (
@@ -68,11 +76,10 @@ const Skills = ({
                     <SectionHeader data={sectionHeader} className="center-content"
                     />
 
-                    <Chart
+                    {showChart && <Sunburst
                         data={data}
                         dimensions={dimensions}
-                    />
-
+                    />}
 
                 </div>
             </div>

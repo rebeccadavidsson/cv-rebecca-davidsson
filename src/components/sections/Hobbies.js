@@ -42,7 +42,7 @@ const Hobbies = ({
 
     const sectionHeader = {
         title: 'About me',
-        paragraph: 'I also have some hobbies!'
+        paragraph: 'I also have hobbies!'
     };
 
     return (
@@ -88,6 +88,7 @@ const Hobbies = ({
                                     )}
                                      data-reveal-container=".split-item">
                                     <Image
+                                        style={{filter: 'grayscale(1)'}}
                                         src={require('./../../assets/images/berg.png')}
                                         alt="Standing on a mountain"
 
