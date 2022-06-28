@@ -79,9 +79,9 @@ const FeaturesSplitWork = ({
                   Migration to headless CMS
                   </h3>
                 <p className="m-0">
-                  At PWN (Provinciaal Waterleidingbedrijf Noord-Holland), i have been working on modernizing the entire website by
+                  At PWN (Provinciaal Waterleidingbedrijf Noord-Holland), I have been working on modernizing the entire website by
                   building a headless structure with a combination of Angular, .NET and Drupal.
-                  This project also gave me the opportunity to learn more about Azure DevOps CI/CD pipelines.
+                  This project also gave me the opportunity to learn more about Azure DevOps CI/CD pipelines, web performance and SEO.
                   </p>
               </div>
               <div className={
