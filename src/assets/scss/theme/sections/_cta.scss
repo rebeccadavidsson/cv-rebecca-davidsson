@@ -30,3 +30,21 @@
 		padding-right: 48px;
 	}
 }
+
+.overlap-code {
+  margin-top: -10px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  section &:before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgb(40, 44, 52);
+    background: linear-gradient(0deg, rgb(40, 44, 52) 0%, rgba(46,45,45, 0.8) 100%);
+  }
+}

@@ -1,0 +1,16 @@
+code {
+  color: white;
+  background: none;
+  font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace !important;
+  text-align: left;
+  font-size: 14px !important;
+
+}
+
+.canvas > canvas {
+  height: 450px !important;
+}
+
+.canvasStep1 > canvas {
+  height: 300px !important;
+}

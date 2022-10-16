@@ -10,8 +10,6 @@ const Sunburst = ({data, dimensions}) => {
 
 
     React.useEffect(() => {
-
-
         const partition = (data) => {
             const root = d3.hierarchy(data)
                 .sum(d => d.value)

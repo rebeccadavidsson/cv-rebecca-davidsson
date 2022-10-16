@@ -55,8 +55,6 @@ const Hobbies = ({
                     <div className={innerClasses}>
                         <SectionHeader data={sectionHeader} className="center-content"/>
                         <div className={'split-wrap'}>
-
-
                             <div className="split-item">
                                 <div className="split-item-content center-content-mobile reveal-from-left"
                                      data-reveal-container=".split-item">
@@ -88,13 +86,10 @@ const Hobbies = ({
                                         />
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </section>
-
-
         </>
     );
 }

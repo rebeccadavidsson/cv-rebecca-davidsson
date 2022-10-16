@@ -1,7 +1,6 @@
 import React  from 'react';
 import classNames from 'classnames';
-import { SectionProps } from '../../utils/SectionProps';
-import Image from '../elements/Image';
+import { SectionProps } from '../../../utils/SectionProps';
 
 const propTypes = {
   ...SectionProps.types
@@ -11,7 +10,7 @@ const defaultProps = {
   ...SectionProps.defaults
 }
 
-const Hero = ({
+const Title = ({
   className,
   topOuterDivider,
   bottomOuterDivider,
@@ -32,7 +31,7 @@ const Hero = ({
   );
 
   const innerClasses = classNames(
-    'hero-inner section-inner',
+    'hero-inner section-inner pb-0',
     topDivider && 'has-top-divider',
     bottomDivider && 'has-bottom-divider'
   );
@@ -42,37 +41,26 @@ const Hero = ({
       {...props}
       className={outerClasses}
     >
-      <div className="container-sm">
+      <>
         <div className={innerClasses}>
           <div className="hero-content">
             <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
-              Rebecca <span className="text-color-primary">Davidsson</span>
+              React <span className="text-color-primary">ThreeJS</span> animations
             </h1>
             <div className="container-xs">
               <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
-                Hi there! I am Rebecca, an IT-consultant with a passion for frontend development.
-                I currently work at an amazing company called Navara.
-                At Navara, there are a lot of opportunities to develop skills together with a bunch of very smart
-                and enthusiastic colleagues.
+               How to use React-Three-Fiber to create small 3D animations
                 </p>
-
             </div>
           </div>
-          <div className="hero-figure reveal-from-bottom illustration-element-01" data-reveal-value="20px" data-reveal-delay="800">
-              <Image
-                className="has-shadow"
-                src={require('./../../assets/images/profile2.png')}
-                alt="Hero"
-                width={500}
-                height={500} />
-          </div>
+
         </div>
-      </div>
+      </>
     </section>
   );
 }
 
-Hero.propTypes = propTypes;
-Hero.defaultProps = defaultProps;
+Title.propTypes = propTypes;
+Title.defaultProps = defaultProps;
 
-export default Hero;
+export default Title;

@@ -1,13 +1,30 @@
 {
   "tiles": {
-    "pwn": [
+    "vattenfall": [
       {
         "name": "Angular",
-        "description": "Angular was used to create a whole new frontend with over 5000 urls to support.",
+        "description": "Developing a strong frontend platform using nx, NgrRx Facades and responsive component.",
         "icon": "angular.svg"
       },
       {
-        "name": "DotNET",
+        "name": ".NET",
+        "description": ".NET Framework was used to support the CMS Episerver, now Optimizely.",
+        "icon": "dotnet-framework.svg"
+      },
+      {
+        "name": "Azure",
+        "description": "CI/CD pipelines are used to construct build-, deploy- and test workflows.",
+        "icon": "azure.svg"
+      }
+    ],
+    "pwn": [
+      {
+        "name": "Angular",
+        "description": "Angular was used to create a whole new SSR based frontend with over 5000 urls to support.",
+        "icon": "angular.svg"
+      },
+      {
+        "name": ".NET Core",
         "description": "The backend was built in C#, enabling a headless structure. I was responsible for creating API endpoints to connect the CMS JSONAPI with the frontend.",
         "icon": "dotnet.svg"
       },
