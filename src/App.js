@@ -11,6 +11,7 @@ import LayoutDefault from './layouts/LayoutDefault';
 // Views 
 import Home from './views/Home';
 import Blog from "./views/Blog";
+import AccessibleFrontends from './views/AccessibleFrontends'
 import BlogLayout from "./layouts/BlogLayout";
 
 // Initialize Google Analytics
@@ -40,7 +41,8 @@ const App = () => {
       children={() => (
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
-            <AppRoute exact path="/blog" component={Blog} layout={BlogLayout} />
+          <AppRoute exact path="/blog" component={Blog} layout={BlogLayout} />
+          <AppRoute exact path="/accessible-frontends" component={AccessibleFrontends} layout={LayoutDefault} />
         </Switch>
       )} />
   );
