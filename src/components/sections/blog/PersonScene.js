@@ -1,24 +1,34 @@
-import React, { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-
-export default function PersonScene() {
-    return (
-        <Canvas
-            camera={{ position: [2, 0, 12.25], fov: 15 }}
-            style={{
-                backgroundColor: '#111a21',
-                width: '100vw',
-                height: '100vh',
-            }}
-        >
-            <ambientLight intensity={1.25} />
-            <ambientLight intensity={0.1} />
-            <directionalLight intensity={0.4} />
-            <Suspense fallback={null}>
-                {/*<Model position={[0.025, -0.9, 0]} />*/}
-            </Suspense>
-            <OrbitControls />
-        </Canvas>
-    );
-}
+// import React, { Suspense } from 'react';
+// import { Canvas } from '@react-three/fiber';
+// import { ContactShadows, OrbitControls } from '@react-three/drei';
+// import { Model } from "./Model";
+//
+// export default function PersonScene() {
+//     return (
+//         <Canvas
+//             camera={{ position: [2, 3, 12.25], fov: 9 }}
+//             style={{
+//                 backgroundColor: 'white',
+//                 width: '90%',
+//                 height: '700px',
+//                 margin: '0 auto'
+//             }}
+//         >
+//             <ambientLight intensity={1} castShadow={true} />
+//             <directionalLight intensity={0.4} castShadow={true} position={[1, 4, 10]} color={'#d49a6a'}/>
+//             <pointLight intensity={1.5} castShadow={true} position={[0.5, 4, 1]} color={'pink'} />
+//             <Suspense fallback={null}>
+//                 <Model position={[0, -0.9, 0]}/>
+//                 <ContactShadows
+//                     frames={1}
+//                     position={[0, -0.9, 0]}
+//                     width={20}
+//                     height={20}
+//                     blur={0.4}
+//                     far={1}
+//                 />
+//             </Suspense>
+//             <OrbitControls enableZoom={false} />
+//         </Canvas>
+//     );
+// }

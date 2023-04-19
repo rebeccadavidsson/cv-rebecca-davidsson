@@ -3,12 +3,12 @@
     "vattenfall": [
       {
         "name": "Angular",
-        "description": "Developing a strong frontend platform using nx, NgrRx Facades and responsive component.",
+        "description": "Developing a strong frontend platform using nx, NGXS and responsive components.",
         "icon": "angular.svg"
       },
       {
         "name": ".NET",
-        "description": ".NET Framework was used to support the CMS Episerver, now Optimizely.",
+        "description": ".NET Framework and .NET Core was used to support the current CMS.",
         "icon": "dotnet-framework.svg"
       },
       {
