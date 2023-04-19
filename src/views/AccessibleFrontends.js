@@ -48,7 +48,7 @@ describe('Accessibility tests', () => {
   return (
     <>
       <div className="container-sm section">
-          <h2>Tools for Digital Accessibility: A Short Guide for Frontend Developers</h2>
+          <h2>Frontend Accessibility: A Short Overview of My Favorite Tools</h2>
           <p>As a frontend developer, it's important to ensure that the websites and applications you build are accessible to all users, including those with disabilities.
               Fortunately, there are many tools available that can help you test and improve the accessibility of your digital products.
               In this article, we'll discuss some of the most useful tools for digital accessibility and their key features.</p>
