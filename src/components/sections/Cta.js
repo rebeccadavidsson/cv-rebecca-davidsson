@@ -59,8 +59,7 @@ const Cta = ({
           <div className="cta-action">
             <p>
               You can reach me on <a href={"https://www.linkedin.com/in/rebecca-davidsson-7a8931127/"}>LinkedIn</a>,
-              view my not so up to date <a href={"https://github.com/rebeccadavidsson"}>Github</a> page, or contact me
-              via e-mail or phone.
+              or contact me via e-mail or phone.
             </p>
             <p>
               E-mail <a href="mailto:rebeccadavidsson3@gmail.com">rebeccadavidsson3@gmail.com</a>

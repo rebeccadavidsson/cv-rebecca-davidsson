@@ -59,16 +59,8 @@ const Hobbies = ({
                                 <div className="split-item-content center-content-mobile reveal-from-left"
                                      data-reveal-container=".split-item">
                                     <p className="m-0">
-                                        Aside from programming, I really love practicing calisthenics, fitness, cycling,
+                                        Aside from programming, I really love practicing fitness, cycling,
                                         hiking, baking and drawing.
-                                        Each year I set a calisthenics related
-                                        goal for myself. Last year this goal was to do one full straddle press - a move
-                                        where you come into a handstand using mostly the strength in your upper body in stead of
-                                        your legs. This year, my goal is to walk a few meters on my hands, and walk back again.
-                                        It turns out this second part is harder than I thought as walking backwards requires
-                                        very different muscles than walking forwards.
-                                    </p>
-                                    <p>
                                         Furthermore, I am truly a morning person. I love being outside at (or before)
                                         sunrise and going for walks in the forest. I am always in for a walk!
                                     </p>

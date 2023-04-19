@@ -5,7 +5,7 @@ const Code = ({
     longSnippet,
     innerHtml,
     classNames
-                   }) => {
+}) => {
 
     return (
         <section
@@ -14,7 +14,7 @@ const Code = ({
                 {innerHtml ?
                     <div className={'split-wrap'}>
                         <div className="split-item">
-                            <div className={"split-item-content center-content-mobile reveal-from-left " + classNames}
+                            <div className={"split-item-content split-item-code center-content-mobile reveal-from-left " + classNames}
                                  data-reveal-container=".split-item">
                                 <CodeBlock
                                     text={longSnippet}

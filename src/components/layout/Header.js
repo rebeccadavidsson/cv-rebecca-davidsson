@@ -107,17 +107,17 @@ const Header = ({
                 <div className="header-nav-inner">
                   <ul className="list-reset text-xs">
                     <li>
-                      <a href="#work">Work</a>
+                      <a href="/#work">Work</a>
                     </li>
                     <li>
-                      <a href="#activities">Other Activities</a>
+                      <a href="/#activities">Other Activities</a>
                     </li>
                     <li>
-                      <a href="#education">Education</a>
+                      <a href="/#education">Education</a>
                     </li>
-                    <li>
-                      <a href="#hobbies">About Me</a>
-                    </li>
+                    {/*<li>*/}
+                    {/*  <a href="#hobbies">About Me</a>*/}
+                    {/*</li>*/}
                   </ul>
                 </div>
               </nav>

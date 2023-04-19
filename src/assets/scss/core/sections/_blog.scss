@@ -5,12 +5,44 @@ code {
   text-align: left;
   font-size: 14px !important;
 
+  &.dark-code {
+    color: black;
+    font-size: 18px !important;
+  }
 }
 
-.canvas > canvas {
+canvas:hover {
+  cursor: pointer;
+}
+
+.canvas > canvas:not(.background-canvas) {
   height: 450px !important;
 }
 
 .canvasStep1 > canvas {
   height: 300px !important;
+}
+
+.hover-pointer:hover {
+  cursor: pointer;
+}
+
+.background-canvas {
+  position: absolute !important;
+  height: auto;
+
+  &__1 {
+    right: 4em;
+    top: 5em;
+  }
+
+  &__2 {
+    left: 3em;
+    top: 15em;
+  }
+
+  &__3 {
+    right: 4em;
+    top: 33em;
+  }
 }

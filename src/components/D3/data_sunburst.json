@@ -211,6 +211,14 @@
               "value": 750
             },
             {
+              "name": "NGXS",
+              "value": 700
+            },
+            {
+              "name": "NGRX",
+              "value": 700
+            },
+            {
               "name": "Angular CLI",
               "value": 800
             },

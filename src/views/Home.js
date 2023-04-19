@@ -5,7 +5,6 @@ import FeaturesSplitWork from '../components/sections/FeaturesSplitWork';
 import FeaturesSplitEducation from "../components/sections/FeaturesSplitEducation";
 import EducationSection from "../components/sections/EducationSection";
 import Skills from "../components/sections/Skills";
-import Cta from "../components/sections/Cta";
 import { useWindowSize } from "../utils/useWindowSize";
 
 const Home = () => {
@@ -20,7 +19,7 @@ const Home = () => {
         <EducationSection topDivider invertMobile />
         {/*<Hobbies topDivider />*/}
         {size.width > 676 && <Skills />}
-        <Cta />
+        {/*<Cta />*/}
         <div style={{ height: '5em'}}></div>
     </>
   );
