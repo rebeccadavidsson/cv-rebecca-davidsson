@@ -1,5 +1,22 @@
 {
   "tiles": {
+    "triodos": [
+      {
+        "name": "Angular",
+        "description": "",
+        "icon": "angular.svg"
+      },
+      {
+        "name": "Java",
+        "description": "",
+        "icon": "java.svg"
+      },
+      {
+        "name": "A11Y",
+        "description": "",
+        "icon": "accessibility.svg"
+      }
+    ],
     "vattenfall": [
       {
         "name": "Angular",

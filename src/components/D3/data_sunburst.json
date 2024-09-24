@@ -19,59 +19,6 @@
       ]
     },
     {
-      "name": "Python",
-      "children": [
-        {
-          "name": "ML",
-          "value": 700,
-          "children": [
-            {
-              "name": "TensorFlow",
-              "value": 900
-            },
-            {
-              "name": "Keras",
-              "value": 500
-            }
-          ]
-        },
-        {
-          "name": "Django",
-          "value": 700
-        },
-        {
-          "name": "Flask",
-          "value": 700
-        },
-        {
-          "name": "Jupyter",
-          "value": 743
-        },
-        {
-          "name": "Pandas",
-          "value": 743
-        },
-        {
-          "name": "Numpy",
-          "value": 743
-        },
-        {
-          "name": "Core",
-          "value": 743,
-          "children": [
-            {
-              "name": "OOP",
-              "value": 743
-            },
-            {
-              "name": "Datastructures",
-              "value": 743
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Backend",
       "children": [
         {
@@ -79,7 +26,7 @@
           "children": [
             {
               "name": ".NET Core",
-              "value": 1534
+              "value": 2034
             },
             {
               "name": ".NET Framework",
@@ -87,7 +34,27 @@
             }
           ]
         },
-
+        {
+          "name": "Java",
+          "value": 1200
+        },
+        {
+          "name": "Python",
+          "children": [
+            {
+              "name": "MatplotLib",
+              "value": 600
+            },
+            {
+              "name": "Seaborn",
+              "value": 750
+            },
+            {
+              "name": "Plotly",
+              "value": 1100
+            }
+          ]
+        },
         {
           "name": "PHP",
           "value": 300
@@ -111,23 +78,6 @@
             {
               "name": "ChartJS",
               "value": 500
-            }
-          ]
-        },
-        {
-          "name": "Python",
-          "children": [
-            {
-              "name": "MatplotLib",
-              "value": 600
-            },
-            {
-              "name": "Seaborn",
-              "value": 750
-            },
-            {
-              "name": "Plotly",
-              "value": 1100
             }
           ]
         }
@@ -224,6 +174,10 @@
             },
             {
               "name": "Ionic",
+              "value": 800
+            },
+            {
+              "name": "Signals",
               "value": 800
             }
           ]
