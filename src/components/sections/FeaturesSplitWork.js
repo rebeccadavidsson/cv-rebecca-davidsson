@@ -71,7 +71,40 @@ const FeaturesSplitWork = ({
               <div className="split-item-content center-content-mobile reveal-from-left"
                    data-reveal-container=".split-item">
                 <div className="text-xxs text-color-primary fw-600 tt-u mb-8">
-                  Triodos - August 2024 until present
+                  Van Lanschot Kempen - May 2025 until present
+                </div>
+                <div className="text-xs fw-600 tt-u mb-8">
+                  Van Lanschot Kempen
+                </div>
+                <h3 className="mt-0 mb-12">
+                  Full Stack Development at Van Lanschot Kempen
+                </h3>
+                <p className="m-0">
+                  Client Center at Van Lanschot Kempen is the main point of contact for clients, handling contact between bankers and clients efficiently.
+                </p>
+              </div>
+              <div className={
+                classNames(
+                    'split-item-image center-content-mobile reveal-from-bottom has-shadow',
+                    imageFill && 'split-item-image-fill'
+                )}
+                   data-reveal-container=".split-item">
+                <a href={"https://www.vanlanschotkempen.com/"} target={"_blank"} rel={"noreferrer noopener"}>
+                  <Image
+                      src={require('./../../assets/images/vlk.png')}
+                      alt="Triodos"
+                      width={528}
+                      height={396}/>
+                </a>
+              </div>
+            </div>
+            <Tiles data={tilesData.tiles.vlk}/>
+
+            <div className="split-item">
+              <div className="split-item-content center-content-mobile reveal-from-left"
+                   data-reveal-container=".split-item">
+                <div className="text-xxs text-color-primary fw-600 tt-u mb-8">
+                  Triodos - August 2024 until May 2025
                 </div>
                 <div className="text-xs fw-600 tt-u mb-8">
                   NAVARA

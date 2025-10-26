@@ -50,10 +50,8 @@ const Hero = ({
             </h1>
             <div className="container-xs">
               <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
-                Hi there! I am Rebecca, an IT-consultant with a passion for frontend development.
-                I currently work at an amazing company called Navara.
-                At Navara, there are a lot of opportunities to develop skills together with a bunch of very smart
-                and enthusiastic colleagues.
+                Hi there! I am Rebecca, a full-stack developer, usually found in conversations about Angular and accessibility and occasionally winning those arguments.
+                When I'm not behind a laptop, I'm probably out running or cycling, pretending it's super relaxing.
                 </p>
 
             </div>

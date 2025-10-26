@@ -1,5 +1,22 @@
 {
   "tiles": {
+    "vlk": [
+      {
+        "name": "Angular",
+        "description": "",
+        "icon": "angular.svg"
+      },
+      {
+        "name": ".NET",
+        "description": "",
+        "icon": "dotnet-framework.svg"
+      },
+      {
+        "name": "Azure",
+        "description": "",
+        "icon": "azure.svg"
+      }
+    ],
     "triodos": [
       {
         "name": "Angular",
