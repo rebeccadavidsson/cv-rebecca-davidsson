@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Unlocking the Power of DevTools • VLK Digitalks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Minimal VLK brand styling -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Bitter:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/white.css" id="theme">
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+    <style>
+        :root {
+            --vlk-petrol: #006568;
+            --vlk-navy: #003646;
+            --vlk-ochre: #cf952e;
+            --vlk-link: #007671;
+            --vlk-link-hover: #00615C;
+            --vlk-bg: #FAF5F0;
+        }
+        body, .reveal {
+            font-family: 'Lato', Arial, sans-serif;
+            background: var(--vlk-bg);
+            color: var(--vlk-navy);
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Bitter', serif;
+            letter-spacing: -.01em;
+        }
+        .reveal section h2, .reveal section h3 {
+            color: var(--vlk-petrol);
+            margin-bottom: .5em;
+        }
+        .reveal a, .reveal code {
+            color: var(--vlk-link);
+        }
+        .vlk-btn, button, .reveal button {
+            background: var(--vlk-petrol);
+            color: #fff;
+            font-family: 'Lato', Arial, sans-serif;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: .2em 0 .6em 0;
+            transition: background .2s;
+        }
+        .vlk-btn:hover, .reveal button:hover {
+            background: var(--vlk-link-hover);
+        }
+        .demo-area {
+            background: #FFF;
+            padding: 18px 16px;
+            border-radius: 9px;
+            box-shadow: 0 2px 10px rgba(0,54,70,.08);
+        }
+        .highlight {
+            background: var(--vlk-ochre);
+            color: #003646;
+            padding: 3px 7px;
+            border-radius: 6px;
+        }
+        .reveal code, pre code {
+            font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+            font-size: 0.99em !important;
+        }
+    </style>
+</head>
+
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>Unlocking the Power of Browser DevTools</h2>
+            <p>
+                For developers, designers, and product owners curious to debug, inspect, and optimize smarter.<br>
+                <small>VLK Digitalks: Minimal slides. Maximum live demos & hands-on tips!</small>
+            </p>
+            <p style="margin-top: 2em; font-style: italic;">
+                Feel free to <span class="highlight">inspect</span> these slides (F12) and try out every hands-on tip live!
+            </p>
+        </section>
+
+        <section>
+            <h3>Agenda</h3>
+            <ul>
+                <li>DevTools: the 20% that gives you 80% of value</li>
+                <li>Demos: Logpoints, breakpoints, coverage and more</li>
+                <li>Tips for debugging AND performance</li>
+                <li>Try it as we go!</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>DevTools Quick Open</h3>
+            <div class="demo-area">
+                <ul>
+                    <li>
+                        <b>Windows:</b> <kbd>F12</kbd> or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
+                    </li>
+                    <li>
+                        <b>Mac:</b> <kbd>Cmd</kbd>+<kbd>Opt</kbd>+<kbd>I</kbd>
+                    </li>
+                </ul>
+                <button onclick="alert('Try it now in your own browser!')">Try it live!</button>
+            </div>
+        </section>
+
+        <section>
+            <h3>Who already uses DevTools?</h3>
+            <ul>
+                <li>Daily</li>
+                <li>Sometimes</li>
+                <li>Rarely or never</li>
+            </ul>
+            <p>
+                <em>Mood check: Pick your level and let’s tailor the pace.</em>
+            </p>
+        </section>
+
+
+        <!-- INTERACTIVE: Inspect/Element Edit Demo -->
+        <section>
+            <h3 class="highlight">LIVE: Inspect & Edit Elements</h3>
+            <div class="demo-area">
+                <p>
+                    Inspect and tweak this button's color, padding, or text:
+                </p>
+                <button id="editMeBtn" style="padding: 10px 20px; font-size: 1.1em;">Edit my style in DevTools!</button>
+                <p style="color:#777; font-size:.94em;">(Try <kbd>Ctrl/⌘+Shift+C</kbd> for element select)</p>
+            </div>
+        </section>
+
+        <!-- NEW LOGPOINT SLIDE -->
+        <section>
+            <h3><span class="highlight">Logpoints:</span> Debugging without <code>console.log</code></h3>
+            <ol>
+                <li>Open <b>Sources</b> panel</li>
+                <li>Right-click on a line number → <b>Add logpoint</b></li>
+                <li>Type a message and include variables <code>{myVar}</code></li>
+                <li>Reload: It's like a temporary <code>console.log</code> (no code changes required!)</li>
+            </ol>
+            <div class="demo-area">
+                <pre><code class="hljs javascript">// Open the 'Sources' tab and right-click here!
+function add(a, b) {
+  return a + b; // ← Set a logpoint here: "Adding: {a} + {b}"
+}
+add(10, 5);
+</code></pre>
+                <button onclick="alert('Try it: Add a logpoint, reload, see logs appear!')">Try logpoints now</button>
+            </div>
+            <div style="color:#666;font-size:.98em;margin-top:.7em;">
+                <span class="highlight">Pro tip:</span> Logpoints persist on page reloads and don't pollute production code.
+            </div>
+        </section>
+
+        <!-- NEW CONDITIONAL BREAKPOINTS SLIDE -->
+        <section>
+            <h3>Conditional Breakpoints</h3>
+            <ol>
+                <li>In the <b>Sources</b> panel, right-click a line → <b>Add conditional breakpoint</b></li>
+                <li>Enter a condition (e.g. <code>a > 10</code>)</li>
+                <li>The script only pauses when that condition is met</li>
+            </ol>
+            <div class="demo-area">
+                <pre><code class="hljs javascript">for(let i=0;i&lt;10;i++){
+  // Set conditional breakpoint: i === 7
+  console.log(i);
+}</code></pre>
+                <button onclick="alert('Set conditional breakpoint on i===7 and run!')">
+                    Try a condition
+                </button>
+            </div>
+        </section>
+
+
+        <!-- NEW: COVERAGE SLIDE -->
+        <section>
+            <h3 class="highlight">Usage <b>Coverage</b></h3>
+            <ol>
+                <li>Open <b>Command Palette</b> (<kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>), type “Coverage” and pin the tab</li>
+                <li>Click <b>Reload</b> in Coverage tab</li>
+                <li>See % of JS/CSS <b>actually used</b>, spot code to clean up!</li>
+            </ol>
+            <div class="demo-area">
+                <ul>
+                    <li onclick="alert('Try opening the Coverage tab and interact with the page!')">
+                        <span class="highlight">Now you:</span> Open and use the Coverage tool with these slides!
+                    </li>
+                    <li>
+                        Try clicking buttons and interacting – see Coverage update live.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- NEW: DOM BREAKPOINTS -->
+        <section>
+            <h3>DOM Breakpoints: Monitor Live DOM Changes</h3>
+            <ol>
+                <li>Right-click any element in Elements panel → <b>Break on...</b></li>
+                <li>Choose:
+                    <ul>
+                        <li>Attribute modification</li>
+                        <li>Subtree modification</li>
+                        <li>Node removal</li>
+                    </ul>
+                </li>
+                <li>On change, DevTools will pause right at the triggering script line</li>
+            </ol>
+            <div class="demo-area">
+                <button onclick="document.getElementById('editMeBtn').classList.toggle('demoHighlight');">Toggle button highlight</button>
+                <script>
+                    // purposely simple, for live demo:
+                    // Right-click "Edit my style" button element and break on attribute modifications
+                </script>
+                <style>
+                    .demoHighlight {outline: 3px solid var(--vlk-ochre);}
+                </style>
+                <p style="font-size:.92em;">Try breaking on attribute change of the button above!</p>
+            </div>
+        </section>
+
+        <!-- NEW: CSS SHADOW EDITOR DEMO -->
+        <section>
+            <h3>Edit Shadows visually – CSS Shadow Editor</h3>
+            <div class="demo-area">
+                <div id="shadowDemo" style="width:180px;height:60px;border-radius:9px;background:#e1e7ea;margin:auto;box-shadow:3px 3px 14px #00656844;display:flex;align-items:center;justify-content:center;">
+                    Edit my shadow!
+                </div>
+                <p style="font-size:.96em;">
+                    Inspect the box, go to Styles <span class="highlight">box-shadow</span> and click the color square or shadow icon.<br>
+                    <span style="color:#697;">Adjust visually and copy your new shadow!</span>
+                </p>
+            </div>
+        </section>
+        <!-- SCREENSHOTS SLIDE -->
+        <section>
+            <h3>Pro Screenshotting</h3>
+            <ul>
+                <li>Right-click any node → <b>Capture node screenshot</b> (gets just that part)</li>
+                <li>Or: Command Palette → <b>Capture full size screenshot</b></li>
+                <li>Result: Downloaded PNG – perfect for docs, tickets, or sharing issues</li>
+            </ul>
+            <div class="demo-area">
+                <img src="assets/faq.png" alt="FAQ Screenshot" style="max-width:48%; border-radius:7px; box-shadow:0 1px 3px #00364622;">
+            </div>
+        </section>
+
+        <!-- COPY CONSOLE LOGS -->
+        <section>
+            <h3>Copying Console Output</h3>
+            <ol>
+                <li>Right-click in the Console panel</li>
+                <li>Select <b>Copy console</b> to instantly grab all logs</li>
+                <li>Paste straight into chat, docs, or AI tools. Done!</li>
+            </ol>
+        </section>
+
+        <!-- CSS OVERVIEW -->
+        <section>
+            <h3>CSS Overview</h3>
+            <ol>
+                <li>Open Command Palette <kbd>Ctrl/Cmd+Shift+P</kbd>, type “CSS Overview”</li>
+                <li>Click <b>Capture overview</b> for instant stats on colors, fonts, sizes, and more</li>
+                <li>Find accessibility issues, color overlap, and unused declarations</li>
+            </ol>
+        </section>
+
+        <!-- New snippet demo -->
+        <section>
+            <h3>Snippets: Your DevTools Script Bag</h3>
+            <div class="demo-area">
+                <pre><code class="hljs javascript">// In Sources tab, right-click 'Snippets' > New
+// Example: List all links
+[...document.links].map(l=>l.href)</code></pre>
+            </div>
+            <p>Create, run, and store your debugging helpers or visual scripts – fast!</p>
+        </section>
+
+        <!-- The classic JS debugger keyword -->
+        <section>
+            <h3>The <code>debugger</code> Statement</h3>
+            <p>Drop <code>debugger</code> into your code. When Chrome hits it, it halts as if by breakpoint:</p>
+            <pre><code class="hljs javascript">
+function demoPause() {
+    debugger;
+    alert("Paused in DevTools!");
+}
+            </code></pre>
+            <button onclick="debugger; alert('Paused in DevTools!');">Try live pause</button>
+        </section>
+
+        <!-- Reload with cache clear -->
+        <section>
+            <h3>Hard Reload + Clear Cache</h3>
+            <div class="demo-area">
+                <ol>
+                    <li>With DevTools open, long-press the reload button in browser</li>
+                    <li>Pick <b>Empty Cache and Hard Reload</b></li>
+                </ol>
+                <span style="font-size:.93em;color:#555;">
+                    Forces clean page load – great for cache/asset/CDN issues.
+                </span>
+            </div>
+        </section>
+
+        <!-- Final wrap-up / social -->
+        <section>
+            <h3>Thank you! 🚀</h3>
+            <p>
+                Try these features live.<br>
+                Feedback? Questions? <br>
+                <span class="highlight">Like & Subscribe 😉</span>
+            </p>
+        </section>
+
+    </div>
+</div>
+<script src="../dist/reveal.js"></script>
+<script src="../plugin/highlight/highlight.js"></script>
+<script>
+    Reveal.initialize({
+        center: true,
+        hash: true,
+        plugins: [RevealHighlight]
+    });
+</script>
+</body>
+</html>

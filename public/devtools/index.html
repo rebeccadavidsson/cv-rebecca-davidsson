@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>reveal.js - Layout Helpers</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="./dist/reveal.css">
+	<link rel="stylesheet" href="./dist/theme/dracula_custom.css" id="theme">
+	<link rel="stylesheet" href="./dist/theme/ghFd3_.css">
+	<link rel="stylesheet" href="./plugin/highlight/monokai.css">
+
+	<style>
+		#section-indicator {
+			position: fixed;
+			top: 0;
+			right: 0;
+			padding: 8px 15px;
+			font-size: 0.5em;
+			font-weight: bold;
+			color: white;
+			z-index: 1000;
+			border-radius: 0 0 0 8px;
+			transition: background-color 0.3s;
+			/* Initially hidden or generic */
+			background-color: transparent;
+			content: "";
+		}
+	</style>
+</head>
+	<body>
+	<div class="reveal">
+		<div id="section-indicator"></div> <div class="slides">
+
+		<section>
+			<h2>The Power of Browser DevTools</h2>
+			<p>
+				For developers, designers, and product owners curious to debug, inspect, and optimize smarter.<br>
+			</p>
+		</section>
+
+		<section>
+			<h3>What will we do today?</h3>
+			<ul>
+				<li>Quick & easy DevTools productivity tips</li>
+				<li>Live debugging on the VLK website</li>
+				<li>Follow along!!</li>
+			</ul>
+		</section>
+
+		<section>
+			<h3>Opening DevTools</h3>
+			<ul>
+				<li><strong>Windows:</strong> <kbd>F12</kbd> or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd></li>
+				<li><strong>Mac:</strong> <kbd>Cmd</kbd> + <kbd>Opt</kbd> + <kbd>I</kbd></li>
+			</ul>
+		</section>
+
+		<section data-transition="zoom">
+			<img src="assets/overload.gif" class="gif" alt="DevTools overload"
+				 style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"/>
+		</section>
+
+		<section data-transition="zoom-in fade-out">
+			<img src="assets/excited.gif" class="gif" alt="Excited"
+				 style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"/>
+		</section>
+
+		<section data-section="productivity" data-transition="zoom">
+			<h2>1. Console, Elements & Productivity</h2>
+			<p>Animations, quick tricks, and Edge-specific tools.</p>
+		</section>
+
+		<section data-section="productivity">
+			<h3>Inspect & Edit Elements</h3>
+			<iframe
+					src="./search.html"
+					id="vlk-demo-iframe"
+					style="width:90%; height:500px; border-radius:10px; border:1px solid #ccc; margin-bottom:15px;"
+			></iframe>
+			<button id="demoButton" style="padding: 10px 20px; font-size: 1.1em;">
+				Edit my color in DevTools!
+			</button>
+		</section>
+
+		<section data-section="productivity">
+			<h3>Animation Tab</h3>
+			<p>
+				Use the <strong>Animations</strong> panel to inspect, slow down, and manipulate animations on your page.
+			</p>
+			<div id="animatedBox"
+				 style="width:80px; height:80px; background:#48e; margin:30px auto; border-radius:12px; animation: moveBox 1.4s infinite alternate;">
+			</div>
+			<style>
+				@keyframes moveBox {
+					0% {
+						transform: translateX(0);
+						background: #48e;
+					}
+					100% {
+						transform: translateX(300px);
+						background: #f83;
+					}
+				}
+			</style>
+		</section>
+
+		<section data-section="productivity">
+			<h3>Animation Tab</h3>
+			<a href="https://www.vanlanschotkempen.com/en-nl" target="_blank">
+				<img style="border-radius:12px;" src="assets/home.png" alt="Homepage Van Lanschot Kempen">
+			</a>
+		</section>
+
+		<section data-section="productivity" data-auto-animate data-auto-animate-unmatched="fade">
+			<h3>The Console</h3>
+			<button data-id="button1"
+					onclick="console.log('You clicked the Console Demo Button!'); alert('Check the console tab for output!')"
+					style="padding:10px 18px;" id="consoleButton">
+				Send a log to the Console
+			</button>
+			<pre data-id="code1"><code class="hljs javascript">console.log('Hello from the Console!');
+document.querySelector('#consoleButton').style.background = 'orange';</code></pre>
+			<p style="margin-top:1em;">Tip: Use <code>$0</code> to reference the element currently selected in Elements
+				panel.</p>
+		</section>
+
+		<section data-section="productivity" data-auto-animate data-auto-animate-unmatched="fade">
+			<h3 id="myTitle">The Console: Live Expressions</h3>
+			<img style="margin: -1em;" src="assets/live-expressions.png" alt="live expressions" />
+			<p>
+				Monitor <code>window.location.href</code>, or <code>window.localStorage</code>
+			</p>
+		</section>
+
+		<section data-section="productivity">
+			<h3>Performance Tab</h3>
+			<ul>
+				<li>
+					<strong>Goal:</strong> find long tasks that cause UI jank.
+				</li>
+				<li>
+					<strong>Method:</strong> trace slow renders back to function calls.
+				</li>
+			</ul>
+			<div style="margin-top: 1.5em; padding: 15px;">
+				<p id="jankStatus" style="color: #f83; font-weight: bold;">Status: Ready to Test</p>
+				<button id="blockMainThreadBtn" style="padding:10px 20px; font-size:1.1em; margin-top:10px;">
+					Click to Create a Long Task
+				</button>
+			</div>
+
+			<script>
+				const blockButton = document.getElementById('blockMainThreadBtn');
+				const jankStatus = document.getElementById('jankStatus');
+				function runExpensiveCalculation() {
+					jankStatus.textContent = 'Status: Calculation in progress... UI may freeze!';
+					jankStatus.style.color = 'red';
+					blockButton.disabled = true;
+
+					const startTime = performance.now();
+					let result = 0;
+					const ITERATIONS = 80000000;
+
+					for (let i = 0; i < ITERATIONS; i++) {
+						result += Math.sqrt(i) / Math.random();
+					}
+
+					const endTime = performance.now();
+					const duration = (endTime - startTime).toFixed(2);
+
+					jankStatus.textContent = `Status: Calculation finished in ${duration} ms. Check the Performance Panel!`;
+					jankStatus.style.color = '#4CAF50'; // Green
+					blockButton.disabled = false;
+				}
+
+				blockButton.addEventListener('click', runExpensiveCalculation);
+			</script>
+		</section>
+
+		<!--    <section data-section="productivity"><h3>Console Tricks: Power Shortcuts</h3>-->
+		<!--        <ul>-->
+		<!--            <li>Access recently selected elements: <code>\$0</code>, <code>\$1</code>, etc.</li>-->
+		<!--            <li>Evaluate XPath or querySelectorAll directly: <code>$$$('button')</code>,-->
+		<!--                <code>$$x('//button')</code></li>-->
+		<!--            <li>Monitor function calls: <code>monitor(functionName)</code></li>-->
+		<!--            <li>Use <code>copy(obj)</code> to copy objects to clipboard</li>-->
+		<!--        </ul>-->
+		<!--        <p>Try <code>console.table(arrayOfObjects)</code> for instant tabular summary!</p></section>-->
+
+		<section data-section="productivity">
+			<h3>Rendering</h3>
+			<ul>
+				<li>
+					<strong>Dark Mode:</strong> Use <strong>Rendering</strong> > "Emulate CSS media feature prefers-color-scheme" to force dark/light themes.
+				</li>
+				<li class="fragment">
+					<strong>Quick Edit:</strong> Run <code>document.designMode = 'on'</code> in the Console to edit page text directly.
+				</li>
+				<li class="fragment">
+					Use the <strong>Command Palette</strong> (<kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>):
+					<ul>
+						<li>Example: capture full size screenshots.</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+
+		<section data-section="sources" data-transition="zoom">
+			<h2>2. Sources & Debugging</h2>
+			<img style="margin-top: 1em;" src="assets/debugging.gif" alt="Debugging" />
+		</section>
+
+		<section data-section="sources" data-auto-animate>
+			<h3>Debugging Appearance</h3>
+			<style>
+				/* CSS for the Tooltip Demo */
+				.tooltip-container {
+					position: relative;
+					display: inline-block;
+					margin-top: 3em;
+					margin-bottom: 1em;
+				}
+
+				.tooltip-box {
+					position: absolute;
+					bottom: 150%; /* Position above the container */
+					left: 50%;
+					transform: translateX(-50%);
+					background-color: #f83; /* A bright color for visibility */
+					color: #1a212a;
+					padding: 8px 12px;
+					border-radius: 4px;
+					white-space: nowrap;
+					opacity: 0;
+					visibility: hidden;
+					transition: opacity 0.3s, visibility 0.3s;
+				}
+
+				.tooltip-box.is-visible {
+					opacity: 1;
+					visibility: visible;
+				}
+
+				.tooltip-box::after {
+					content: '';
+					position: absolute;
+					top: 100%;
+					left: 50%;
+					margin-left: -5px;
+					border-width: 5px;
+					border-style: solid;
+					border-color: #f83 transparent transparent transparent;
+				}
+			</style>
+
+			<div class="tooltip-container">
+				<button id="hoverButton" style="padding: 10px 20px; font-size: 1.1em;">
+					Hover Me to Show Tooltip
+				</button>
+				<div id="demoTooltip" class="tooltip-box">
+					I appeared on hover!
+				</div>
+			</div>
+
+			<ul>
+				<li class="fragment">Use <code>debug(functionName)</code> in console</li>
+				<li class="fragment">In code, add <b>debugger;</b></li>
+				<li class="fragment">Or: Right-click element &gt; ‘Break on…’ &gt; <strong>Subtree modification</strong>.
+				</li>
+			</ul>
+
+			<script>
+				const hoverButton = document.getElementById('hoverButton');
+				const demoTooltip = document.getElementById('demoTooltip');
+
+				function toggleTooltip(isVisible) {
+					if (isVisible) {
+						demoTooltip.classList.add('is-visible');
+					} else {
+						demoTooltip.classList.remove('is-visible');
+					}
+				}
+
+				hoverButton.addEventListener('mouseenter', () => toggleTooltip(true));
+				hoverButton.addEventListener('mouseleave', () => toggleTooltip(false));
+			</script>
+		</section>
+
+		<section data-section="sources">
+			<h3>Sources Tab: Conditional Breakpoints</h3>
+			<p><strong>Conditional Breakpoints:</strong> Right-click a line number to set an expression that pauses
+				execution *only* when a state is met.</p>
+
+			<pre style="margin-top:2em; margin-bottom:2em;"><code class="hljs javascript">outputElement.style.color = userId === 999 ? 'red' : 'white';
+</code></pre>
+
+			<button id="debugMe" style="padding:9px 18px;">Click to Trigger JS</button>
+
+			<script>
+				// Simple function to make the demo runnable
+				function getCurrentUser() {
+					// Randomly return '999' as a STRING about 10% of the time (the bug!)
+					if (Math.random() < 0.1) {
+						return '999';
+					}
+					return Math.floor(Math.random() * 100) + 1;
+				}
+
+				document.getElementById('debugMe').addEventListener('click', function() {
+					const userId = getCurrentUser();
+					// The line for the breakpoint
+					console.log('Processing user:', userId);
+
+					// Simple visual output
+					const outputElement = document.createElement('p');
+					outputElement.textContent = `User ID: ${userId}`;
+					// The bug: Strict comparison of string to number fails: '999' !== 999
+					outputElement.style.color = userId === 999 ? 'red' : 'white';
+					document.getElementById('debugMe').parentNode.appendChild(outputElement);
+					setTimeout(() => outputElement.remove(), 3000);
+				});
+			</script>
+		</section>
+
+		<section data-section="sources" data-auto-animate>
+			<h3>Snippets: Custom JS Library in DevTools</h3>
+			<img src="assets/automate.png" alt="Automate task"
+				 style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); max-height: 500px;"/>
+		</section>
+
+		<section data-section="sources" data-auto-animate>
+			<h3>Snippets: Custom JS Library in DevTools</h3>
+			<p data-id="go-to-sources">Go to Sources > Snippets &gt; New snippet.</p>
+			<div style="margin-top:1em; text-align: left; display: flex; flex-direction: column; align-items: flex-start;">
+				<button id="copySnippetBtn" style="padding:8px 15px; margin-bottom:10px; background-color:#337ab7; color:white; border:none; border-radius:4px; cursor:pointer; margin: 0 auto 10px;">
+					Click to Copy: allcolors.js
+				</button>
+
+				<pre style="max-height: 250px;max-width: 90%; overflow-y: scroll; width: 100%; font-size:.82em; background:#1a212a; color:#dbeaff; padding:.5em; border-radius:6px; border:1px solid #444;">
+            <code class="hljs javascript" id="colorSnippetCode">
+// allcolors.js
+// https://github.com/bgrins/devtools-snippets
+// Print out CSS colors used in elements on the page.
+
+(function () {
+  // Should include colors from elements that have a border color but have a zero width?
+  var includeBorderColorsWithZeroWidth = false;
+
+  var allColors = {};
+  var props = ["background-color", "color", "border-top-color", "border-right-color", "border-bottom-color", "border-left-color"];
+  var skipColors = {
+    "rgb(0, 0, 0)": 1,
+    "rgba(0, 0, 0, 0)": 1,
+    "rgb(255, 255, 255)": 1
+  };
+
+  [].forEach.call(document.querySelectorAll("*"), function (node) {
+    var nodeColors = {};
+    props.forEach(function (prop) {
+      var color = window.getComputedStyle(node, null).getPropertyValue(prop),
+        thisIsABorderProperty = (prop.indexOf("border") != -1),
+        notBorderZero = thisIsABorderProperty ? window.getComputedStyle(node, null).getPropertyValue(prop.replace("color", "width")) !== "0px" : true,
+        colorConditionsMet;
+
+      if (includeBorderColorsWithZeroWidth) {
+        colorConditionsMet = color && !skipColors[color];
+      } else {
+        colorConditionsMet = color && !skipColors[color] && notBorderZero;
+      }
+
+      if (colorConditionsMet) {
+        if (!allColors[color]) {
+          allColors[color] = {
+            count: 0,
+            nodes: []
+          };
+        }
+
+        if (!nodeColors[color]) {
+          allColors[color].count++;
+          allColors[color].nodes.push(node);
+        }
+
+        nodeColors[color] = true;
+      }
+    });
+  });
+
+  function rgbTextToRgbArray(rgbText) {
+    return rgbText.replace(/\s/g, "").match(/\d+,\d+,\d+/)[0].split(",").map(function(num) {
+      return parseInt(num, 10);
+    });
+  }
+
+  function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  }
+
+  function rgbToHex(rgbArray) {
+    var r = rgbArray[0],
+      g = rgbArray[1],
+      b = rgbArray[2];
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+  }
+
+  var allColorsSorted = [];
+  for (var i in allColors) {
+    var rgbArray = rgbTextToRgbArray(i);
+    var hexValue = rgbToHex(rgbArray);
+
+    allColorsSorted.push({
+      key: i,
+      value: allColors[i],
+      hexValue: hexValue
+    });
+  }
+
+  allColorsSorted = allColorsSorted.sort(function (a, b) {
+    return b.value.count - a.value.count;
+  });
+
+  var nameStyle = "font-weight:normal;";
+  var countStyle = "font-weight:bold;";
+  function colorStyle(color) {
+    return "background:" + color + ";color:" + color + ";border:1px solid #333;";
+  };
+
+  console.group("Total colors used in elements on the page: " + window.location.href + " are " + allColorsSorted.length);
+  allColorsSorted.forEach(function (c) {
+    console.groupCollapsed("%c   %c " + c.key + " " + c.hexValue + " %c(" + c.value.count + " times)",
+      colorStyle(c.key), nameStyle, countStyle);
+    c.value.nodes.forEach(function (node) {
+      console.log(node);
+    });
+    console.groupEnd();
+  });
+  console.groupEnd("All colors used in elements on the page");
+
+})();
+            </code>
+        </pre>
+			</div>
+
+			<script>
+				document.getElementById('copySnippetBtn').addEventListener('click', function () {
+					const codeElement = document.getElementById('colorSnippetCode');
+					const codeContent = codeElement.innerText || codeElement.textContent;
+
+					navigator.clipboard.writeText(codeContent).then(() => {
+						const originalText = this.textContent;
+						this.textContent = 'Copied! ✅';
+						setTimeout(() => {
+							this.textContent = originalText;
+						}, 2000);
+					}).catch(err => {
+						console.error('Could not copy text: ', err);
+						alert('Copy failed. Check the console for details.');
+					});
+				});
+			</script>
+		</section>
+
+		<section data-section="sources" data-auto-animate>
+			<h3>Sources Tab: Naming Anonymous Code with `#sourceURL`</h3>
+			<p>Debug **inlined, evaluated, or generated** code as if it were a real file.</p>
+			<ul>
+				<li class="fragment">
+					<strong>The Problem:</strong> Minified or inlined scripts/styles are attributed to vague line
+					numbers.
+				</li>
+				<li class="fragment">
+					<strong>The Solution:</strong> The `//# sourceURL` directive creates a virtual file name.
+				</li>
+				<li class="fragment">
+					<strong>Advantage:</strong> Stack traces, breakpoints, and the Elements panel all link to clean,
+					named source files.
+				</li>
+			</ul>
+		</section>
+
+		<section data-section="sources" data-auto-animate>
+			<h3>Sources Tab: #sourceURL</h3>
+			<p>Add the <code>//# sourceURL</code> directive to your file</p>
+			<div style="display:flex; justify-content: space-around; gap: 20px; margin: 0 auto; margin-top:2em; max-width: 80%;">
+				<p id="minifiedCSS">
+					Inspect this minified CSS.
+				</p>
+				<p id="sourceUrlDemo">
+					Inspect unminified CSS source
+				</p>
+			</div>
+
+			<div style="display:flex; justify-content: space-around; gap: 20px; margin-top:2em;">
+				<button id="triggerNonSourceUrlDemo" style="padding:9px 18px;">
+					Script without sourceURL
+				</button>
+
+				<button id="triggerSourceUrlDemo" style="padding:9px 18px;">
+					Script with sourceURL
+				</button>
+			</div>
+
+			<script>document.getElementById('triggerSourceUrlDemo').addEventListener('click', function () {
+				// Now see this file appear in the sources tab
+				debugger;
+				console.log("Script executed. Check Sources for 'inline-script.js'.");
+			});
+
+			// The magic line: Naming this anonymous script block
+			//# sourceURL=inline-script.js
+			</script>
+			<style>
+				/* This style block will be named in the Sources tab */
+				#sourceUrlDemo {
+					font-size: 1.1em;
+					font-weight: bold;
+					border: 2px solid #f83;
+					padding: 10px;
+				}
+				/* The CSS magic line: Must be a CSS comment block */
+				/*# sourceURL=inline-style.css */
+			</style>
+
+
+			<script>document.getElementById("triggerNonSourceUrlDemo").addEventListener("click", (function () {
+				debugger;
+				console.log("Script executed. Check Sources.")
+			}));</script>
+		</section>
+
+		<section data-section="sources">
+			<h3>Coverage: Optimizing Azure Production Bundles</h3>
+			<p>Analyze byte-level usage to eliminate dead code and reduce client bundle size.</p>
+			<ul>
+				<li>
+					<strong>Goal:</strong> Identify CSS and JavaScript loaded by the browser that is never executed.
+				</li>
+				<li>
+					<strong>Method:</strong> Use the <strong>Coverage</strong> tab to record interactions and see visual red/green indicators for code usage.
+				</li>
+				<li>
+					<strong>Advanced Use:</strong> Coverage supports <strong>Source Maps</strong>, allowing you to see unused lines of code traced back to the original <strong>TypeScript/Sass</strong> files, even on minified production code deployed via Azure.
+				</li>
+			</ul>
+		</section>
+
+		<section data-section="network" data-transition="zoom">
+			<h2>3. Network & Application</h2>
+			<p>Mocking APIs, faking locations, and debugging caching strategies.</p>
+		</section>
+
+		<section data-section="network" data-auto-animate data-auto-animate-unmatched="fade">
+			<h3>Network Panel</h3>
+			<ul>
+				<li>
+					<strong>Filter</strong> by method, status, and <strong>payload content</strong>.
+				</li>
+				<li>
+					<strong>Copy as cURL/fetch()</strong> for fast API debugging or automated testing.
+				</li>
+			</ul>
+			<button onclick="fetch('https://jsonplaceholder.typicode.com/todos/1').then(res => res.json()).then(data => alert('Check DevTools > Network!'));"
+					style="padding:10px 18px;margin-top:1em;">
+				Trigger API Request
+			</button>
+		</section>
+
+		<section data-section="network" data-auto-animate>
+			<h3>Overrides</h3>
+			<p>
+				<strong>Mock</strong> API responses, files, and headers right from DevTools.<br>
+			</p>
+			<a href="https://www.vanlanschotkempen.com/nl-nl/private-banking/contact/faq" target="_blank"
+			   rel="noopener">
+				<img src="assets/faq.png" alt="FAQ screenshot"
+					 style="max-width:70%; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-top:16px;">
+			</a>
+		</section>
+
+		<section data-section="network" data-auto-animate>
+			<h3>Overrides</h3>
+			<p>Open the <strong>changes</strong> tab!</p>
+			<iframe
+					src="./search.html"
+					id="demo-changes-tab"
+					style="width:90%; height:500px; border-radius:10px; border:1px solid #ccc; margin-bottom:15px;"
+			></iframe>
+		</section>
+
+		<section data-section="network">
+			<h3>Network Throttling</h3>
+			<button id="loadBtn" style="padding:10px 20px; font-size:1.1em;">Load Data</button>
+			<div id="spinner" style="display:none; margin:2em 0;">
+				<svg width="48" height="48" viewBox="0 0 24 24">
+					<circle cx="12" cy="12" r="10" stroke="var(--r-link-color)" stroke-width="4" fill="none"
+							opacity="0.3"/>
+					<path d="M22 12a10 10 0 1 1-10-10" stroke="var(--r-link-color)" stroke-width="4" fill="none">
+						<animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s"
+										  repeatCount="indefinite"/>
+					</path>
+				</svg>
+				<p style="color:var(--r-link-color);margin-top:1em;">Loading...</p>
+			</div>
+			<div id="result" style="margin-top:2em;font-size:1.1em;"></div>
+			<script>
+				const btn = document.getElementById('loadBtn');
+				const spinner = document.getElementById('spinner');
+				const result = document.getElementById('result');
+				btn.onclick = function () {
+					result.textContent = '';
+					spinner.style.display = 'block';
+					fetch('https://jsonplaceholder.typicode.com/todos/1')
+							.then(res => res.json())
+							.then(data => {
+								spinner.style.display = 'none';
+								result.textContent = 'Loaded!'
+							})
+							.catch(e => {
+								spinner.style.display = 'none';
+								result.textContent = 'Request failed.';
+							});
+				}
+			</script>
+		</section>
+
+		<section data-section="network">
+			<h3>Mock Location & Timezone</h3>
+			<p>Essential for testing geo-localized or time-dependent features on our Client Center website.</p>
+			<a href="https://clientcenter.acc.vlkintern.nl/preview" target="_blank" rel="noopener">
+				<img src="assets/email-clientcenter.png" alt="Client Center demo screenshot"
+					 style="max-width:70%; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-top:16px;">
+			</a>
+		</section>
+
+		<section data-section="network">
+			<h3>Application Tab: Cache Storage</h3>
+			<p>Inspect, modify, and clear the local data your application relies on.</p>
+			<ul>
+				<li>
+					View and edit data in <strong>localStorage</strong>
+				</li>
+				<li>
+					<strong>Debugging Auth:</strong> check JWT/session tokens
+				</li>
+				<li>
+					Inspect <strong>Service Workers</strong>
+				</li>
+			</ul>
+
+			<button id="cacheDemoBtn" style="padding:10px 18px; margin-top:1.5em;">
+				Live Demo: Inspect Cache Storage
+			</button>
+
+			<script>
+				const cacheDemoBtn = document.getElementById('cacheDemoBtn');
+				function setupCacheDemo() {
+					if (!('caches' in window)) {
+						alert('Cache API not supported in this browser!');
+						return;
+					}
+					const CACHE_NAME = 'vlk-app-cache-v1';
+					const TEST_URL = '/test-cache-asset.json';
+					const TEST_DATA = {message: 'This data is cached offline!'};
+
+					caches.open(CACHE_NAME).then(cache => {
+						const response = new Response(JSON.stringify(TEST_DATA), {
+							headers: {'Content-Type': 'application/json'}
+						});
+
+						cache.put(TEST_URL, response)
+								.then(() => {
+									alert(`Successfully stored asset in Cache Storage: ${CACHE_NAME}. Check the Application Tab!`);
+								})
+								.catch(e => {
+									console.error('Caching failed:', e);
+									alert('Error setting up cache demo. Check console.');
+								});
+					});
+				}
+				cacheDemoBtn.addEventListener('click', setupCacheDemo);
+			</script>
+		</section>
+
+		<section data-section="network">
+			<h3>Application Tab: Cross-Origin Frames Debugging</h3>
+			<p>Inspect isolated storage and Service Workers from embedded content.</p>
+			<ul>
+				<li>
+					<strong>Frames Section:</strong> See a clear tree view of the main page and all embedded iframes.
+				</li>
+				<li>
+					<strong>Debugging:</strong> Select an iframe's origin in the Frames tree to view its <strong>Cookies</strong>, <strong>localStorage</strong>, and <strong>Cache Storage</strong>.
+				</li>
+			</ul>
+			<iframe
+					src="https://example.com/"
+					id="cross-origin-demo-iframe"
+					style="width:90%; height:300px; border-radius:10px; border:1px solid #ccc; margin-top:15px;"
+			></iframe>
+		</section>
+
+
+		<section data-auto-animate data-transition="zoom-in">
+			<h3>Advanced DevTools Cheat Sheet: Production & Edge/Azure</h3>
+
+			<div style="font-size: 0.55em; text-align: left; display: flex; flex-wrap: wrap; justify-content: space-between;">
+
+				<div style="width: 32%; margin-bottom: 20px;">
+					<h4 style="border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 10px;">Sources & Debugging</h4>
+					<ul style="list-style-type: none; padding-left: 0;">
+						<li><small><strong>Conditional Breakpoints:</strong> Pause execution only when `variable === 'error-case'` (Demo).</small></li>
+						<li><small><strong>DOM Breakpoints:</strong> Right-click &gt; Break on Subtree Modification (Tooltip Demo).</small></li>
+						<li><small><strong>Snippets:</strong> Create reusable utilities like the `allcolors.js` script.</small></li>
+						<li><small><strong>Source Mapping:</strong> View original TypeScript/Sass files in production builds.</small></li>
+						<li><small><strong>SourceURL:</strong> Use `//# sourceURL=file.js` to name anonymous/inlined scripts (Demo).</small></li>
+						<li><small><strong>Coverage Tab:</strong> Use with Source Maps to find dead code and optimize bundles.</small></li>
+					</ul>
+				</div>
+
+				<div style="width: 32%; margin-bottom: 20px;">
+					<h4 style="border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 10px;">Network & Application</h4>
+					<ul style="list-style-type: none; padding-left: 0;">
+						<li><small><strong>Network Overrides:</strong> Mock API responses or files (Local Overrides tab).</small></li>
+						<li><small><strong>Request Blocking:</strong> Block specific URLs or patterns (Network Tab).</small></li>
+						<li><small><strong>Service Workers:</strong> Debug caching strategies (Cache Storage vs. LocalStorage).</small></li>
+						<li><small><strong>Frames Debugging:</strong> Inspect storage/cookies of cross-origin iframes (`https://example.com/`).</small></li>
+						<li><small><strong>Emulation:</strong> Mock Geo-location and Timezone for Client Center tests.</small></li>
+						<li><small><strong>PWA Emulation:</strong> Test Window Controls Overlay in Application tab.</small></li>
+					</ul>
+				</div>
+
+				<div style="width: 32%; margin-bottom: 20px;">
+					<h4 style="border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 10px;">Console & Productivity</h4>
+					<ul style="list-style-type: none; padding-left: 0;">
+						<li><small><strong>Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>):</strong> Access all commands (e.g., screenshots, panels).</small></li>
+						<li><small><strong>DesignMode:</strong> Run `document.designMode = 'on'` to live-edit text in the browser.</small></li>
+						<li><small><strong>Live Expressions:</strong> Monitor variables (e.g., `localStorage`) in real-time.</small></li>
+						<li><small><strong>CSS Emulation:</strong> Force dark mode or test custom CSS with `@property` (Rendering tab).</small></li>
+						<li><small><strong>Screenshots:</strong> Use Command Palette for full-size or mobile-format screenshots.</small></li>
+						<li><small><strong>Edge Tools:</strong> Use the Crash Analyzer for diagnosing tab crashes.</small></li>
+						<li><small><strong>Console Shortcuts:</strong> Use `copy(obj)`, `monitor(func)`, `$$()`, and `$$x()`.</small></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+	</div>
+	</div>
+
+
+	<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
