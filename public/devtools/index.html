@@ -29,6 +29,65 @@
 			background-color: transparent;
 			content: "";
 		}
+
+		/* CSS for the Tooltip Demo */
+		.tooltip-container {
+			position: relative;
+			display: inline-block;
+			margin-top: 3em;
+			margin-bottom: 1em;
+		}
+
+		.ugly-tooltip-box {
+			position: absolute;
+			bottom: 150%; /* Position above the container */
+			left: 50%;
+			transform: translateX(-50%);
+			background-color: #f83; /* A bright color for visibility */
+			color: #1a212a;
+			padding: 8px 12px;
+			border-radius: 4px;
+			white-space: nowrap;
+		}
+
+
+		.ugly-tooltip-box::after {
+			content: '';
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			margin-left: -5px;
+			border-width: 5px;
+			border-style: solid;
+			border-color: #f83 transparent transparent transparent;
+		}
+
+		.better-tooltip-box {
+			background-color: #006568;
+			color: #f0f0f0;
+			padding: 10px 18px;
+			border-radius: 6px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+			position: absolute;
+			bottom: 150%;
+			left: 50%;
+			transform: translateX(-50%);
+			white-space: nowrap;
+			font-size: 0.85em;
+			font-family: var(--r-main-font);
+			font-weight: 600;
+		}
+
+		.better-tooltip-box::after {
+			border-color: #006568 transparent transparent transparent;
+			content: '';
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			margin-left: -5px;
+			border-width: 5px;
+			border-style: solid;
+		}
 	</style>
 </head>
 	<body>
@@ -47,7 +106,7 @@
 			<ul>
 				<li>Quick & easy DevTools productivity tips</li>
 				<li>Live debugging on the VLK website</li>
-				<li>Follow along!!</li>
+				<li>Follow along > <a href="https://www.rebeccadavidsson.com/devtools">rebeccadavidsson.com/devtools</a></li>
 			</ul>
 		</section>
 
@@ -69,23 +128,34 @@
 				 style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"/>
 		</section>
 
-		<section data-section="productivity" data-transition="zoom">
-			<h2>1. Console, Elements & Productivity</h2>
-			<p>Animations, quick tricks, and Edge-specific tools.</p>
+		<section>
+			<h3>Why Master DevTools?</h3>
+			<ul>
+<!--				Developers waste their time on repetitive or manual tasks that better tooling can eliminate.-->
+				<li>Efficiency</li>
+<!--				Tools help track and reduce the **Defect Escape Rate** (bugs bypassing testing). Testing in production conditions is key.-->
+				<li>Production Quality Assurance</li>
+<!--				Better debugging skills directly lower the **Mean Time to Recovery (MTTR)**, a core DORA metric for reliability.-->
+				<li>Lower the <strong>Mean Time to Recovery (MTTR)</strong></li>
+			</ul>
 		</section>
 
+		<section data-section="productivity" data-transition="zoom">
+			<h2>1. Console, Elements & Productivity</h2>
+		</section>
+
+
+		<!-- Add document.designMode = 'on', add a logout button interactively and change some text -->
 		<section data-section="productivity">
-			<h3>Inspect & Edit Elements</h3>
+			<h3>The Quickest Fix</h3>
 			<iframe
 					src="./search.html"
 					id="vlk-demo-iframe"
 					style="width:90%; height:500px; border-radius:10px; border:1px solid #ccc; margin-bottom:15px;"
 			></iframe>
-			<button id="demoButton" style="padding: 10px 20px; font-size: 1.1em;">
-				Edit my color in DevTools!
-			</button>
 		</section>
 
+		<!-- Go to the command palette to open the animation tab -->
 		<section data-section="productivity">
 			<h3>Animation Tab</h3>
 			<p>
@@ -108,6 +178,7 @@
 			</style>
 		</section>
 
+		<!-- Go to VLK website to show how to open the animated menu with 25% speed -->
 		<section data-section="productivity">
 			<h3>Animation Tab</h3>
 			<a href="https://www.vanlanschotkempen.com/en-nl" target="_blank">
@@ -115,7 +186,7 @@
 			</a>
 		</section>
 
-		<section data-section="productivity" data-auto-animate data-auto-animate-unmatched="fade">
+		<section data-section="productivity">
 			<h3>The Console</h3>
 			<button data-id="button1"
 					onclick="console.log('You clicked the Console Demo Button!'); alert('Check the console tab for output!')"
@@ -124,11 +195,11 @@
 			</button>
 			<pre data-id="code1"><code class="hljs javascript">console.log('Hello from the Console!');
 document.querySelector('#consoleButton').style.background = 'orange';</code></pre>
-			<p style="margin-top:1em;">Tip: Use <code>$0</code> to reference the element currently selected in Elements
+			<p style="margin-top:1em;">Use <code>$0</code> to reference the element currently selected in Elements
 				panel.</p>
 		</section>
 
-		<section data-section="productivity" data-auto-animate data-auto-animate-unmatched="fade">
+		<section data-section="productivity">
 			<h3 id="myTitle">The Console: Live Expressions</h3>
 			<img style="margin: -1em;" src="assets/live-expressions.png" alt="live expressions" />
 			<p>
@@ -181,16 +252,7 @@ document.querySelector('#consoleButton').style.background = 'orange';</code></pr
 			</script>
 		</section>
 
-		<!--    <section data-section="productivity"><h3>Console Tricks: Power Shortcuts</h3>-->
-		<!--        <ul>-->
-		<!--            <li>Access recently selected elements: <code>\$0</code>, <code>\$1</code>, etc.</li>-->
-		<!--            <li>Evaluate XPath or querySelectorAll directly: <code>$$$('button')</code>,-->
-		<!--                <code>$$x('//button')</code></li>-->
-		<!--            <li>Monitor function calls: <code>monitor(functionName)</code></li>-->
-		<!--            <li>Use <code>copy(obj)</code> to copy objects to clipboard</li>-->
-		<!--        </ul>-->
-		<!--        <p>Try <code>console.table(arrayOfObjects)</code> for instant tabular summary!</p></section>-->
-
+		<!-- Show the rendering tab and darkMode on the VLK website -->
 		<section data-section="productivity">
 			<h3>Rendering</h3>
 			<ul>
@@ -216,120 +278,100 @@ document.querySelector('#consoleButton').style.background = 'orange';</code></pr
 
 		<section data-section="sources" data-auto-animate>
 			<h3>Debugging Appearance</h3>
-			<style>
-				/* CSS for the Tooltip Demo */
-				.tooltip-container {
-					position: relative;
-					display: inline-block;
-					margin-top: 3em;
-					margin-bottom: 1em;
-				}
-
-				.tooltip-box {
-					position: absolute;
-					bottom: 150%; /* Position above the container */
-					left: 50%;
-					transform: translateX(-50%);
-					background-color: #f83; /* A bright color for visibility */
-					color: #1a212a;
-					padding: 8px 12px;
-					border-radius: 4px;
-					white-space: nowrap;
-					opacity: 0;
-					visibility: hidden;
-					transition: opacity 0.3s, visibility 0.3s;
-				}
-
-				.tooltip-box.is-visible {
-					opacity: 1;
-					visibility: visible;
-				}
-
-				.tooltip-box::after {
-					content: '';
-					position: absolute;
-					top: 100%;
-					left: 50%;
-					margin-left: -5px;
-					border-width: 5px;
-					border-style: solid;
-					border-color: #f83 transparent transparent transparent;
-				}
-			</style>
 
 			<div class="tooltip-container">
 				<button id="hoverButton" style="padding: 10px 20px; font-size: 1.1em;">
-					Hover Me to Show Tooltip
+					Hover me
 				</button>
-				<div id="demoTooltip" class="tooltip-box">
-					I appeared on hover!
-				</div>
 			</div>
 
 			<ul>
-				<li class="fragment">Use <code>debug(functionName)</code> in console</li>
-				<li class="fragment">In code, add <b>debugger;</b></li>
-				<li class="fragment">Or: Right-click element &gt; ‘Break on…’ &gt; <strong>Subtree modification</strong>.
+				<li class="fragment"><strong>Solution 1:</strong> Right-click the parent &gt; ‘Break on…’ &gt; Subtree modification.
 				</li>
+				<li class="fragment"><strong>Solution 2:</strong> add a <code>debugger;</code> statement</li>
+				<li class="fragment">But an even better solution... </li>
 			</ul>
-
-			<script>
-				const hoverButton = document.getElementById('hoverButton');
-				const demoTooltip = document.getElementById('demoTooltip');
-
-				function toggleTooltip(isVisible) {
-					if (isVisible) {
-						demoTooltip.classList.add('is-visible');
-					} else {
-						demoTooltip.classList.remove('is-visible');
-					}
-				}
-
-				hoverButton.addEventListener('mouseenter', () => toggleTooltip(true));
-				hoverButton.addEventListener('mouseleave', () => toggleTooltip(false));
-			</script>
 		</section>
 
-		<section data-section="sources">
-			<h3>Sources Tab: Conditional Breakpoints</h3>
-			<p><strong>Conditional Breakpoints:</strong> Right-click a line number to set an expression that pauses
-				execution *only* when a state is met.</p>
-
-			<pre style="margin-top:2em; margin-bottom:2em;"><code class="hljs javascript">outputElement.style.color = userId === 999 ? 'red' : 'white';
-</code></pre>
-
-			<button id="debugMe" style="padding:9px 18px;">Click to Trigger JS</button>
-
-			<script>
-				// Simple function to make the demo runnable
-				function getCurrentUser() {
-					// Randomly return '999' as a STRING about 10% of the time (the bug!)
-					if (Math.random() < 0.1) {
-						return '999';
-					}
-					return Math.floor(Math.random() * 100) + 1;
-				}
-
-				document.getElementById('debugMe').addEventListener('click', function() {
-					const userId = getCurrentUser();
-					// The line for the breakpoint
-					console.log('Processing user:', userId);
-
-					// Simple visual output
-					const outputElement = document.createElement('p');
-					outputElement.textContent = `User ID: ${userId}`;
-					// The bug: Strict comparison of string to number fails: '999' !== 999
-					outputElement.style.color = userId === 999 ? 'red' : 'white';
-					document.getElementById('debugMe').parentNode.appendChild(outputElement);
-					setTimeout(() => outputElement.remove(), 3000);
-				});
-			</script>
-		</section>
 
 		<section data-section="sources" data-auto-animate>
 			<h3>Snippets: Custom JS Library in DevTools</h3>
 			<img src="assets/automate.png" alt="Automate task"
 				 style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); max-height: 500px;"/>
+		</section>
+
+		<section data-section="sources" data-auto-animate>
+			<h3>Snippets: Custom JS Library in DevTools</h3>
+			<p data-id="go-to-sources">Go to Sources > Snippets &gt; New snippet.</p>
+			<div style="margin-top:1em; text-align: left; display: flex; flex-direction: column; align-items: flex-start;">
+				<button id="copyTooltipSnippetBtn" style="padding:8px 15px; margin-bottom:10px; background-color:#337ab7; color:white; border:none; border-radius:4px; cursor:pointer; margin: 0 auto 10px;">
+					Click to Copy: debug-tooltip.js
+				</button>
+
+				<pre style="max-height: 250px;max-width: 90%; overflow-y: scroll; width: 100%; font-size:.82em; background:#1a212a; color:#dbeaff; padding:.5em; border-radius:6px; border:1px solid #444;">
+            <code class="hljs javascript" id="tooltipSnippetCode">// Use the global variable you just created
+const targetNode = temp1;
+
+const config = { childList: true, subtree: true };
+
+// CHANGE THIS to the tooltip's class
+const targetClassName = 'ugly-tooltip-box';
+
+
+
+const callback = function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            // Check newly added nodes
+            mutation.addedNodes.forEach(node => {
+                // Check if it's an element
+                if (node.nodeType === 1) {
+                    // Check if the node itself has the class
+                    if (node.classList.contains(targetClassName)) {
+                        console.log('Target class found on added element:', node);
+                        debugger; // PAUSE HERE!
+                    }
+                    // Check if any descendants of the added node have the class
+                    const matchingDescendants = node.querySelectorAll(`.${targetClassName}`);
+                    if (matchingDescendants.length > 0) {
+                        console.log('Target class found on descendant:', matchingDescendants);
+                        debugger; // PAUSE HERE!
+                    }
+                }
+            });
+        }
+    }
+};
+
+// --- STEP 3: Start Observing ---
+// Create an instance of the observer
+const observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);
+
+console.log(`MutationObserver started on ${targetNode.id || targetNode.tagName}. Waiting for class: ${targetClassName}`);
+            </code>
+        </pre>
+			</div>
+
+			<script>
+				document.getElementById('copyTooltipSnippetBtn').addEventListener('click', function () {
+					const codeElement = document.getElementById('tooltipSnippetCode');
+					const codeContent = codeElement.innerText || codeElement.textContent;
+
+					navigator.clipboard.writeText(codeContent).then(() => {
+						const originalText = this.textContent;
+						this.textContent = 'Copied! ✅';
+						setTimeout(() => {
+							this.textContent = originalText;
+						}, 2000);
+					}).catch(err => {
+						console.error('Could not copy text: ', err);
+						alert('Copy failed. Check the console for details.');
+					});
+				});
+			</script>
 		</section>
 
 		<section data-section="sources" data-auto-animate>
@@ -465,9 +507,39 @@ document.querySelector('#consoleButton').style.background = 'orange';</code></pr
 			</script>
 		</section>
 
+		<section data-section="sources">
+			<h3>Conditional Breakpoints</h3>
+			<p><strong>Conditional Breakpoints:</strong> Right-click a line number to set an expression that pauses
+				execution only when a state is met.</p>
+
+			<pre style="margin-top:2em; margin-bottom:2em;"><code class="hljs javascript">outputElement.style.color = userId === 999 ? 'red' : 'white';
+</code></pre>
+
+			<button id="debugMe" style="padding:9px 18px;">Click to Trigger JS</button>
+
+			<script>
+				function getCurrentUser() {
+					if (Math.random() < 0.1) {
+						return '999';
+					}
+					return Math.floor(Math.random() * 100) + 1;
+				}
+
+				document.getElementById('debugMe').addEventListener('click', function() {
+					const userId = getCurrentUser();
+					console.log('Processing user:', userId);
+					const outputElement = document.createElement('p');
+					outputElement.textContent = `User ID: ${userId}`;
+					outputElement.style.color = userId === 999 ? 'red' : 'white';
+					document.getElementById('debugMe').parentNode.appendChild(outputElement);
+					setTimeout(() => outputElement.remove(), 3000);
+				});
+			</script>
+		</section>
+
 		<section data-section="sources" data-auto-animate>
 			<h3>Sources Tab: Naming Anonymous Code with `#sourceURL`</h3>
-			<p>Debug **inlined, evaluated, or generated** code as if it were a real file.</p>
+			<p>Debug <strong>inlined, evaluated, or generated</strong> code as if it were a real file.</p>
 			<ul>
 				<li class="fragment">
 					<strong>The Problem:</strong> Minified or inlined scripts/styles are attributed to vague line
@@ -537,14 +609,14 @@ document.querySelector('#consoleButton').style.background = 'orange';</code></pr
 			<h3>Coverage: Optimizing Azure Production Bundles</h3>
 			<p>Analyze byte-level usage to eliminate dead code and reduce client bundle size.</p>
 			<ul>
-				<li>
+				<li class="fragment">
 					<strong>Goal:</strong> Identify CSS and JavaScript loaded by the browser that is never executed.
 				</li>
-				<li>
+				<li class="fragment">
 					<strong>Method:</strong> Use the <strong>Coverage</strong> tab to record interactions and see visual red/green indicators for code usage.
 				</li>
-				<li>
-					<strong>Advanced Use:</strong> Coverage supports <strong>Source Maps</strong>, allowing you to see unused lines of code traced back to the original <strong>TypeScript/Sass</strong> files, even on minified production code deployed via Azure.
+				<li class="fragment">
+					Coverage supports <strong>Source Maps</strong>, allowing you to see unused lines of code traced back to the original <strong>TypeScript/Sass</strong> files, even on minified production code deployed via Azure.
 				</li>
 			</ul>
 		</section>
@@ -752,21 +824,73 @@ document.querySelector('#consoleButton').style.background = 'orange';</code></pr
 	</div>
 	</div>
 
+	<script>
+		const hoverButton = document.getElementById('hoverButton');
+		const tooltipContainer = hoverButton.parentNode;
+
+		function handleMouseEnter() {
+			const tooltip = document.createElement('div');
+			tooltip.id = 'dynamicTooltip';
+			tooltip.className = 'ugly-tooltip-box';
+			tooltip.textContent = 'Uhgl what an ugly tooltip! Is this approved by Martijn!?!';
+
+			tooltipContainer.appendChild(tooltip);
+		}
+
+		function handleMouseLeave() {
+			const tooltip = document.getElementById('dynamicTooltip');
+
+			if (tooltip) {
+				tooltip.remove();
+			}
+		}
+
+		hoverButton.addEventListener('mouseenter', handleMouseEnter);
+		hoverButton.addEventListener('mouseleave', handleMouseLeave);
+	</script>
 
 	<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+		});
+	</script>
+	<script>
+		function updateSectionIndicator(event) {
+			const indicator = document.getElementById('section-indicator');
+			const currentSlide = event.currentSlide;
+			const section = currentSlide.getAttribute('data-section');
+
+			// Define styles and titles for each section
+			const sections = {
+				// New numbering for the visual indicator
+				'productivity': { title: '1. CONSOLE, ELEMENTS & PRODUCTIVITY', color: '#00615C' }, // Greenish (Now Section 1)
+				'sources': { title: '2. SOURCES & DEBUGGING', color: 'var(--r-bold-color-dark)' }, // Dark Blue (Now Section 2)
+				'network': { title: '3. NETWORK & APPLICATION', color: 'var(--r-bold-color)' } // Blue (Now Section 3)
+			};
+
+			if (sections[section]) {
+				const data = sections[section];
+				indicator.textContent = data.title;
+				indicator.style.backgroundColor = data.color;
+			} else {
+				// Hide for non-section slides (like the intro or final overview)
+				indicator.textContent = '';
+				indicator.style.backgroundColor = 'transparent';
+			}
+		}
+		// Run the update function on load and every slide change
+		Reveal.on('ready', updateSectionIndicator);
+		Reveal.on('slidechanged', updateSectionIndicator);
+	</script>
 	</body>
 </html>
