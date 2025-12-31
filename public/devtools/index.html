@@ -310,7 +310,7 @@ document.querySelector('#consoleButton').style.background = 'orange';</code></pr
 
 				<pre style="max-height: 250px;max-width: 90%; overflow-y: scroll; width: 100%; font-size:.82em; background:#1a212a; color:#dbeaff; padding:.5em; border-radius:6px; border:1px solid #444;">
             <code class="hljs javascript" id="tooltipSnippetCode">// Use the global variable you just created
-const targetNode = temp1;
+const targetNode = document.body;
 
 const config = { childList: true, subtree: true };
 
@@ -516,25 +516,6 @@ console.log(`MutationObserver started on ${targetNode.id || targetNode.tagName}.
 </code></pre>
 
 			<button id="debugMe" style="padding:9px 18px;">Click to Trigger JS</button>
-
-			<script>
-				function getCurrentUser() {
-					if (Math.random() < 0.1) {
-						return '999';
-					}
-					return Math.floor(Math.random() * 100) + 1;
-				}
-
-				document.getElementById('debugMe').addEventListener('click', function() {
-					const userId = getCurrentUser();
-					console.log('Processing user:', userId);
-					const outputElement = document.createElement('p');
-					outputElement.textContent = `User ID: ${userId}`;
-					outputElement.style.color = userId === 999 ? 'red' : 'white';
-					document.getElementById('debugMe').parentNode.appendChild(outputElement);
-					setTimeout(() => outputElement.remove(), 3000);
-				});
-			</script>
 		</section>
 
 		<section data-section="sources" data-auto-animate>
@@ -560,7 +541,7 @@ console.log(`MutationObserver started on ${targetNode.id || targetNode.tagName}.
 			<p>Add the <code>//# sourceURL</code> directive to your file</p>
 			<div style="display:flex; justify-content: space-around; gap: 20px; margin: 0 auto; margin-top:2em; max-width: 80%;">
 				<p id="minifiedCSS">
-					Inspect this minified CSS.
+					Inspect this minified CSS
 				</p>
 				<p id="sourceUrlDemo">
 					Inspect unminified CSS source
@@ -577,25 +558,23 @@ console.log(`MutationObserver started on ${targetNode.id || targetNode.tagName}.
 				</button>
 			</div>
 
-			<script>document.getElementById('triggerSourceUrlDemo').addEventListener('click', function () {
-				// Now see this file appear in the sources tab
-				debugger;
-				console.log("Script executed. Check Sources for 'inline-script.js'.");
-			});
+			<script>// Now see this file appear in the sources tab
+document.getElementById('triggerSourceUrlDemo').addEventListener('click', function () {
+	debugger;
+	console.log("Script executed. Check Sources for 'inline-script.js'.");
+});
 
-			// The magic line: Naming this anonymous script block
-			//# sourceURL=inline-script.js
+// The magic line: Naming this anonymous script block
+//# sourceURL=inline-script.js
 			</script>
-			<style>
-				/* This style block will be named in the Sources tab */
-				#sourceUrlDemo {
-					font-size: 1.1em;
-					font-weight: bold;
-					border: 2px solid #f83;
-					padding: 10px;
-				}
-				/* The CSS magic line: Must be a CSS comment block */
-				/*# sourceURL=inline-style.css */
+			<style>/* This style block will be named in the Sources tab */
+#sourceUrlDemo {
+	font-size: 1.1em;
+	font-weight: bold;
+	border: 2px solid #f83;
+	padding: 10px;
+}
+/*# sourceURL=inline-style.css */
 			</style>
 
 
@@ -607,13 +586,12 @@ console.log(`MutationObserver started on ${targetNode.id || targetNode.tagName}.
 
 		<section data-section="sources">
 			<h3>Coverage: Optimizing Azure Production Bundles</h3>
-			<p>Analyze byte-level usage to eliminate dead code and reduce client bundle size.</p>
 			<ul>
 				<li class="fragment">
 					<strong>Goal:</strong> Identify CSS and JavaScript loaded by the browser that is never executed.
 				</li>
 				<li class="fragment">
-					<strong>Method:</strong> Use the <strong>Coverage</strong> tab to record interactions and see visual red/green indicators for code usage.
+					Use the <strong>Coverage</strong> tab to record interactions.
 				</li>
 				<li class="fragment">
 					Coverage supports <strong>Source Maps</strong>, allowing you to see unused lines of code traced back to the original <strong>TypeScript/Sass</strong> files, even on minified production code deployed via Azure.
@@ -850,6 +828,7 @@ console.log(`MutationObserver started on ${targetNode.id || targetNode.tagName}.
 	</script>
 
 	<script src="dist/reveal.js"></script>
+	<script src="js/get-current-user.js"></script>
 	<script src="plugin/notes/notes.js"></script>
 	<script src="plugin/markdown/markdown.js"></script>
 	<script src="plugin/highlight/highlight.js"></script>
