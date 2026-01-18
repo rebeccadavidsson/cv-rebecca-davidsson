@@ -160,6 +160,18 @@
             </ul>
         </section>
 
+        <section data-transition="fadeOut">
+            <img style="margin-top: -1em;" src="assets/no_errors.png" alt="errors_on_website">
+        </section>
+
+        <section data-transition="fadeOut">
+            <img style="margin-top: -1em;" src="assets/_errors.png" alt="errors_on_website">
+        </section>
+
+        <section data-transition="fadeOut">
+            <img style="margin-top: -1em;" src="assets/_detective.png" alt="errors_on_website">
+        </section>
+
         <section>
             <h3>What will we do today?</h3>
             <ul>
@@ -188,10 +200,31 @@
                  style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"/>
         </section>
 
+        <section>
+            <p>You suspect a 3rd-party marketing script is stealing sensitive data. <strong>Where do you look first?</strong></p>
+
+            <ul style="list-style-type: none;">
+                <li class="fragment">
+                    <strong>A) Network Tab</strong> To look for outgoing requests to suspicious domains.
+                </li>
+                <li class="fragment">
+                    <strong>B) Application Panel:</strong> To check if they are "parking" sensitive data in localStorage or sessionStorage.
+                </li>
+                <li class="fragment">
+                    <strong>C) Sources:</strong> To see if they've registered code listeners.
+                </li>
+                <li class="fragment">
+                    <strong>D) Recorder:</strong> To see exactly which external scripts fire.
+                </li>
+                <li class="fragment" style="color: #ff5555;">
+                    <strong>E) I never use DevTools so I have no idea.</strong>
+                </li>
+            </ul>
+        </section>
+
         <section data-section="productivity" data-transition="zoom">
             <h2>1. Elements & Console</h2>
         </section>
-
 
         <!-- Add document.designMode = 'on', add a logout button interactively and change some text -->
         <section data-section="productivity">
@@ -572,6 +605,32 @@ console.log(`MutationObserver started on ${targetNode.id || targetNode.tagName}.
             <button id="debugMe" style="padding:9px 18px;">Click to Trigger JS</button>
         </section>
 
+        <section data-section="sources">
+            <h3>Catching the Eavesdropper</h3>
+            <p>
+                Use <strong>Event Listener Breakpoints</strong> to find the script recording your data
+            </p>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 40px 0;border-radius: 15px; border: 1px; border-color: var(--r-bold-color);">
+                <input type="text" id="secretInput" placeholder="Enter sensitive data..."
+                       style="width: 80%; padding: 15px; font-size: 1.2em; border-radius: 5px; border: none; outline: none;">
+            </div>
+
+            <script id="anonymous-marketing-pixel">
+                (function() {
+                    // We attach the listener to the window to demonstrate 'Option C'
+                    window.addEventListener('input', function(event) {
+                        if (event.target.id === 'secretInput') {
+                            const stolenData = event.target.value;
+                            // We log this so you can see it working,
+                            // but in the demo, you'll find this line via the breakpoint.
+                            console.warn("Stealthy Pixel capturing:", stolenData);
+                        }
+                    });
+                })();
+            </script>
+        </section>
+
         <section data-section="sources" data-auto-animate>
             <h3>Sources Tab: Naming Anonymous Code with `#sourceURL`</h3>
             <p>Debug <strong>inlined, evaluated, or generated</strong> code as if it were a real file.</p>
@@ -890,8 +949,7 @@ console.log(`MutationObserver started on ${targetNode.id || targetNode.tagName}.
         </section>
 
         <section>
-            <h3>Thank you!</h3>
-            <a href="https://www.rebeccadavidsson.com/devtools/" target="_blank">rebeccadavidsson.com/devtools</a>
+            <h3>Congratulations! You are now a <strong>Master De(v)tective</strong></h3>
         </section>
 
     </div>
