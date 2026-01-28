@@ -147,7 +147,6 @@
         </section>
 
         <section>
-            <h3>So, not covered today:</h3>
             <img style="margin-top: -1em;" id="safari" src="assets/safari.png" alt="safari_logo">
         </section>
 
@@ -632,7 +631,7 @@ console.log(`MutationObserver started on ${targetNode.id || targetNode.tagName}.
         </section>
 
         <section data-section="sources" data-auto-animate>
-            <h3>Sources Tab: Naming Anonymous Code with `#sourceURL`</h3>
+            <h3>Sources Tab: Naming Anonymous Code with #sourceURL</h3>
             <p>Debug <strong>inlined, evaluated, or generated</strong> code as if it were a real file.</p>
             <ul>
                 <li class="fragment">
@@ -640,7 +639,7 @@ console.log(`MutationObserver started on ${targetNode.id || targetNode.tagName}.
                     numbers.
                 </li>
                 <li class="fragment">
-                    <strong>The Solution:</strong> The `//# sourceURL` directive creates a virtual file name.
+                    <strong>The Solution:</strong> The '//# sourceURL' directive creates a virtual file name.
                 </li>
                 <li class="fragment">
                     <strong>Advantage:</strong> Stack traces, breakpoints, and the Elements panel all link to clean,
@@ -873,80 +872,17 @@ console.log(`MutationObserver started on ${targetNode.id || targetNode.tagName}.
             ></iframe>
         </section>
 
-
-        <section data-auto-animate data-transition="zoom-in">
-            <h3>Advanced DevTools Cheat Sheet</h3>
-            <p>By Leonardo</p>
-
-            <div style="font-size: 0.55em; text-align: left; display: flex; flex-wrap: wrap; justify-content: space-between;">
-
-                <div style="width: 32%; margin-bottom: 20px;">
-                    <h4 style="border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 10px;">Sources &
-                        Debugging</h4>
-                    <ul style="list-style-type: none; padding-left: 0;">
-                        <li><small><strong>Conditional Breakpoints:</strong> Pause execution only when `variable ===
-                            'error-case'` (Demo).</small></li>
-                        <li><small><strong>DOM Breakpoints:</strong> Right-click &gt; Break on Subtree Modification
-                            (Tooltip Demo).</small></li>
-                        <li><small><strong>Snippets:</strong> Create reusable utilities like the `allcolors.js` script.</small>
-                        </li>
-                        <li><small><strong>Source Mapping:</strong> View original TypeScript/Sass files in production
-                            builds.</small></li>
-                        <li><small><strong>SourceURL:</strong> Use `//# sourceURL=file.js` to name anonymous/inlined
-                            scripts (Demo).</small></li>
-                        <li><small><strong>Coverage Tab:</strong> Use with Source Maps to find dead code and optimize
-                            bundles.</small></li>
-                    </ul>
-                </div>
-
-                <div style="width: 32%; margin-bottom: 20px;">
-                    <h4 style="border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 10px;">Network &
-                        Application</h4>
-                    <ul style="list-style-type: none; padding-left: 0;">
-                        <li><small><strong>Network Overrides:</strong> Mock API responses or files (Local Overrides
-                            tab).</small></li>
-                        <li><small><strong>Request Blocking:</strong> Block specific URLs or patterns (Network
-                            Tab).</small></li>
-                        <li><small><strong>Service Workers:</strong> Debug caching strategies (Cache Storage vs.
-                            LocalStorage).</small></li>
-                        <li><small><strong>Frames Debugging:</strong> Inspect storage/cookies of cross-origin iframes
-                            (`https://example.com/`).</small></li>
-                        <li><small><strong>Emulation:</strong> Mock Geo-location and Timezone for Client Center
-                            tests.</small></li>
-                        <li><small><strong>PWA Emulation:</strong> Test Window Controls Overlay in Application
-                            tab.</small></li>
-                    </ul>
-                </div>
-
-                <div style="width: 32%; margin-bottom: 20px;">
-                    <h4 style="border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 10px;">Console &
-                        Productivity</h4>
-                    <ul style="list-style-type: none; padding-left: 0;">
-                        <li><small><strong>Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>):</strong>
-                            Access all commands (e.g., screenshots, panels).</small></li>
-                        <li><small><strong>DesignMode:</strong> Run `document.designMode = 'on'` to live-edit text in
-                            the browser.</small></li>
-                        <li><small><strong>Live Expressions:</strong> Monitor variables (e.g., `localStorage`) in
-                            real-time.</small></li>
-                        <li><small><strong>CSS Emulation:</strong> Force dark mode or test custom CSS with `@property`
-                            (Rendering tab).</small></li>
-                        <li><small><strong>Screenshots:</strong> Use Command Palette for full-size or mobile-format
-                            screenshots.</small></li>
-                        <li><small><strong>Edge Tools:</strong> Use the Crash Analyzer for diagnosing tab
-                            crashes.</small></li>
-                        <li><small><strong>Console Shortcuts:</strong> Use `copy(obj)`, `monitor(func)`, `$$()`, and
-                            `$$x()`.</small></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
         <section>
             <h3>LightHouse on VLK Website</h3>
             <a href="https://www.vanlanschotkempen.com/en-nl" target="_blank">
                 <img style="border-radius:12px;" src="assets/home.png" alt="Homepage Van Lanschot Kempen">
             </a>
         </section>
+
+        <section>
+            <h3>Please share your own DevTools tips & tricks in the chat!</h3>
+        </section>
+
 
         <section>
             <h3>Congratulations! You are now a <strong>Master De(v)tective</strong></h3>
