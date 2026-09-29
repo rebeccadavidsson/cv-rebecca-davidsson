@@ -148,6 +148,16 @@
             font-style: italic;
             opacity: 0.8;
         }
+
+		.employee {
+			width: 100% !important; 
+			margin-top: -4%;
+		}
+
+		.slack {
+			width: 70% !important;
+			border-radius: 11px;
+		}
 	</style>
 </head>
 <body>
@@ -156,17 +166,16 @@
 
 			<!-- TITLE -->
 			<section>
-				<h2 class="intro-title">AI Engineer Conference Paris 2026</h2>
+				<h2 class="intro-title">AI Engineer Conference Paris</h2>
 				<p>From “I write code” to “I run a factory”.</p>
-				<img src="assets/intro-title.jpeg" alt="Placeholder: overview of an AI software factory" />
+				<img style="margin-top: 0;" src="assets/group.jpg" />
 			</section>
 
 			<!-- INTRO: VLK SOFTWARE FACTORY -->
 			<section>
 				<section>
 					<h2>Welcome to the VLK Software Factory</h2>
-					<p>We’re moving from “I type code” to “I run a factory of coding agents.</p>
-					<img src="assets/1.jpeg" alt="Placeholder: VLK building as a factory" />
+					<img src="assets/vlk2.jpeg" alt="Placeholder: VLK building as a factory" />
 				</section>
 
 				<section>
@@ -175,14 +184,32 @@
 				</section>
 
 				<section>
-					<h2>What is an AI software factory?</h2>
-					<p>It’s the system around the coding agent, not the agent itself.</p>
+					<h2>What is a software factory?</h2>
+					<p>It's the system around the coding agent, harness- and model agnostic </p>
 					<ul>
-						<li>Work comes from a queue (backlog, Teams chat etc.)</li>
+						<!-- <li>Work comes from a queue (backlog, Teams chat etc.)</li>
 						<li>Agents work in isolated environments.</li>
-						<li>Verification runs before a human ever sees the diff.</li>
+						<li>Verification runs before a human ever sees the diff.</li> -->
 					</ul>
-					<img src="assets/intro-factory-overview.jpeg" alt="Placeholder: diagram of stages around an agent" />
+					<img src="assets/factory.jpeg" alt="Placeholder: diagram of stages around an agent" />
+				</section>
+
+				<section>
+					<h2>Why this matters for us</h2>
+					<ul>
+						<li>On January 6, 2026, Stephen Toub opened nine PRs from his phone at 35,000 feet.</li>
+						<li>One person + a phone outpaced a whole team’s review capacity.</li>
+						<!-- <li>Agents change the economics: writing code becomes cheap, checking it becomes the bottleneck.</li> -->
+					</ul>
+					<img src="assets/lol.jpeg"  />
+				</section>
+
+				<section data-auto-animate>
+					<img data-id="box" class="employee" src="assets/employees.jpeg"  />
+				</section>
+
+				<section data-auto-animate>
+					<img data-id="box" class="employee" src="assets/employees_sleeping.jpeg"  />
 				</section>
 
                 <section>
@@ -217,9 +244,9 @@
                     </div>
                 </div>
 
-                <p class="factory-diagram__note">
+                <!-- <p class="factory-diagram__note">
                     The agent types the code. The factory decides what starts, what runs, and what ships.
-                </p>
+                </p> -->
 					<!-- <ul>
 						<li><strong>Intake:</strong> decide what is worth starting (like Sentry’s Seer scoring issues).</li>
 						<li><strong>Isolation:</strong> run agents in safe sandboxes (Stripe boots devboxes in ~10s).</li>
@@ -231,17 +258,7 @@
 					<img src="assets/intro-five-gates.jpeg" alt="Placeholder: five gates in front of a factory" /> -->
 				</section>
 
-				<section>
-					<h2>Why this matters for us</h2>
-					<ul>
-						<li>On January 6, 2026, Stephen Toub opened nine PRs from his phone at 35,000 feet.</li>
-						<li>Seven merged. One person + a phone outpaced a whole team’s review capacity.</li>
-						<li>Agents change the economics: writing code becomes cheap, checking it becomes the bottleneck.</li>
-					</ul>
-					<img src="assets/intro-plane-prs.jpeg" alt="Placeholder: person coding on a plane" />
-				</section>
-
-				<section>
+				<!-- <section>
 					<h2>From scripts to a real factory</h2>
 					<ul>
 						<li>Guillermo Rauch: “The alpha is in your factory, not just the code.”</li>
@@ -249,36 +266,40 @@
 						<li>They built queues, sandboxes, tool layers, verifiers, and merge policies before they built big fleets.</li>
 					</ul>
 					<img src="assets/2.jpeg" alt="Placeholder: factory assembly line" />
-				</section>
+				</section> -->
 
                 <section>
                     <h2>How the big players run their AI factories</h2>
 
                     <div class="factory-comparison">
-                        <div class="factory-card">
-                            <h3>Stripe – Minions</h3>
-                            <ul>
-                                <li><strong>Intake:</strong> Slack message + emoji.</li>
-                                <li><strong>Isolation:</strong> Fast cloud dev boxes.</li>
-                                <li><strong>Tools:</strong> “Toolshed” with hundreds of tools.</li>
-                                <li><strong>Verification:</strong> Lint + tests, then CI.</li>
-                                <li><strong>Merge gate:</strong> Human review.</li>
-                            </ul>
-                        </div>
-
-                        <div class="factory-card">
-                            <h3>Shopify – River</h3>
+						<div class="factory-card fragment">
+                            <h3>Shopify</h3>
                             <ul>
                                 <li><strong>Intake:</strong> <code>@river</code> in public Slack channels.</li>
-                                <li><strong>Isolation:</strong> Short‑lived harnesses.</li>
-                                <li><strong>Tools:</strong> Safe gateway to internal systems.</li>
-                                <li><strong>Verification:</strong> Auto PR review mode.</li>
-                                <li><strong>Merge gate:</strong> Human review.</li>
+                                <li><strong>Isolation:</strong> Short‑lived harnesses</li>
+                                <li><strong>Tools:</strong> Safe gateway to internal systems</li>
+                                <li><strong>Verification:</strong> Auto PR review mode</li>
+                                <li><strong>Merge gate:</strong> Human review</li>
                             </ul>
+
+							<img src="assets/slack.jpg" class="slack" />
+                        </div>
+
+                        <div class="factory-card fragment">
+                            <h3>Spotify</h3>
+                            <ul>
+                                <li><strong>Intake:</strong> Fleetshift picks targets across repos</li>
+                                <li><strong>Isolation:</strong> Kubernetes pods</li>
+                                <li><strong>Tools:</strong> Internal systems over MCP </li>
+                                <li><strong>Verification:</strong> LLM judge</li>
+                                <li><strong>Merge gate:</strong> Human review</li>
+                            </ul>
+
+							<img src="assets/fleetshift.png" class="slack" />
                         </div>
                     </div>
 
-                    <p class="factory-comparison__note">
+                    <p class="factory-comparison__note fragment">
                         Different tools, same idea: queue the work, isolate the agents, give them safe tools, verify first, then let humans decide what ships.
                     </p>
                 </section>
