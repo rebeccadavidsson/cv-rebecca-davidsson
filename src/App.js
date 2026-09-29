@@ -44,10 +44,10 @@ const App = () => {
           <AppRoute exact path="/blog" component={Blog} layout={BlogLayout} />
           <AppRoute exact path="/accessible-frontends" component={AccessibleFrontends} layout={LayoutDefault} />
             <Route exact path="/devtools">
-                <Redirect to="/devtools/exmples/digitalks.html" />
+                <Redirect to="/digitalks/digitalks.html" />
             </Route>
               <Route exact path="/software-factory">
-                <Redirect to="/devtools/software-factory.html" />
+                <Redirect to="/digitalks/software-factory.html" />
             </Route>
         </Switch>
       )} />
