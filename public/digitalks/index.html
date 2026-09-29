@@ -46,58 +46,278 @@
 		}
 
         .factory-diagram {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: nowrap;
-            gap: 0.8em;
-            margin: 1.5em 0;
-            padding: 1.2em 1.4em;
-            border-radius: 16px;
-            background: radial-gradient(circle at top left, #fffef5 0%, #f3ead0 45%, #e4d6b8 100%);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        }
+    --ink: #2c2923;
+    --muted: #716b60;
+    --gold: #b88a3b;
 
-        .factory-diagram__stage {
-            flex: 1 1 0;
-            min-width: 0;
-            padding: 0.8em 0.9em;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            text-align: left;
-        }
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto
+        minmax(0, 1fr)
+        auto
+        minmax(0, 1fr)
+        auto
+        minmax(0, 1fr)
+        auto
+        minmax(0, 1fr);
 
-        .factory-diagram__stage h3 {
-            margin: 0 0 0.25em;
-            font-size: 1.1em;
-            font-weight: 600;
-        }
+    align-items: stretch;
 
-        .factory-diagram__stage p {
-            margin: 0;
-            font-size: 0.9em;
-            opacity: 0.85;
-        }
+    margin: 1.8em 0;
+    padding: 1.15em;
 
-        .factory-diagram__stage--final {
-            background: linear-gradient(135deg, #fff8dc, #ffe9a6);
-            border-color: rgba(0, 0, 0, 0.1);
-        }
+    border: 1px solid rgba(140, 111, 55, 0.2);
+    border-radius: 18px;
 
-        .factory-diagram__arrow {
-            flex: 0 0 auto;
-            font-size: 1.4em;
-            color: #a47b37;
-            opacity: 0.9;
-        }
+    background:
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(255, 255, 255, 0.9) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 100% 100%,
+            rgba(215, 189, 120, 0.12) 0%,
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #fffef7 0%,
+            #f8f2df 55%,
+            #f1e7c9 100%
+        );
 
-        .factory-diagram__note {
-            margin-top: 0.8em;
-            font-size: 0.85em;
-            font-style: italic;
-            opacity: 0.8;
-        }
+    box-shadow:
+        0 12px 30px rgba(83, 65, 32, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+
+/* ─────────────────────────────
+   STAGE
+   ───────────────────────────── */
+
+.factory-diagram__stage {
+    position: relative;
+
+    min-width: 0;
+    padding: 1em 0.9em 0.95em;
+
+    border: 1px solid rgba(112, 88, 42, 0.15);
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.88),
+            rgba(255, 252, 238, 0.68)
+        );
+
+    color: var(--ink);
+
+    box-shadow:
+        0 4px 12px rgba(83, 65, 32, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+}
+
+.factory-diagram__stage:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba(184, 138, 59, 0.4);
+
+    box-shadow:
+        0 8px 20px rgba(83, 65, 32, 0.09),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+
+/* ─────────────────────────────
+   NUMBER
+   ───────────────────────────── */
+
+.factory-diagram__stage::before {
+    content: attr(data-step);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1.8em;
+    height: 1.8em;
+    margin-bottom: 0.7em;
+
+    border: 1px solid rgba(184, 138, 59, 0.35);
+    border-radius: 50%;
+
+    background: rgba(184, 138, 59, 0.08);
+
+    color: #9a702e;
+
+    font-size: 0.68em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+
+/* ─────────────────────────────
+   TYPOGRAPHY
+   ───────────────────────────── */
+
+.factory-diagram__stage h3 {
+    margin: 0 0 0.35em;
+
+    color: var(--ink);
+
+    font-size: 1em;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+}
+
+.factory-diagram__stage p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 0.8em;
+    line-height: 1.45;
+}
+
+
+/* ─────────────────────────────
+   ARROWS
+   ───────────────────────────── */
+
+.factory-diagram__arrow {
+    position: relative;
+
+    width: 34px;
+    min-width: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0;
+    color: var(--gold);
+}
+
+
+/* Connecting line */
+
+.factory-diagram__arrow::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(184, 138, 59, 0.45),
+        transparent
+    );
+}
+
+
+/* Arrowhead */
+
+.factory-diagram__arrow::after {
+    content: "›";
+
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1.35em;
+    height: 1.35em;
+
+    border: 1px solid rgba(184, 138, 59, 0.25);
+    border-radius: 50%;
+
+    background: #f8f2df;
+
+    color: #a47b35;
+
+    font-size: 1.25em;
+    font-weight: 400;
+    line-height: 1;
+}
+
+
+/* ─────────────────────────────
+   FINAL STAGE
+   ───────────────────────────── */
+
+.factory-diagram__stage--final {
+    background:
+        linear-gradient(
+            145deg,
+            #fff9df 0%,
+            #f9edc4 100%
+        );
+
+    border-color: rgba(184, 138, 59, 0.4);
+
+    box-shadow:
+        0 5px 16px rgba(140, 105, 38, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.factory-diagram__stage--final::before {
+    background: rgba(184, 138, 59, 0.13);
+    border-color: rgba(184, 138, 59, 0.45);
+    color: #8e672a;
+}
+
+
+/* ─────────────────────────────
+   MOBILE
+   ───────────────────────────── */
+
+@media (max-width: 700px) {
+    .factory-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45em;
+    }
+
+    .factory-diagram__stage {
+        width: 100%;
+    }
+
+    .factory-diagram__arrow {
+        width: 100%;
+        min-width: 0;
+        height: 24px;
+    }
+
+    .factory-diagram__arrow::before {
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        right: auto;
+
+        width: 1px;
+        height: auto;
+    }
+
+    .factory-diagram__arrow::after {
+        transform: rotate(90deg);
+    }
+}
 
         .factory-comparison {
             display: grid;
@@ -109,7 +329,7 @@
         .factory-card {
             padding: 1.1em 1.2em;
             border-radius: 16px;
-            background: radial-gradient(circle at top left, #fffef7 0%, #f3ebd8 45%, #e2d3b6 100%);
+            background: radial-gradient(circle at top left, #fffef7 0%, #f3ebd8c8 45%, #e2d3b688 100%);
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
             border: 1px solid rgba(0, 0, 0, 0.06);
         }
@@ -164,15 +384,15 @@
 	<div class="reveal">
 		<div class="slides">
 
-			<!-- TITLE -->
-			<section>
-				<h2 class="intro-title">AI Engineer Conference Paris</h2>
-				<p>From “I write code” to “I run a factory”.</p>
-				<img style="margin-top: 0;" src="assets/group.jpg" />
-			</section>
-
 			<!-- INTRO: VLK SOFTWARE FACTORY -->
 			<section>
+				<!-- TITLE -->
+				<section>
+					<h2 class="intro-title">AI Engineer Conference Paris</h2>
+					<p>From “I write code” to “I run a factory”.</p>
+					<img style="margin-top: 0;" src="assets/group.jpg" />
+				</section>
+
 				<section>
 					<h2>Welcome to the VLK Software Factory</h2>
 					<img src="assets/vlk2.jpeg" alt="Placeholder: VLK building as a factory" />
@@ -213,49 +433,66 @@
 				</section>
 
                 <section>
-                    <h2>The stages of a factory</h2>
-                    <div class="factory-diagram">
-                    <div class="factory-diagram__stage">
-                        <h3>Intake</h3>
-                        <p>Pick work from the backlog</p>
-                    </div>
-                    <div class="factory-diagram__arrow">➜</div>
+					<h2>The stages of a factory</h2>
 
-                    <div class="factory-diagram__stage">
-                        <h3>Isolation</h3>
-                        <p>Git workrees, sandboxes, containers</p>
-                    </div>
-                    <div class="factory-diagram__arrow">➜</div>
+					<div class="factory-diagram">
 
-                    <div class="factory-diagram__stage">
-                        <h3>Tools</h3>
-                        <p>Give them the right tools only.</p>
-                    </div>
-                    <div class="factory-diagram__arrow">➜</div>
+						<div class="factory-diagram__stage fragment"
+							data-fragment-index="1"
+							data-step="01">
+							<h3>Intake</h3>
+							<p>Pick work from the backlog</p>
+						</div>
 
-                    <div class="factory-diagram__stage">
-                        <h3>Verify</h3>
-                    </div>
-                    <div class="factory-diagram__arrow">➜</div>
+						<div class="factory-diagram__arrow fragment"
+							data-fragment-index="2">
+							➜
+						</div>
 
-                    <div class="factory-diagram__stage factory-diagram__stage--final">
-                        <h3>Merge gate</h3>
-                        <p>Human decides</p>
-                    </div>
-                </div>
+						<div class="factory-diagram__stage fragment"
+							data-fragment-index="3"
+							data-step="02">
+							<h3>Isolation</h3>
+							<p>Git worktrees, sandboxes, containers</p>
+						</div>
 
-                <!-- <p class="factory-diagram__note">
-                    The agent types the code. The factory decides what starts, what runs, and what ships.
-                </p> -->
-					<!-- <ul>
-						<li><strong>Intake:</strong> decide what is worth starting (like Sentry’s Seer scoring issues).</li>
-						<li><strong>Isolation:</strong> run agents in safe sandboxes (Stripe boots devboxes in ~10s).</li>
-						<li><strong>Tools:</strong> give agents the right tools, not the whole company (Stripe’s Toolshed, ~500 tools over MCP).</li>
-						<li><strong>Verification:</strong> check if the change is right (Spotify’s LLM judge vetoes ~25% of sessions).</li>
-						<li><strong>Merge gate:</strong> keep a human accountable (Faire requires two reviews for agent PRs).</li>
-					</ul>
-					<p>The coding agent is the cheapest part. The factory is everything around it.</p>
-					<img src="assets/intro-five-gates.jpeg" alt="Placeholder: five gates in front of a factory" /> -->
+						<div class="factory-diagram__arrow fragment"
+							data-fragment-index="4">
+							➜
+						</div>
+
+						<div class="factory-diagram__stage fragment"
+							data-fragment-index="5"
+							data-step="03">
+							<h3>Tools</h3>
+							<p>Give them the right tools only.</p>
+						</div>
+
+						<div class="factory-diagram__arrow fragment"
+							data-fragment-index="6">
+							➜
+						</div>
+
+						<div class="factory-diagram__stage fragment"
+							data-fragment-index="7"
+							data-step="04">
+							<h3>Verify</h3>
+							<p>Check the result.</p>
+						</div>
+
+						<div class="factory-diagram__arrow fragment"
+							data-fragment-index="8">
+							➜
+						</div>
+
+						<div class="factory-diagram__stage factory-diagram__stage--final fragment"
+							data-fragment-index="9"
+							data-step="05">
+							<h3>Merge gate</h3>
+							<p>Human decides</p>
+						</div>
+
+					</div>
 				</section>
 
 				<!-- <section>
@@ -269,17 +506,17 @@
 				</section> -->
 
                 <section>
-                    <h2>How the big players run their AI factories</h2>
+                    <h2>How others run their factory</h2>
 
                     <div class="factory-comparison">
 						<div class="factory-card fragment">
-                            <h3>Shopify</h3>
+                            <h3>Stripe</h3>
                             <ul>
-                                <li><strong>Intake:</strong> <code>@river</code> in public Slack channels.</li>
-                                <li><strong>Isolation:</strong> Short‑lived harnesses</li>
-                                <li><strong>Tools:</strong> Safe gateway to internal systems</li>
-                                <li><strong>Verification:</strong> Auto PR review mode</li>
-                                <li><strong>Merge gate:</strong> Human review</li>
+                                <li><strong>Intake:</strong> <code>@minions</code> in Slack channel</li>
+                                <li><strong>Isolation:</strong> devboxes</li>
+                                <li><strong>Tools:</strong> Toolshed, internal MCP tools</li>
+                                <li><strong>Verification:</strong> Lint and test</li>
+                                <li><strong>Merge gate:</strong> Human review after two CI runs</li>
                             </ul>
 
 							<img src="assets/slack.jpg" class="slack" />
@@ -305,14 +542,23 @@
                 </section>
 
 				<section>
-					<h2>VLK’s angle: efficiency, not Gucci</h2>
-					<ul>
-						<li>We can make AI very expensive if we’re careless.</li>
-						<li>A “software factory” is about sustainable throughput, not flexing token budgets.</li>
-						<li>Our mission: preserve and create wealth, so our factory has to be cost‑aware and safe.</li>
-					</ul>
-					<img src="assets/4.jpeg" alt="Placeholder: money flying out of a factory" />
+				
+					<img src="assets/minions.png" class="employee" />
+					<!-- <p class="factory-comparison__note">Stripe engineers can see the decisions and actions the minion took in a web UI.</p> -->
 				</section>
+
+				<section>
+					<h2>SO MANY choices how to set up your factory</h2>
+					<h2 class="fragment">... or just outsource your whole factory</h2>
+					<img src="assets/desicion.jpeg"  />
+				</section>
+
+				<section>
+					<h2>Demo time!</h2>
+					<p>A ready-to-use AI factory setup</p>
+					<video src="assets/factory.mp4" autoplay muted loop style="width: 100%; border-radius: 10px;"></video>
+				</section>
+
 
 				<section>
 					<h2>Like a car factory, but for code</h2>
@@ -322,6 +568,16 @@
 						<li>The point: consistent output, not one‑off hero work.</li>
 					</ul>
 					<img src="assets/5.jpeg" alt="Placeholder: car factory assembly line" />
+				</section>
+
+				<section>
+					<h2>VLK’s angle: efficiency, not Gucci</h2>
+					<ul>
+						<li>We can make AI very expensive if we’re careless.</li>
+						<li>A “software factory” is about sustainable throughput, not flexing token budgets.</li>
+						<li>Our mission: preserve and create wealth, so our factory has to be cost‑aware and safe.</li>
+					</ul>
+					<img src="assets/4.jpeg" alt="Placeholder: money flying out of a factory" />
 				</section>
 
 				<section>
