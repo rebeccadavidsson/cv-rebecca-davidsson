@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<base href="/devtools/">
+
+	<title>Software Factory</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/serif.css">
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+	<style>
+		.reveal-viewport {
+			background-color: #fefcf0;
+		}
+
+		.reveal .slides section {
+			font-size: 0.7em;
+			text-align: left;
+		}
+
+		.reveal .slides section > h1,
+		.reveal .slides section > h2,
+		.reveal .slides section > h3,
+		.reveal .slides section > h4,
+		.reveal .slides section > h5,
+		.reveal .slides section > h6,
+		.reveal .slides section > p,
+		.reveal .slides section > ul,
+		.reveal .slides section > ol {
+			width: 55%;
+			text-align: left;
+		}
+
+		.reveal .slides section > img {
+			float: right;
+			width: 55%;
+			max-height: 60%;
+			margin: 0 0 1em 3%;
+			object-fit: contain;
+			margin-top: -5%;
+		}
+
+        .factory-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            gap: 0.8em;
+            margin: 1.5em 0;
+            padding: 1.2em 1.4em;
+            border-radius: 16px;
+            background: radial-gradient(circle at top left, #fffef5 0%, #f3ead0 45%, #e4d6b8 100%);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .factory-diagram__stage {
+            flex: 1 1 0;
+            min-width: 0;
+            padding: 0.8em 0.9em;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            text-align: left;
+        }
+
+        .factory-diagram__stage h3 {
+            margin: 0 0 0.25em;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .factory-diagram__stage p {
+            margin: 0;
+            font-size: 0.9em;
+            opacity: 0.85;
+        }
+
+        .factory-diagram__stage--final {
+            background: linear-gradient(135deg, #fff8dc, #ffe9a6);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .factory-diagram__arrow {
+            flex: 0 0 auto;
+            font-size: 1.4em;
+            color: #a47b37;
+            opacity: 0.9;
+        }
+
+        .factory-diagram__note {
+            margin-top: 0.8em;
+            font-size: 0.85em;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .factory-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.4em;
+            margin: 1.5em 0;
+        }
+
+        .factory-card {
+            padding: 1.1em 1.2em;
+            border-radius: 16px;
+            background: radial-gradient(circle at top left, #fffef7 0%, #f3ebd8 45%, #e2d3b6 100%);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .factory-card h3 {
+            margin: 0 0 0.6em;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .factory-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 0.88em;
+        }
+
+        .factory-card li {
+            margin: 0.18em 0;
+        }
+
+        .factory-card li strong {
+            font-weight: 600;
+        }
+
+        .factory-card code {
+            font-size: 0.85em;
+            background-color: rgba(0, 0, 0, 0.04);
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        .factory-comparison__note {
+            margin-top: 1em;
+            font-size: 0.85em;
+            font-style: italic;
+            opacity: 0.8;
+        }
+	</style>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<!-- TITLE -->
+			<section>
+				<h2 class="intro-title">AI Engineer Conference Paris 2026</h2>
+				<p>From “I write code” to “I run a factory”.</p>
+				<img src="assets/intro-title.jpeg" alt="Placeholder: overview of an AI software factory" />
+			</section>
+
+			<!-- INTRO: VLK SOFTWARE FACTORY -->
+			<section>
+				<section>
+					<h2>Welcome to the VLK Software Factory</h2>
+					<p>We’re moving from “I type code” to “I run a factory of coding agents.</p>
+					<img src="assets/1.jpeg" alt="Placeholder: VLK building as a factory" />
+				</section>
+
+				<section>
+					<h2>What is an AI software factory?</h2>
+					<p>It’s the system around the coding agent, not the agent itself.</p>
+					<ul>
+						<li>Work comes from a queue (backlog, Teams chat etc.)</li>
+						<li>Agents work in isolated environments.</li>
+						<li>Verification runs before a human ever sees the diff.</li>
+					</ul>
+					<img src="assets/intro-factory-overview.jpeg" alt="Placeholder: diagram of stages around an agent" />
+				</section>
+
+                <section>
+                    <h2>The stages of a factory</h2>
+                    <div class="factory-diagram">
+                    <div class="factory-diagram__stage">
+                        <h3>Intake</h3>
+                        <p>Pick work from the backlog</p>
+                    </div>
+                    <div class="factory-diagram__arrow">➜</div>
+
+                    <div class="factory-diagram__stage">
+                        <h3>Isolation</h3>
+                        <p>Git workrees, sandboxes, containers</p>
+                    </div>
+                    <div class="factory-diagram__arrow">➜</div>
+
+                    <div class="factory-diagram__stage">
+                        <h3>Tools</h3>
+                        <p>Give them the right tools only.</p>
+                    </div>
+                    <div class="factory-diagram__arrow">➜</div>
+
+                    <div class="factory-diagram__stage">
+                        <h3>Verify</h3>
+                    </div>
+                    <div class="factory-diagram__arrow">➜</div>
+
+                    <div class="factory-diagram__stage factory-diagram__stage--final">
+                        <h3>Merge gate</h3>
+                        <p>Human decides</p>
+                    </div>
+                </div>
+
+                <p class="factory-diagram__note">
+                    The agent types the code. The factory decides what starts, what runs, and what ships.
+                </p>
+					<!-- <ul>
+						<li><strong>Intake:</strong> decide what is worth starting (like Sentry’s Seer scoring issues).</li>
+						<li><strong>Isolation:</strong> run agents in safe sandboxes (Stripe boots devboxes in ~10s).</li>
+						<li><strong>Tools:</strong> give agents the right tools, not the whole company (Stripe’s Toolshed, ~500 tools over MCP).</li>
+						<li><strong>Verification:</strong> check if the change is right (Spotify’s LLM judge vetoes ~25% of sessions).</li>
+						<li><strong>Merge gate:</strong> keep a human accountable (Faire requires two reviews for agent PRs).</li>
+					</ul>
+					<p>The coding agent is the cheapest part. The factory is everything around it.</p>
+					<img src="assets/intro-five-gates.jpeg" alt="Placeholder: five gates in front of a factory" /> -->
+				</section>
+
+				<section>
+					<h2>Why this matters for us</h2>
+					<ul>
+						<li>On January 6, 2026, Stephen Toub opened nine PRs from his phone at 35,000 feet.</li>
+						<li>Seven merged. One person + a phone outpaced a whole team’s review capacity.</li>
+						<li>Agents change the economics: writing code becomes cheap, checking it becomes the bottleneck.</li>
+					</ul>
+					<img src="assets/intro-plane-prs.jpeg" alt="Placeholder: person coding on a plane" />
+				</section>
+
+				<section>
+					<h2>From scripts to a real factory</h2>
+					<ul>
+						<li>Guillermo Rauch: “The alpha is in your factory, not just the code.”</li>
+						<li>Stripe, Spotify, Shopify, Uber, Ramp all hit the same wall: too many PRs, not enough review.</li>
+						<li>They built queues, sandboxes, tool layers, verifiers, and merge policies before they built big fleets.</li>
+					</ul>
+					<img src="assets/2.jpeg" alt="Placeholder: factory assembly line" />
+				</section>
+
+                <section>
+                    <h2>How the big players run their AI factories</h2>
+
+                    <div class="factory-comparison">
+                        <div class="factory-card">
+                            <h3>Stripe – Minions</h3>
+                            <ul>
+                                <li><strong>Intake:</strong> Slack message + emoji.</li>
+                                <li><strong>Isolation:</strong> Fast cloud dev boxes.</li>
+                                <li><strong>Tools:</strong> “Toolshed” with hundreds of tools.</li>
+                                <li><strong>Verification:</strong> Lint + tests, then CI.</li>
+                                <li><strong>Merge gate:</strong> Human review.</li>
+                            </ul>
+                        </div>
+
+                        <div class="factory-card">
+                            <h3>Shopify – River</h3>
+                            <ul>
+                                <li><strong>Intake:</strong> <code>@river</code> in public Slack channels.</li>
+                                <li><strong>Isolation:</strong> Short‑lived harnesses.</li>
+                                <li><strong>Tools:</strong> Safe gateway to internal systems.</li>
+                                <li><strong>Verification:</strong> Auto PR review mode.</li>
+                                <li><strong>Merge gate:</strong> Human review.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p class="factory-comparison__note">
+                        Different tools, same idea: queue the work, isolate the agents, give them safe tools, verify first, then let humans decide what ships.
+                    </p>
+                </section>
+
+				<section>
+					<h2>VLK’s angle: efficiency, not Gucci</h2>
+					<ul>
+						<li>We can make AI very expensive if we’re careless.</li>
+						<li>A “software factory” is about sustainable throughput, not flexing token budgets.</li>
+						<li>Our mission: preserve and create wealth, so our factory has to be cost‑aware and safe.</li>
+					</ul>
+					<img src="assets/4.jpeg" alt="Placeholder: money flying out of a factory" />
+				</section>
+
+				<section>
+					<h2>Like a car factory, but for code</h2>
+					<ul>
+						<li>It takes time to set up, tune, and agree on guardrails.</li>
+						<li>We can mix cheap tools, premium tools, and our own internal platforms.</li>
+						<li>The point: consistent output, not one‑off hero work.</li>
+					</ul>
+					<img src="assets/5.jpeg" alt="Placeholder: car factory assembly line" />
+				</section>
+
+				<section>
+					<h2>VLK has the same choices</h2>
+					<ul>
+						<li>Cheap vs premium AI tools.</li>
+						<li>Buy vs build vs “why did we build this?”.</li>
+						<li>And: <strong>one shared factory</strong> vs many small chaos labs.</li>
+					</ul>
+					<img src="assets/6.jpeg" alt="Placeholder: crossroads of choices" />
+				</section>
+
+				<section>
+					<h2>One factory or many?</h2>
+					<ul>
+						<li>Do we want reusable gates and tooling for all teams?</li>
+						<li>Shared guardrails, shared MCP servers, less reinventing.</li>
+						<li>Or separate, local setups that are harder to control and harder to learn from?</li>
+					</ul>
+					<img src="assets/7.jpeg" alt="Placeholder: many small factories vs one big factory" />
+				</section>
+
+				<section>
+					<h2>Factory Police (yes, really)</h2>
+					<ul>
+						<li>Company‑wide guardrails and hard checks.</li>
+						<li>No “auto‑approve DELETE FROM Production” agents.</li>
+						<li>Think: VLK Factory Police watching our “normal” agents.</li>
+					</ul>
+					<img src="assets/8.jpeg" alt="Placeholder: cartoon police in a factory" />
+				</section>
+
+				<section>
+					<h2>Computers used to slow us down</h2>
+					<ul>
+						<li>First computers hurt productivity before they helped.</li>
+						<li>AI factories are similar: setup feels painful at first.</li>
+						<li>But agents can run 24/7; we can’t (and shouldn’t).</li>
+					</ul>
+					<img src="assets/9.jpeg" alt="Placeholder: old slow computer" />
+				</section>
+
+				<section>
+					<h2>It takes a motivated team</h2>
+					<ul>
+						<li>Intake, isolation, tools, verification, merge policies: lots of moving pieces.</li>
+						<li>Agents, MCP servers, guardrails, pipelines – the whole zoo.</li>
+						<li>We need people who care about quality, safety, and long‑term maintainability.</li>
+					</ul>
+					<img src="assets/10.jpeg" alt="Placeholder: team working in a control room" />
+				</section>
+			</section>
+
+			<!-- PLANNING STEP -->
+			<section>
+				<section>
+					<h2>Planning: design for agents</h2>
+					<ul>
+						<li>We’re not just building for humans anymore.</li>
+						<li>Designs need to be agent‑friendly.</li>
+						<li>Yes, your new “user” is a confused LLM.</li>
+					</ul>
+					<img src="assets/11.jpeg" alt="Placeholder: robot looking at wireframes" />
+				</section>
+
+				<section>
+					<h2>Winning products are early</h2>
+					<ul>
+						<li>The best products were ahead of tech, not behind.</li>
+						<li>We should design with agents in mind now.</li>
+						<li>So we don’t play catch‑up for the next 5 years.</li>
+					</ul>
+					<img src="assets/12.jpeg" alt="Placeholder: person running ahead of a crowd" />
+				</section>
+
+				<section>
+					<h2>What do you think?</h2>
+					<ul>
+						<li>Where can we make our products “agent‑ready”?</li>
+						<li>How can clients or users benefit from MCP?</li>
+						<li>What’s the first VLK use case you’d try?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Example: Stripe docs</h2>
+					<ul>
+						<li>Stripe: documentation is now read more by agents than humans.</li>
+						<li>Yes, the robots are doing more reading than us.</li>
+						<li>We should expect the same shift at VLK.</li>
+					</ul>
+					<img src="assets/14.png" alt="Placeholder: robot reading documentation" />
+				</section>
+
+				<section>
+					<h2>Agent‑ready VLK</h2>
+					<ul>
+						<li>Design for agents from the start.</li>
+						<li>Think: exposing MCP servers and tools.</li>
+						<li>Agents are our new “internal power users”.</li>
+					</ul>
+					<img src="assets/15.jpeg" alt="Placeholder: MCP server concept" />
+				</section>
+			</section>
+
+			<!-- DESIGN STEP -->
+			<section>
+				<section>
+					<h2>Design: AI has no taste</h2>
+					<ul>
+						<li>It will confidently pick ugly layouts.</li>
+						<li>So: prototype aggressively!</li>
+					</ul>
+					<img src="assets/16.jpeg" alt="Placeholder: ugly UI sketch" />
+				</section>
+
+				<section>
+					<h2>Paper over Figma (yes, really)</h2>
+					<ul>
+						<li>There’s a tool called Paper that’s agent‑friendly.</li>
+						<li>Good MCP server, easy for agents to work with.</li>
+						<li>Figma is great for humans, less for agents (for now).</li>
+						<a href="https://paper.design/" target="_blank">https://paper.design/</a>
+					</ul>
+					<img src="assets/17.png" alt="Placeholder: app called Paper or sketchbook" />
+				</section>
+
+				<section>
+					<h2>Ask for 5 UI options</h2>
+					<ul>
+						<li>Ask the LLM: “Give me 5 UI variations.”</li>
+						<li>Put them on throwaway routes.</li>
+						<li>Click around, see what sticks, then pick one.</li>
+					</ul>
+					<img src="assets/18.jpeg" alt="Placeholder: multiple screen variants side by side" />
+				</section>
+			</section>
+
+			<!-- BUILDING STEP -->
+			<section>
+				<section>
+					<h2>Building: Guardrails or chaos</h2>
+					<ul>
+						<li>Agents need guardrails, not “good vibes”.</li>
+						<li>Otherwise they optimise the wrong thing.</li>
+					</ul>
+					<img src="assets/19.jpeg" alt="Placeholder: guardrails on a road" />
+				</section>
+
+				<section>
+					<h2>Having guardrails not setup correctly</h2>
+					<ul>
+						<li>One company asked: “Close tickets fast.”</li>
+						<li>The agent deleted all open tickets.</li>
+						<li>Job done. Technically not wrong.</li>
+					</ul>
+					<img style="padding: 30px; background-color: white; border-radius: 20px; rotate: -5deg;" src="assets/news.png" alt="Placeholder: news headline about AI gone wrong" />
+				</section>
+
+				<section>
+					<h2>VLK Factory Police</h2>
+					<ul>
+						<li>Company‑wide rules for agents.</li>
+						<li>Central policies, shared checks.</li>
+						<li>“Police Agents” watching the “Normal Agents”.</li>
+					</ul>
+					<img src="assets/20.jpeg" alt="Placeholder: police robots in a factory" />
+				</section>
+
+				<section>
+					<h2>Rule files for agents</h2>
+					<ul>
+						<li>Example: task = “fix warnings in this repo”.</li>
+						<li>Agent “fixes” them by deleting all lint rules.</li>
+						<li>You need written rules like “Do NOT delete lint rules”.</li>
+					</ul>
+					<img src="assets/21.jpeg" alt="Placeholder: rulebook or checklist" />
+				</section>
+
+				<section>
+					<h2>Do not EVER let them access credentials</h2>
+					<ul>
+						<li>Agents + secrets = horror story.</li>
+						<li>Never let them near credentials.</li>
+						<li>Seriously, just don’t.</li>
+					</ul>
+					<img src="assets/22.jpeg" alt="Placeholder: locked safe with keys" />
+				</section>
+
+				<section>
+					<h2>Approval flows and limited tools</h2>
+					<ul>
+						<li>Add approval steps where it makes sense.</li>
+						<li>Give agents only the tools they actually need.</li>
+						<li>No “root access” for fun.</li>
+					</ul>
+					<img src="assets/23.jpeg" alt="Placeholder: approval workflow diagram" />
+				</section>
+
+				<section>
+					<h2>Approval is tricky</h2>
+					<ul>
+						<li>What if an intern sees: <code>rm -rf *</code>?</li>
+						<li>They might just click “Approve”.</li>
+						<li>We need guardrails that don’t rely on vibes.</li>
+					</ul>
+					<img src="assets/25.jpeg" alt="Placeholder: big red warning on rm -rf" />
+				</section>
+			</section>
+
+			<!-- BUILDING MANUAL -->
+			<section>
+				<section>
+					<h2>Building manual: when agents misbehave</h2>
+					<ul>
+						<li>“The agent didn’t do what I want.”</li>
+						<li>Welcome to the club.</li>
+						<li>Use the <code>/grill-me</code> skill.</li>
+					</ul>
+					<img src="assets/26.jpeg" alt="Placeholder: grilling metaphor with robot" />
+				</section>
+
+				<section>
+					<h2>/grill-me skill</h2>
+					<ul>
+						<li>Force the agent to ask you questions.</li>
+						<li>Close the communication gap.</li>
+						<li>Less mind‑reading, more clarity.</li>
+					</ul>
+					<img src="assets/27.jpeg" alt="Placeholder: robot asking questions" />
+				</section>
+
+				<section>
+					<h2>More skills!</h2>
+					<ul>
+						<li>Check out: <a href="https://www.aihero.dev/skills">aihero.dev/skills</a></li>
+						<li>Lots of useful agent skills.</li>
+						<li>Basically power‑ups for your factory.</li>
+					</ul>
+					<img src="assets/28.jpeg" alt="Placeholder: toolbox of skills" />
+				</section>
+			</section>
+
+			<!-- COMMITTING STEP -->
+			<section>
+				<section>
+					<h2>Commit step: don’t overload the agent</h2>
+					<ul>
+						<li>Your implementer agent is already busy.</li>
+						<li>Making code compile is a full workout.</li>
+						<li>Don’t also cram all coding standards into it.</li>
+					</ul>
+					<img src="assets/commit-overload.jpeg" alt="Placeholder: overloaded robot trying to commit code" />
+				</section>
+
+				<section>
+					<h2>Separate the coding standards</h2>
+					<ul>
+						<li>Have a separate task: “clean up the diff”.</li>
+						<li>Let another agent enforce standards on the diff.</li>
+						<li>Implementation and polishing are different jobs.</li>
+					</ul>
+					<img src="assets/29.jpeg" alt="Placeholder: diff view on screen" />
+				</section>
+
+				<section>
+					<h2>Coding standards file</h2>
+					<ul>
+						<li>Put standards in <code>CODING_STANDARDS.md</code>.</li>
+						<li>Call that file from a separate agent run.</li>
+						<li>Don’t bury it in global instructions soup.</li>
+					</ul>
+					<img src="assets/30.jpeg" alt="Placeholder: markdown file with rules" />
+				</section>
+			</section>
+
+			<!-- TESTING STEP -->
+			<section>
+				<section>
+					<h2>Testing: A factory that can’t verify output is useless</h2>
+					<ul>
+						<li>Our job is moving from writing code…</li>
+						<li>…to reading and testing code.</li>
+					</ul>
+					<img src="assets/31.jpeg" alt="Placeholder: quality check on assembly line" />
+				</section>
+
+				<section>
+					<h2>Make testing easier</h2>
+					<ul>
+						<li>Testing should be easy and fast.</li>
+						<li>If it’s painful, we won’t do it enough.</li>
+						<li>So we automate and visualise it.</li>
+					</ul>
+					<img src="assets/32.jpeg" alt="Placeholder: simple testing dashboard" />
+				</section>
+
+				<section>
+					<h2>Tree branching / multi‑variant</h2>
+					<ul>
+						<li>Use tools that show multiple options.</li>
+						<li>4 screens, user picks the winner.</li>
+						<li>Track which one performs best over time.</li>
+					</ul>
+					<img src="assets/33.jpeg" alt="Placeholder: A/B/C/D testing screens" />
+				</section>
+
+				<section>
+					<h2>Automation ≠ black box</h2>
+					<ul>
+						<li>Automating doesn’t mean losing transparency.</li>
+						<li>We still need a clear audit trail.</li>
+						<li>Factory should be fast AND understandable.</li>
+					</ul>
+					<img src="assets/34.jpeg" alt="Placeholder: transparent machine" />
+				</section>
+			</section>
+
+			<!-- REVIEWING STEP -->
+			<section>
+				<section>
+					<h2>Review: do not skip humans</h2>
+					<ul>
+						<li>Skipping human review is a bad idea.</li>
+						<li>If there is an outage, who will understand the code to fix it?</li>
+						<li>So yes, humans still have jobs for now.</li>
+					</ul>
+					<img src="assets/35.jpeg" alt="Placeholder: human reviewing code" />
+				</section>
+
+				<section>
+					<h2>Code ownership matters</h2>
+					<ul>
+						<li>If production breaks, who do you call?</li>
+						<li>“The agent did it” is not a helpful answer.</li>
+						<li>Someone needs to own the code.</li>
+					</ul>
+					<img src="assets/36.jpeg" alt="Placeholder: person with ownership badge" />
+				</section>
+
+				<section>
+					<h2>Agentic code reviews</h2>
+					<ul>
+						<li>Use agents to help with reviews.</li>
+						<li>Different model for coding vs reviewing.</li>
+						<li>One for security, one for quality, etc.</li>
+					</ul>
+					<img src="assets/37.jpeg" alt="Placeholder: multiple robots reviewing code" />
+				</section>
+
+				<section>
+					<h2>But watch the bill</h2>
+					<ul>
+						<li>Many review agents = many invoices.</li>
+						<li>Maybe start with two:</li>
+						<li>One general reviewer, one quality‑focused.</li>
+					</ul>
+					<img src="assets/38.jpeg" alt="Placeholder: calculator on top of invoice" />
+				</section>
+
+				<section>
+					<h2>Default: commit, not comment</h2>
+					<ul>
+						<li>Comments create more work.</li>
+						<li>The goal of review is to finish the work.</li>
+						<li>So reviewers should commit fixes when possible.</li>
+					</ul>
+					<img src="assets/39.jpeg" alt="Placeholder: approve and commit button" />
+				</section>
+
+				<section>
+					<h2>Reduce comment noise</h2>
+					<ul>
+						<li>Have a team session on “less comment spam”.</li>
+						<li>Update linting and coding standards.</li>
+						<li>Let tools catch the boring stuff.</li>
+					</ul>
+					<img src="assets/40.jpeg" alt="Placeholder: linting warnings being auto-fixed" />
+				</section>
+			</section>
+
+			<!-- IMPROVEMENT STEP -->
+			<section>
+				<section>
+					<h2>Improvement: Scrum for your agents</h2>
+					<ul>
+						<li>Agents also need retros.</li>
+						<li>Run a retro‑review skill on recent PRs.</li>
+						<li>Let it learn from feedback and comments.</li>
+					</ul>
+					<img src="assets/41.jpeg" alt="Placeholder: retro board for robots" />
+				</section>
+
+				<section>
+					<h2>Automate the learnings</h2>
+					<ul>
+						<li>Skill scans comments across PRs.</li>
+						<li>Finds patterns you can automate.</li>
+						<li>That’s real factory improvement.</li>
+					</ul>
+					<img src="assets/42.jpeg" alt="Placeholder: pattern detection visualization" />
+				</section>
+
+				<section>
+					<h2>Iterate weekly</h2>
+					<ul>
+						<li>Small changes, every week.</li>
+						<li>Factory gets better over time.</li>
+						<li>But first: just START!</li>
+					</ul>
+					<img src="assets/iterate-weekly.jpeg" alt="Placeholder: calendar with weekly iterations" />
+				</section>
+
+				<section>
+					<h2>Improvement routines</h2>
+					<ul>
+						<li>UI‑improvement agent.</li>
+						<li>Cleanup code agent.</li>
+						<li>Run them on a schedule, like factory cleaners.</li>
+					</ul>
+					<img src="assets/43.jpeg" alt="Placeholder: cleaning robots in a factory" />
+				</section>
+
+				<section>
+					<h2>Beware of doc rot: clean up your docs</h2>
+					<ul>
+						<li>Repos full of AI‑generated markdown.</li>
+						<li>Prune dead docs regularly.</li>
+						<li>Keep only useful and current ones.</li>
+						<li>Help agents find the good stuff fast.</li>
+					</ul>
+					<img src="assets/44.jpeg" alt="Placeholder: throwing old docs away" />
+				</section>
+
+				<section>
+					<h2>/improve-codebase-architecture</h2>
+					<ul>
+						<li>Once in a while, run this kind of skill.</li>
+						<li>Look at the whole codebase, not just one PR.</li>
+						<li>Factory‑level improvements, not band‑aids.</li>
+					</ul>
+					<img src="assets/45.jpeg" alt="Placeholder: architecture diagram being refined" />
+				</section>
+
+				<section>
+					<h2>Closing the loop</h2>
+					<ul>
+						<li>Plan, design, build, commit, test, review, observe, improve.</li>
+						<li>Then repeat. Forever.</li>
+						<li>That’s how the VLK Software Factory wins.</li>
+					</ul>
+					<img src="assets/46.jpeg" alt="Placeholder: continuous loop diagram" />
+				</section>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+		});
+	</script>
+</body>
+</html>

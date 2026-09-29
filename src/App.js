@@ -46,6 +46,9 @@ const App = () => {
             <Route exact path="/devtools">
                 <Redirect to="/devtools/exmples/digitalks.html" />
             </Route>
+              <Route exact path="/software-factory">
+                <Redirect to="/devtools/software-factory.html" />
+            </Route>
         </Switch>
       )} />
   );
