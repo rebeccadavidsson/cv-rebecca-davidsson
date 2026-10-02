@@ -2,6 +2,9 @@
   "name": "cv-rebecca-davidsson",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "dependencies": {
     "classnames": "^2.2.6",
     "d3": "^7.4.4",
