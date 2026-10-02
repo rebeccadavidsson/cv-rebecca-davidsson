@@ -14,6 +14,11 @@
         <link rel="stylesheet" href="plugin/highlight/monokai.css" />
 
         <style>
+            :root {
+                --r-heading-font: Georgia, serif;
+                --r-main-font: "Trebuchet MS", sans-serif;
+            }
+
             .reveal-viewport {
                 background-color: #fefcf0;
             }
@@ -285,38 +290,101 @@
 
             .factory-comparison {
                 display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns: repeat(4, minmax(0, 1fr));
                 gap: 1.4em;
                 margin: 1.5em 0;
             }
 
             .factory-card {
+                position: relative;
+                min-width: 0;
                 padding: 1.1em 1.2em;
-                border-radius: 16px;
-                background: radial-gradient(circle at top left, #fffef7 0%, #f3ebd8c8 45%, #e2d3b688 100%);
-                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-                border: 1px solid rgba(0, 0, 0, 0.06);
+
+                border: 1px solid rgba(112, 88, 42, 0.15);
+                border-radius: 13px;
+
+                background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(255, 252, 238, 0.68));
+
+                color: #2c2923;
+
+                box-shadow:
+                    0 4px 12px rgba(83, 65, 32, 0.05),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+                transition:
+                    transform 180ms ease,
+                    box-shadow 180ms ease,
+                    border-color 180ms ease;
+            }
+
+            .factory-card:hover {
+                transform: translateY(-2px);
+
+                border-color: rgba(184, 138, 59, 0.4);
+
+                box-shadow:
+                    0 8px 20px rgba(83, 65, 32, 0.09),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            }
+
+            .factory-card::before {
+                content: attr(data-step);
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                width: 1.8em;
+                height: 1.8em;
+                margin-bottom: 0.7em;
+
+                border: 1px solid rgba(184, 138, 59, 0.35);
+                border-radius: 50%;
+
+                background: rgba(184, 138, 59, 0.08);
+
+                color: #70501f;
+
+                font-size: 0.68em;
+                font-weight: 700;
+                letter-spacing: 0.04em;
             }
 
             .factory-card h3 {
                 margin: 0 0 0.6em;
                 font-size: 1.1em;
                 font-weight: 600;
+                color: #2c2923;
             }
 
-            .factory-card ul {
-                list-style: none;
+            .factory-card p {
                 margin: 0;
-                padding: 0;
                 font-size: 0.88em;
+                color: #716b60;
+                line-height: 1.35;
             }
 
-            .factory-card li {
-                margin: 0.18em 0;
-            }
-
-            .factory-card li strong {
+            .factory-card p strong {
                 font-weight: 600;
+                color: #2c2923;
+            }
+
+            .factory-comparison__image {
+                display: block;
+                max-height: 34vh !important;
+                margin: 1em auto 0 !important;
+                float: none !important;
+                object-fit: contain;
+                border: 1px solid rgba(112, 88, 42, 0.15);
+                border-radius: 13px;
+                box-shadow: 0 8px 20px rgba(83, 65, 32, 0.1);
+            }
+
+            .factory-comparison__minions {
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-color: #fefcf0;
             }
 
             .factory-card code {
@@ -668,34 +736,38 @@
 
                     <!-- 19 — NOT JUST US -->
                     <section>
-                        <h2>And we're not the only ones building this.</h2>
+                        <h2>How others build their factories</h2>
 
                         <div class="factory-comparison">
-                            <div class="factory-card fragment">
-                                <h3>Stripe</h3>
-
-                                <ul>
-                                    <li><strong>Intake:</strong> Slack message</li>
-                                    <li><strong>Tools:</strong> Internal tools</li>
-                                    <li><strong>Verify:</strong> Automated tests and lint</li>
-                                    <li><strong>Merge gate:</strong> Human review after 2 CI runs</li>
-                                </ul>
+                            <div class="factory-card" data-step="01">
+                                <p><strong>Intake:</strong> Slack message</p>
                             </div>
 
-                            <div class="factory-card fragment">
-                                <h3>Spotify</h3>
+                            <div class="factory-card fragment" data-step="02">
+                                <p><strong>Tools:</strong> Internal toolshed</p>
+                            </div>
 
-                                <ul>
-                                    <li><strong>Intake:</strong> Pick from backlog</li>
-                                    <li><strong>Tools:</strong> Toolshed with internal MCP</li>
-                                    <li><strong>Verify:</strong> Automated verification</li>
-                                    <li><strong>Merge gate:</strong> Human review</li>
-                                </ul>
+                            <div class="factory-card fragment" data-step="03">
+                                <p><strong>Verify:</strong> Automated tests and lint</p>
+                            </div>
+
+                            <div class="factory-card fragment" data-step="04">
+                                <p><strong>Merge gate:</strong> Human review after 2 CI runs</p>
                             </div>
                         </div>
 
-                        <p class="factory-comparison__note fragment">Different tools. Same basic idea.</p>
+                        <img
+                            class="factory-comparison__image"
+                            src="assets/slack.jpg"
+                            alt="Slack message used as factory intake"
+                        />
                     </section>
+
+                    <section
+                        data-background="assets/minions.png"
+                        data-background-size="contain"
+                        class="factory-comparison__minions"
+                    ></section>
 
                     <!-- 20 — MANY CHOICES -->
                     <section>
