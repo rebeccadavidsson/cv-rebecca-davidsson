@@ -1,441 +1,399 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-	<base href="/digitalks/">
+        <base href="/digitalks/" />
 
-	<title>Software Factory</title>
+        <title>Software Factory</title>
 
-	<link rel="stylesheet" href="dist/reset.css">
-	<link rel="stylesheet" href="dist/reveal.css">
-	<link rel="stylesheet" href="dist/theme/serif.css">
-	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+        <link rel="stylesheet" href="dist/reset.css" />
+        <link rel="stylesheet" href="dist/reveal.css" />
+        <link rel="stylesheet" href="dist/theme/serif.css" />
+        <link rel="stylesheet" href="plugin/highlight/monokai.css" />
 
-	<style>
-		.reveal-viewport {
-			background-color: #fefcf0;
-		}
+        <style>
+            .reveal-viewport {
+                background-color: #fefcf0;
+            }
 
-		.reveal .slides section {
-			font-size: 0.7em;
-			text-align: left;
-		}
+            .reveal .slides section {
+                font-size: 0.7em;
+                text-align: left;
+            }
 
-		.reveal .slides section > h1,
-		.reveal .slides section > h2,
-		.reveal .slides section > h3,
-		.reveal .slides section > h4,
-		.reveal .slides section > h5,
-		.reveal .slides section > h6,
-		.reveal .slides section > p,
-		.reveal .slides section > ul,
-		.reveal .slides section > ol {
-			width: 55%;
-			text-align: left;
-		}
+            .reveal .slides section > h1,
+            .reveal .slides section > h2,
+            .reveal .slides section > h3,
+            .reveal .slides section > h4,
+            .reveal .slides section > h5,
+            .reveal .slides section > h6,
+            .reveal .slides section > p,
+            .reveal .slides section > ul,
+            .reveal .slides section > ol {
+                width: 55%;
+                text-align: left;
+            }
 
-		.reveal .slides section > img {
-			float: right;
-			width: 55%;
-			max-height: 60%;
-			margin: 0 0 1em 3%;
-			object-fit: contain;
-			margin-top: -5%;
-		}
+            .reveal .slides section > img {
+                float: right;
+                width: 55%;
+                max-height: 60%;
+                margin: 0 0 1em 3%;
+                object-fit: contain;
+                margin-top: -5%;
+            }
 
-        .factory-diagram {
-    --ink: #2c2923;
-    --muted: #716b60;
-    --gold: #b88a3b;
+            .factory-diagram {
+                --ink: #2c2923;
+                --muted: #716b60;
+                --gold: #b88a3b;
 
-    display: grid;
-    grid-template-columns:
-        minmax(0, 1fr)
-        auto
-        minmax(0, 1fr)
-        auto
-        minmax(0, 1fr)
-        auto
-        minmax(0, 1fr)
-        auto
-        minmax(0, 1fr);
+                display: grid;
+                grid-template-columns:
+                    minmax(0, 1fr)
+                    auto
+                    minmax(0, 1fr)
+                    auto
+                    minmax(0, 1fr)
+                    auto
+                    minmax(0, 1fr)
+                    auto
+                    minmax(0, 1fr);
 
-    align-items: stretch;
+                align-items: stretch;
 
-    margin: 1.8em 0;
-    padding: 1.15em;
+                margin: 1.8em 0;
+                padding: 1.15em;
 
-    border: 1px solid rgba(140, 111, 55, 0.2);
-    border-radius: 18px;
+                border: 1px solid rgba(140, 111, 55, 0.2);
+                border-radius: 18px;
 
-    background:
-        radial-gradient(
-            circle at 0% 0%,
-            rgba(255, 255, 255, 0.9) 0%,
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 100% 100%,
-            rgba(215, 189, 120, 0.12) 0%,
-            transparent 40%
-        ),
-        linear-gradient(
-            135deg,
-            #fffef7 0%,
-            #f8f2df 55%,
-            #f1e7c9 100%
-        );
+                background:
+                    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.9) 0%, transparent 35%),
+                    radial-gradient(circle at 100% 100%, rgba(215, 189, 120, 0.12) 0%, transparent 40%),
+                    linear-gradient(135deg, #fffef7 0%, #f8f2df 55%, #f1e7c9 100%);
 
-    box-shadow:
-        0 12px 30px rgba(83, 65, 32, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-}
+                box-shadow:
+                    0 12px 30px rgba(83, 65, 32, 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            }
 
-
-/* ─────────────────────────────
+            /* ─────────────────────────────
    STAGE
    ───────────────────────────── */
 
-.factory-diagram__stage {
-    position: relative;
+            .factory-diagram__stage {
+                position: relative;
 
-    min-width: 0;
-    padding: 1em 0.9em 0.95em;
+                min-width: 0;
+                padding: 1em 0.9em 0.95em;
 
-    border: 1px solid rgba(112, 88, 42, 0.15);
-    border-radius: 13px;
+                border: 1px solid rgba(112, 88, 42, 0.15);
+                border-radius: 13px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.88),
-            rgba(255, 252, 238, 0.68)
-        );
+                background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(255, 252, 238, 0.68));
 
-    color: var(--ink);
+                color: var(--ink);
 
-    box-shadow:
-        0 4px 12px rgba(83, 65, 32, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                box-shadow:
+                    0 4px 12px rgba(83, 65, 32, 0.05),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 
-    transition:
-        transform 180ms ease,
-        box-shadow 180ms ease,
-        border-color 180ms ease;
-}
+                transition:
+                    transform 180ms ease,
+                    box-shadow 180ms ease,
+                    border-color 180ms ease;
+            }
 
-.factory-diagram__stage:hover {
-    transform: translateY(-2px);
+            .factory-diagram__stage:hover {
+                transform: translateY(-2px);
 
-    border-color: rgba(184, 138, 59, 0.4);
+                border-color: rgba(184, 138, 59, 0.4);
 
-    box-shadow:
-        0 8px 20px rgba(83, 65, 32, 0.09),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-}
+                box-shadow:
+                    0 8px 20px rgba(83, 65, 32, 0.09),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            }
 
-
-/* ─────────────────────────────
+            /* ─────────────────────────────
    NUMBER
    ───────────────────────────── */
 
-.factory-diagram__stage::before {
-    content: attr(data-step);
+            .factory-diagram__stage::before {
+                content: attr(data-step);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
-    width: 1.8em;
-    height: 1.8em;
-    margin-bottom: 0.7em;
+                width: 1.8em;
+                height: 1.8em;
+                margin-bottom: 0.7em;
 
-    border: 1px solid rgba(184, 138, 59, 0.35);
-    border-radius: 50%;
+                border: 1px solid rgba(184, 138, 59, 0.35);
+                border-radius: 50%;
 
-    background: rgba(184, 138, 59, 0.08);
+                background: rgba(184, 138, 59, 0.08);
 
-    color: #9a702e;
+                color: #9a702e;
 
-    font-size: 0.68em;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-}
+                font-size: 0.68em;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+            }
 
-
-/* ─────────────────────────────
+            /* ─────────────────────────────
    TYPOGRAPHY
    ───────────────────────────── */
 
-.factory-diagram__stage h3 {
-    margin: 0 0 0.35em;
+            .factory-diagram__stage h3 {
+                margin: 0 0 0.35em;
 
-    color: var(--ink);
+                color: var(--ink);
 
-    font-size: 1em;
-    font-weight: 650;
-    letter-spacing: -0.015em;
-}
+                font-size: 1em;
+                font-weight: 650;
+                letter-spacing: -0.015em;
+            }
 
-.factory-diagram__stage p {
-    margin: 0;
+            .factory-diagram__stage p {
+                margin: 0;
 
-    color: var(--muted);
+                color: var(--muted);
 
-    font-size: 0.8em;
-    line-height: 1.45;
-}
+                font-size: 0.8em;
+                line-height: 1.45;
+            }
 
-
-/* ─────────────────────────────
+            /* ─────────────────────────────
    ARROWS
    ───────────────────────────── */
 
-.factory-diagram__arrow {
-    position: relative;
+            .factory-diagram__arrow {
+                position: relative;
 
-    width: 34px;
-    min-width: 34px;
+                width: 34px;
+                min-width: 34px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
-    font-size: 0;
-    color: var(--gold);
-}
+                font-size: 0;
+                color: var(--gold);
+            }
 
+            /* Connecting line */
 
-/* Connecting line */
+            .factory-diagram__arrow::before {
+                content: "";
 
-.factory-diagram__arrow::before {
-    content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 50%;
 
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
+                height: 1px;
 
-    height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(184, 138, 59, 0.45), transparent);
+            }
 
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(184, 138, 59, 0.45),
-        transparent
-    );
-}
+            /* Arrowhead */
 
+            .factory-diagram__arrow::after {
+                content: "›";
 
-/* Arrowhead */
+                position: relative;
+                z-index: 2;
 
-.factory-diagram__arrow::after {
-    content: "›";
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
-    position: relative;
-    z-index: 2;
+                width: 1.35em;
+                height: 1.35em;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+                border: 1px solid rgba(184, 138, 59, 0.25);
+                border-radius: 50%;
 
-    width: 1.35em;
-    height: 1.35em;
+                background: #f8f2df;
 
-    border: 1px solid rgba(184, 138, 59, 0.25);
-    border-radius: 50%;
+                color: #a47b35;
 
-    background: #f8f2df;
+                font-size: 1.25em;
+                font-weight: 400;
+                line-height: 1;
+            }
 
-    color: #a47b35;
-
-    font-size: 1.25em;
-    font-weight: 400;
-    line-height: 1;
-}
-
-
-/* ─────────────────────────────
+            /* ─────────────────────────────
    FINAL STAGE
    ───────────────────────────── */
 
-.factory-diagram__stage--final {
-    background:
-        linear-gradient(
-            145deg,
-            #fff9df 0%,
-            #f9edc4 100%
-        );
+            .factory-diagram__stage--final {
+                background: linear-gradient(145deg, #fff9df 0%, #f9edc4 100%);
 
-    border-color: rgba(184, 138, 59, 0.4);
+                border-color: rgba(184, 138, 59, 0.4);
 
-    box-shadow:
-        0 5px 16px rgba(140, 105, 38, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-}
+                box-shadow:
+                    0 5px 16px rgba(140, 105, 38, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            }
 
-.factory-diagram__stage--final::before {
-    background: rgba(184, 138, 59, 0.13);
-    border-color: rgba(184, 138, 59, 0.45);
-    color: #8e672a;
-}
+            .factory-diagram__stage--final::before {
+                background: rgba(184, 138, 59, 0.13);
+                border-color: rgba(184, 138, 59, 0.45);
+                color: #8e672a;
+            }
 
-
-/* ─────────────────────────────
+            /* ─────────────────────────────
    MOBILE
    ───────────────────────────── */
 
-@media (max-width: 700px) {
-    .factory-diagram {
-        display: flex;
-        flex-direction: column;
-        gap: 0.45em;
-    }
+            @media (max-width: 700px) {
+                .factory-diagram {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.45em;
+                }
 
-    .factory-diagram__stage {
-        width: 100%;
-    }
+                .factory-diagram__stage {
+                    width: 100%;
+                }
 
-    .factory-diagram__arrow {
-        width: 100%;
-        min-width: 0;
-        height: 24px;
-    }
+                .factory-diagram__arrow {
+                    width: 100%;
+                    min-width: 0;
+                    height: 24px;
+                }
 
-    .factory-diagram__arrow::before {
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        right: auto;
+                .factory-diagram__arrow::before {
+                    top: 0;
+                    bottom: 0;
+                    left: 50%;
+                    right: auto;
 
-        width: 1px;
-        height: auto;
-    }
+                    width: 1px;
+                    height: auto;
+                }
 
-    .factory-diagram__arrow::after {
-        transform: rotate(90deg);
-    }
-}
+                .factory-diagram__arrow::after {
+                    transform: rotate(90deg);
+                }
+            }
 
-        .factory-comparison {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1.4em;
-            margin: 1.5em 0;
-        }
+            .factory-comparison {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.4em;
+                margin: 1.5em 0;
+            }
 
-        .factory-card {
-            padding: 1.1em 1.2em;
-            border-radius: 16px;
-            background: radial-gradient(circle at top left, #fffef7 0%, #f3ebd8c8 45%, #e2d3b688 100%);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-        }
+            .factory-card {
+                padding: 1.1em 1.2em;
+                border-radius: 16px;
+                background: radial-gradient(circle at top left, #fffef7 0%, #f3ebd8c8 45%, #e2d3b688 100%);
+                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+                border: 1px solid rgba(0, 0, 0, 0.06);
+            }
 
-        .factory-card h3 {
-            margin: 0 0 0.6em;
-            font-size: 1.1em;
-            font-weight: 600;
-        }
+            .factory-card h3 {
+                margin: 0 0 0.6em;
+                font-size: 1.1em;
+                font-weight: 600;
+            }
 
-        .factory-card ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            font-size: 0.88em;
-        }
+            .factory-card ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                font-size: 0.88em;
+            }
 
-        .factory-card li {
-            margin: 0.18em 0;
-        }
+            .factory-card li {
+                margin: 0.18em 0;
+            }
 
-        .factory-card li strong {
-            font-weight: 600;
-        }
+            .factory-card li strong {
+                font-weight: 600;
+            }
 
-        .factory-card code {
-            font-size: 0.85em;
-            background-color: rgba(0, 0, 0, 0.04);
-            padding: 2px 5px;
-            border-radius: 4px;
-        }
+            .factory-card code {
+                font-size: 0.85em;
+                background-color: rgba(0, 0, 0, 0.04);
+                padding: 2px 5px;
+                border-radius: 4px;
+            }
 
-        .factory-comparison__note {
-            margin-top: 1em;
-            font-size: 0.85em;
-            font-style: italic;
-            opacity: 0.8;
-        }
+            .factory-comparison__note {
+                margin-top: 1em;
+                font-size: 0.85em;
+                font-style: italic;
+                opacity: 0.8;
+            }
 
-		.employee {
-			width: 100% !important; 
-			margin-top: -4%;
-		}
+            .employee {
+                width: 100% !important;
+                margin-top: -4%;
+            }
 
-		.slack {
-			width: 70% !important;
-			border-radius: 11px;
-		}
+            .slack {
+                width: 70% !important;
+                border-radius: 11px;
+            }
 
-		.news2 {
-			margin-top: -23% !important;
-		}
+            .news2 {
+                margin-top: -23% !important;
+            }
 
-		.news3 {
-			margin-top: -5% !important;
-		}
-	</style>
-</head>
-<body>
-	<div class="reveal">
-		<div class="slides">
-
-			<!-- =========================================================
+            .news3 {
+                margin-top: -5% !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!-- =========================================================
 			     INTRO: VLK SOFTWARE FACTORY
 			     ========================================================= -->
 
-			<section>
+                <section>
+                    <!-- 01 — TITLE -->
+                    <section>
+                        <h2 class="intro-title">AI Engineer Conference Paris</h2>
+                        <p>From “I write code” to “I run a factory”.</p>
 
-				<!-- 01 — TITLE -->
-				<section>
-					<h2 class="intro-title">AI Engineer Conference Paris</h2>
-					<p>From “I write code” to “I run a factory”.</p>
+                        <!-- IMAGE PLACEHOLDER -->
+                        <img src="assets/group.jpg" alt="Placeholder: team / AI engineers" />
+                    </section>
 
-					<!-- IMAGE PLACEHOLDER -->
-					<img src="assets/group.jpg"
-						 alt="Placeholder: team / AI engineers" />
-				</section>
+                    <!-- Stephen Toub: the hook -->
+                    <section>
+                        <h2>January 6, 2026</h2>
+                        <p class="big">One developer.</p>
+                        <p class="big">One phone.</p>
+                        <p class="big">35,000 feet in the air.</p>
 
+                        <h2 class="fragment">9 PRs</h2>
+                        <p class="big fragment">From a phone.</p>
+                        <img src="assets/plane.jpeg" alt="Placeholder: Stephen Toub on a plane" />
+                    </section>
 
-				<!-- Stephen Toub: the hook -->
-				<section>
-				<h2>January 6, 2026</h2>
-				<p class="big">One developer.</p>
-				<p class="big">One phone.</p>
-				<p class="big">35,000 feet in the air.</p>
+                    <!-- Scale it -->
+                    <section>
+                        <h2>Now imagine...</h2>
+                        <p class="big">every developer can do this.</p>
+                    </section>
 
-				<h2 class="fragment">9 PRs</h2>
-				<p class="big fragment">From a phone.</p>
-				<img src="assets/plane.jpeg"
-					 alt="Placeholder: Stephen Toub on a plane" />
-				</section>
-
-				<!-- Scale it -->
-				<section>
-				<h2>Now imagine...</h2>
-				<p class="big">every developer can do this.</p>
-				</section>
-
-				<!-- <section>
+                    <!-- <section>
 				<h2>AI doesn't work 9–5.</h2>
 				<p class="big">It keeps producing.</p>
 				</section> -->
 
-
-				<!-- 05 — CODE IS CHEAP -->
-				<!-- <section>
+                    <!-- 05 — CODE IS CHEAP -->
+                    <!-- <section>
 					<h2>The problem isn't writing code anymore.</h2>
 
 					<h1 class="fragment">It's dealing with all the code.</h1>
@@ -445,492 +403,366 @@
 						 alt="Placeholder: enormous amount of generated code" />
 				</section> -->
 
-				<!-- 07 — AFTER AI -->
-				<section>
-					<h2>The 'old' bottleneck</h2>
-
-					<div class="factory-story">
-						<div class="fragment">🤖</div>
-						<div class="fragment">🤖</div>
-						<div class="fragment">🤖</div>
-						<div class="fragment">🤖</div>
-						<div class="fragment">🤖</div>
-						<div class="fragment">🤖</div>
-						<div class="fragment">🤖</div>
-						<div class="fragment">🤖</div>
-					</div>
-
-					<h2 class="fragment">PR PR PR PR PR PR PR PR</h2>
-
-					<h1 class="fragment">↓</h1>
-
-					<h2 class="fragment">👨‍💻</h2>
-
-					<p class="fragment">
-						Limited working hours.
-					</p>
-				</section>
-
-					<section data-background="assets/prs.jpeg">
-				<div class="overlay">
-				</div>
-				</section>
-
-
-				<section data-background="assets/employees.jpeg">
-				<div class="overlay">
-				</div>
-				</section>
-
-				<section data-background="assets/employees_sleeping.jpeg">
-				<div class="overlay">
-				</div>
-				</section>
-
-				<section>
-				<h2>Except...</h2>
-				<p class="big">AI doesn't sleep.</p>
-				</section>
-
-
-				<!-- 09 — PHONE / THROUGHPUT -->
-				<section>
-					<h2>One person can now produce a ridiculous amount of code.</h2>
-
-					<p>
-						But humans are still the bottleneck.
-					</p>
-
-					<ul>
-						<li class="fragment">
-							One person + AI can generate work incredibly quickly.
-						</li>
-						<li class="fragment">
-							Someone still has to understand it.
-						</li>
-						<li class="fragment">
-							Someone still has to test it.
-						</li>
-						<li class="fragment">
-							Someone still has to decide whether it ships.
-						</li>
-					</ul>
-				</section>
-
-
-				<!-- 10 — LET THE AGENT COOK -->
-				<section>
-					<h2>Surely we can just…</h2>
-					<h2 class="fragment">trust AI with the whole flow?</h2>
-
-					<!-- IMAGE PLACEHOLDER -->
-					<img
-						 src="assets/approve.jpeg"
-						 alt="Placeholder: robot chef confidently cooking chaos" />
-				</section>
+                    <!-- 07 — AFTER AI -->
+                    <section>
+                        <h2>The 'old' bottleneck</h2>
 
+                        <div class="factory-story">
+                            <div class="fragment">🤖</div>
+                            <div class="fragment">🤖</div>
+                            <div class="fragment">🤖</div>
+                            <div class="fragment">🤖</div>
+                            <div class="fragment">🤖</div>
+                            <div class="fragment">🤖</div>
+                            <div class="fragment">🤖</div>
+                            <div class="fragment">🤖</div>
+                        </div>
 
-				<!-- 11 — STORY: THE TICKET FACTORY -->
-<section>
+                        <h2 class="fragment">PR PR PR PR PR PR PR PR</h2>
 
-  <p class="big">
-    A company asked an AI agent:
-  </p>
+                        <h1 class="fragment">↓</h1>
 
-  <h2>
-    “Fix the tickets as fast as possible.”
-  </h2>
-</section>
+                        <h2 class="fragment">👨‍💻</h2>
 
-
-<!-- 12 — IT WORKED! -->
-<section>
-  <h2>And it worked.</h2>
+                        <p class="fragment">Limited working hours.</p>
+                    </section>
 
-  <p class="big fragment">
-    ⚡ Tickets disappearing
-  </p>
+                    <section data-background="assets/prs.jpeg">
+                        <div class="overlay"></div>
+                    </section>
 
-  <p class="big fragment">
-    ✅ All green
-  </p>
+                    <section data-background="assets/employees.jpeg">
+                        <div class="overlay"></div>
+                    </section>
 
-  <h1 class="fragment">🎉</h1>
-</section>
+                    <section data-background="assets/employees_sleeping.jpeg">
+                        <div class="overlay"></div>
+                    </section>
 
+                    <section>
+                        <h2>Except...</h2>
+                        <p class="big">AI doesn't sleep.</p>
+                    </section>
 
-<!-- 13 — SUCCESS? -->
-<section>
-  <h2>Everything was green.</h2>
+                    <!-- 09 — PHONE / THROUGHPUT -->
+                    <section>
+                        <h2>One person can now produce a ridiculous amount of code.</h2>
 
-  <img
-    class="fragment"
-    src="assets/news.png"
-    alt="Placeholder: news story about an AI agent successfully closing tickets"
-    style="max-height: 45vh;"
-  />
+                        <p>But humans are still the bottleneck.</p>
 
-  <p class="fragment big">
-    Until someone looked closer.
-  </p>
-</section>
+                        <ul>
+                            <li class="fragment">One person + AI can generate work incredibly quickly.</li>
+                            <li class="fragment">Someone still has to understand it.</li>
+                            <li class="fragment">Someone still has to test it.</li>
+                            <li class="fragment">Someone still has to decide whether it ships.</li>
+                        </ul>
+                    </section>
 
+                    <!-- 10 — LET THE AGENT COOK -->
+                    <section>
+                        <h2>Surely we can just…</h2>
+                        <h2 class="fragment">trust AI with the whole flow?</h2>
 
-<!-- 14 — THE REVEAL -->
-<section>
-  <h2>How did it fix all the tickets?</h2>
+                        <!-- IMAGE PLACEHOLDER -->
+                        <img src="assets/approve.jpeg" alt="Placeholder: robot chef confidently cooking chaos" />
+                    </section>
 
-  <p class="fragment big">
-    It didn't.
-  </p>
+                    <!-- 11 — STORY: THE TICKET FACTORY -->
+                    <section>
+                        <p class="big">A company asked an AI agent:</p>
 
-  <h1 class="fragment">
-    🗑️ 🗑️ 🗑️
-  </h1>
+                        <h2>“Fix the tickets as fast as possible.”</h2>
+                    </section>
 
-  <p class="fragment">
-    It deleted them.
-  </p>
-</section>
+                    <!-- 12 — IT WORKED! -->
+                    <section>
+                        <h2>And it worked.</h2>
 
+                        <p class="big fragment">⚡ Tickets disappearing</p>
 
-<!-- 15 — TECHNICALLY -->
-<section>
-  <h2>And the scary part?</h2>
+                        <p class="big fragment">✅ All green</p>
 
-  <p class="big fragment">
-    The agent did exactly what we asked.
-  </p>
+                        <h1 class="fragment">🎉</h1>
+                    </section>
 
-  <p class="fragment">
-    “Fix the tickets as fast as possible.”
-  </p>
+                    <!-- 13 — SUCCESS? -->
+                    <section>
+                        <h2>Everything was green.</h2>
 
-  <p class="fragment">
-    Mission accomplished.
-  </p>
+                        <img
+                            class="fragment"
+                            src="assets/news.png"
+                            alt="Placeholder: news story about an AI agent successfully closing tickets"
+                            style="max-height: 45vh"
+                        />
 
-  <img src="assets/news2.png" class="fragment news2" />
-  <img src="assets/news3.png" class="fragment news3" />
-</section>
+                        <p class="fragment big">Until someone looked closer.</p>
+                    </section>
 
-<!-- 17 — TOOLS -->
-<section>
-  <h2>Not every tool should be available.</h2>
+                    <!-- 14 — THE REVEAL -->
+                    <section>
+                        <h2>How did it fix all the tickets?</h2>
 
-  <p class="fragment">
-    Give agents only what they need.
-  </p>
+                        <p class="fragment big">It didn't.</p>
 
-  <p class="fragment">
-    And make dangerous tools/actions <strong>REQUIRE APPROVAL</strong>
-  </p>
-</section>
+                        <h1 class="fragment">🗑️ 🗑️ 🗑️</h1>
 
+                        <p class="fragment">It deleted them.</p>
+                    </section>
 
-<!-- 18 — APPROVAL -->
-<section>
-  <h2>But approval is still tricky.</h2>
+                    <!-- 15 — TECHNICALLY -->
+                    <section>
+                        <h2>And the scary part?</h2>
 
-  <p class="big fragment">
-    Imagine giving the approval job to an intern
-  </p>
+                        <p class="big fragment">The agent did exactly what we asked.</p>
 
-  <pre class="fragment" style="    width: fit-content;
-    font-size: 40px;"><code>rm -rf *</code></pre>
+                        <p class="fragment">“Fix the tickets as fast as possible.”</p>
 
-  <p class="fragment big">
-    “Approve?” 🤔
-  </p>
-</section>
+                        <p class="fragment">Mission accomplished.</p>
 
+                        <img src="assets/news2.png" class="fragment news2" />
+                        <img src="assets/news3.png" class="fragment news3" />
+                    </section>
 
-<!-- 22 — THE REAL GUARDRAIL -->
-<section>
-  <h2>Approval isn't a guardrail.</h2>
+                    <!-- 17 — TOOLS -->
+                    <section>
+                        <h2>Not every tool should be available.</h2>
 
-  <p class="big fragment">
-    If the approver doesn't understand the risk.
-  </p>
-</section>
+                        <p class="fragment">Give agents only what they need.</p>
 
+                        <p class="fragment">And make dangerous tools/actions <strong>REQUIRE APPROVAL</strong></p>
+                    </section>
 
-<!-- 23 — TRANSITION -->
-<section>
-  <h2>So we need more than approval.</h2>
+                    <!-- 18 — APPROVAL -->
+                    <section>
+                        <h2>But approval is still tricky.</h2>
 
-  <p class="big fragment">
-    We need the right tools.
-  </p>
+                        <p class="big fragment">Imagine giving the approval job to an intern</p>
 
-  <p class="big fragment">
-    The right permissions.
-  </p>
+                        <pre class="fragment" style="width: fit-content; font-size: 40px"><code>rm -rf *</code></pre>
 
-  <p class="big fragment">
-    And verification.
-  </p>
-</section>
+                        <p class="fragment big">“Approve?” 🤔</p>
+                    </section>
 
+                    <!-- 22 — THE REAL GUARDRAIL -->
+                    <section>
+                        <h2>Approval isn't a guardrail.</h2>
 
-				<!-- 12 — EXAMPLE 2 -->
-				<section>
-					<h2>“Fix all the lint warnings.”</h2>
+                        <p class="big fragment">If the approver doesn't understand the risk.</p>
+                    </section>
 
-					<p class="fragment">No problem.</p>
+                    <!-- 23 — TRANSITION -->
+                    <section>
+                        <h2>So we need more than approval.</h2>
 
-					<pre class="fragment" style="    width: fit-content;
-    font-size: 40px;"><code>rm lint-config</code></pre>
+                        <p class="big fragment">We need the right tools.</p>
 
-					<p class="fragment">
-						<strong>100% success rate.</strong>
-					</p>
-				</section>
+                        <p class="big fragment">The right permissions.</p>
 
+                        <p class="big fragment">And verification.</p>
+                    </section>
 
-				<!-- 13 — THE REAL PROBLEM -->
-				<section>
-					<h2>Agents are extremely good at doing exactly what you asked.</h2>
+                    <!-- 12 — EXAMPLE 2 -->
+                    <section>
+                        <h2>“Fix all the lint warnings.”</h2>
 
-					<h2 class="fragment">Even when you asked for the wrong thing.</h2>
+                        <p class="fragment">No problem.</p>
 
-					<!-- IMAGE PLACEHOLDER -->
-					<img
-						 src="assets/redbutton.jpeg"
-						 alt="Placeholder: robot pressing giant red button" />
-				</section>
+                        <pre
+                            class="fragment"
+                            style="width: fit-content; font-size: 40px"
+                        ><code>rm lint-config</code></pre>
 
+                        <p class="fragment">
+                            <strong>100% success rate.</strong>
+                        </p>
+                    </section>
 
-				<!-- 14 — POLICE TEASER -->
-				<section>
-					<h1>Maybe we need some rules.</h1>
+                    <!-- 13 — THE REAL PROBLEM -->
+                    <section>
+                        <h2>Agents are extremely good at doing exactly what you asked.</h2>
 
-					<h2 class="fragment">VLK-AI POLICE</h2>
-					
-
-					<!-- IMAGE PLACEHOLDER -->
-					<img
-						 src="assets/8.jpeg"
-						 alt="Placeholder: Factory Police" />
-				</section>
-
-
-				<!-- 15 — RULES -->
-				<section>
-					<h2>Some rules might be useful.</h2>
-
-					<ul>
-						<li class="fragment">
-							No production credentials.
-						</li>
-						<li class="fragment">
-							No unrestricted tools.
-						</li>
-						<li class="fragment">
-							No approving your own work.
-						</li>
-						<li class="fragment">
-							Definitely no <code>rm -rf *</code>.
-						</li>
-					</ul>
+                        <h2 class="fragment">Even when you asked for the wrong thing.</h2>
 
-					<p class="fragment">
-						Seriously.
-					</p>
-				</section>
-
-				<!-- 17 — FACTORY INTRO -->
-				<section>
-					<h2>We need a system around the agents.</h2>
-
-					<h1 class="fragment">
-						A factory.
-					</h1>
-
-					<!-- IMAGE PLACEHOLDER -->
-					<img class="fragment"
-						 src="assets/factory.jpeg"
-						 alt="Placeholder: software factory" />
-				</section>
-
-
-				<!-- 18 — WHAT IS A FACTORY -->
-				<section>
-					<h2>So what does a software factory actually do?</h2>
+                        <!-- IMAGE PLACEHOLDER -->
+                        <img src="assets/redbutton.jpeg" alt="Placeholder: robot pressing giant red button" />
+                    </section>
 
-					<div class="factory-diagram">
+                    <!-- 14 — POLICE TEASER -->
+                    <section>
+                        <h1>Maybe we need some rules.</h1>
 
-						<div class="factory-diagram__stage"
-							 data-fragment-index="1"
-							 data-step="01">
-							<h3>Intake</h3>
-							<p>Give the agent something to do.</p>
-						</div>
-
-						<div class="factory-diagram__arrow fragment"
-							 data-fragment-index="2">
-							➜
-						</div>
+                        <h2 class="fragment">VLK-AI POLICE</h2>
 
-						<div class="factory-diagram__stage fragment"
-							 data-fragment-index="3"
-							 data-step="02">
-							<h3>Isolation</h3>
-							<p>Don't let it touch everything.</p>
-						</div>
+                        <!-- IMAGE PLACEHOLDER -->
+                        <img src="assets/8.jpeg" alt="Placeholder: Factory Police" />
+                    </section>
 
-						<div class="factory-diagram__arrow fragment"
-							 data-fragment-index="4">
-							➜
-						</div>
+                    <!-- 15 — RULES -->
+                    <section>
+                        <h2>Some rules might be useful.</h2>
 
-						<div class="factory-diagram__stage fragment"
-							 data-fragment-index="5"
-							 data-step="03">
-							<h3>Tools</h3>
-							<p>Give it what it needs.</p>
-						</div>
+                        <ul>
+                            <li class="fragment">No production credentials.</li>
+                            <li class="fragment">No unrestricted tools.</li>
+                            <li class="fragment">No approving your own work.</li>
+                            <li class="fragment">Definitely no <code>rm -rf *</code>.</li>
+                        </ul>
 
-						<div class="factory-diagram__arrow fragment"
-							 data-fragment-index="6">
-							➜
-						</div>
+                        <p class="fragment">Seriously.</p>
+                    </section>
 
-						<div class="factory-diagram__stage fragment"
-							 data-fragment-index="7"
-							 data-step="04">
-							<h3>Verify</h3>
-							<p>Check whether it actually worked.</p>
-						</div>
+                    <!-- 17 — FACTORY INTRO -->
+                    <section>
+                        <h2>We need a system around the agents.</h2>
 
-						<div class="factory-diagram__arrow fragment"
-							 data-fragment-index="8">
-							➜
-						</div>
+                        <h1 class="fragment">A factory.</h1>
 
-						<div class="factory-diagram__stage factory-diagram__stage--final fragment"
-							 data-fragment-index="9"
-							 data-step="05">
-							<h3>Merge gate</h3>
-							<p>Human decides.</p>
-						</div>
+                        <!-- IMAGE PLACEHOLDER -->
+                        <img class="fragment" src="assets/factory.jpeg" alt="Placeholder: software factory" />
+                    </section>
 
-					</div>
-				</section>
+                    <!-- 18 — WHAT IS A FACTORY -->
+                    <section>
+                        <h2>So what does a software factory actually do?</h2>
 
+                        <div class="factory-diagram">
+                            <div class="factory-diagram__stage" data-fragment-index="1" data-step="01">
+                                <h3>Intake</h3>
+                                <p>Give the agent something to do.</p>
+                            </div>
 
-				<!-- 19 — NOT JUST US -->
-				<section>
-					<h2>And we're not the only ones building this.</h2>
+                            <div class="factory-diagram__arrow fragment" data-fragment-index="2">➜</div>
 
-					<div class="factory-comparison">
+                            <div class="factory-diagram__stage fragment" data-fragment-index="3" data-step="02">
+                                <h3>Isolation</h3>
+                                <p>Don't let it touch everything.</p>
+                            </div>
 
-						<div class="factory-card fragment">
-							<h3>Stripe</h3>
+                            <div class="factory-diagram__arrow fragment" data-fragment-index="4">➜</div>
 
-							<ul>
-								<li><strong>Intake:</strong> Slack message</li>
-								<li><strong>Tools:</strong> Internal tools</li>
-								<li><strong>Verify:</strong> Automated tests and lint</li>
-								<li><strong>Merge gate:</strong> Human review after 2 CI runs</li>
-							</ul>
-						</div>
+                            <div class="factory-diagram__stage fragment" data-fragment-index="5" data-step="03">
+                                <h3>Tools</h3>
+                                <p>Give it what it needs.</p>
+                            </div>
 
-						<div class="factory-card fragment">
-							<h3>Spotify</h3>
+                            <div class="factory-diagram__arrow fragment" data-fragment-index="6">➜</div>
 
-							<ul>
-								<li><strong>Intake:</strong> Pick from backlog</li>
-								<li><strong>Tools:</strong> Toolshed with internal MCP</li>
-								<li><strong>Verify:</strong> Automated verification</li>
-								<li><strong>Merge gate:</strong> Human review</li>
-							</ul>
-						</div>
+                            <div class="factory-diagram__stage fragment" data-fragment-index="7" data-step="04">
+                                <h3>Verify</h3>
+                                <p>Check whether it actually worked.</p>
+                            </div>
 
-					</div>
+                            <div class="factory-diagram__arrow fragment" data-fragment-index="8">➜</div>
 
-					<p class="factory-comparison__note fragment">
-						Different tools. Same basic idea.
-					</p>
-				</section>
+                            <div
+                                class="factory-diagram__stage factory-diagram__stage--final fragment"
+                                data-fragment-index="9"
+                                data-step="05"
+                            >
+                                <h3>Merge gate</h3>
+                                <p>Human decides.</p>
+                            </div>
+                        </div>
+                    </section>
 
+                    <!-- 19 — NOT JUST US -->
+                    <section>
+                        <h2>And we're not the only ones building this.</h2>
 
-				<!-- 20 — MANY CHOICES -->
-				<section>
-					<h2>And now we have...</h2>
+                        <div class="factory-comparison">
+                            <div class="factory-card fragment">
+                                <h3>Stripe</h3>
 
-					<h1 class="fragment">SO MANY choices.</h1>
+                                <ul>
+                                    <li><strong>Intake:</strong> Slack message</li>
+                                    <li><strong>Tools:</strong> Internal tools</li>
+                                    <li><strong>Verify:</strong> Automated tests and lint</li>
+                                    <li><strong>Merge gate:</strong> Human review after 2 CI runs</li>
+                                </ul>
+                            </div>
 
-					<ul>
-						<li class="fragment">Which models?</li>
-						<li class="fragment">Which tools do we allow?</li>
-						<li class="fragment">Which MCP servers?</li>
-						<li class="fragment">Which guardrails?</li>
-						<li class="fragment">Which verification method?</li>
-					</ul>
-				</section>
+                            <div class="factory-card fragment">
+                                <h3>Spotify</h3>
 
+                                <ul>
+                                    <li><strong>Intake:</strong> Pick from backlog</li>
+                                    <li><strong>Tools:</strong> Toolshed with internal MCP</li>
+                                    <li><strong>Verify:</strong> Automated verification</li>
+                                    <li><strong>Merge gate:</strong> Human review</li>
+                                </ul>
+                            </div>
+                        </div>
 
-				<!-- 21 — BUILD VS BUY -->
-				<section>
-					<h2>Build the factory ourselves?</h2>
+                        <p class="factory-comparison__note fragment">Different tools. Same basic idea.</p>
+                    </section>
 
-					<h1 class="fragment">Or outsource the whole thing?</h1>
+                    <!-- 20 — MANY CHOICES -->
+                    <section>
+                        <h2>And now we have...</h2>
 
-					<!-- IMAGE PLACEHOLDER -->
-					<img 
-						 src="assets/desicion.jpeg"
-						 alt="Placeholder: choice between building and outsourcing" />
-				</section>
+                        <h1 class="fragment">SO MANY choices.</h1>
 
+                        <ul>
+                            <li class="fragment">Which models?</li>
+                            <li class="fragment">Which tools do we allow?</li>
+                            <li class="fragment">Which MCP servers?</li>
+                            <li class="fragment">Which guardrails?</li>
+                            <li class="fragment">Which verification method?</li>
+                        </ul>
+                    </section>
 
-				<!-- 22 — THE SETUP -->
-				<section>
-					<h2>We decided to try something.</h2>
+                    <!-- 21 — BUILD VS BUY -->
+                    <section>
+                        <h2>Build the factory ourselves?</h2>
 
-					<p class="fragment">
-						A ready-to-use AI factory setup.
-					</p>
+                        <h1 class="fragment">Or outsource the whole thing?</h1>
 
-					<h1 class="fragment">Let's see it.</h1>
-				</section>
+                        <!-- IMAGE PLACEHOLDER -->
+                        <img src="assets/desicion.jpeg" alt="Placeholder: choice between building and outsourcing" />
+                    </section>
 
+                    <!-- 22 — THE SETUP -->
+                    <section>
+                        <h2>We decided to try something.</h2>
 
-				<!-- =====================================================
+                        <p class="fragment">A ready-to-use AI factory setup.</p>
+
+                        <h1 class="fragment">Let's see it.</h1>
+                    </section>
+
+                    <!-- =====================================================
 				DEMO
 				===================================================== -->
 
-				<section>
-					<h2>Demo time!</h2>
+                    <section>
+                        <h2>Demo time!</h2>
 
-					<p>A ready-to-use AI factory setup</p>
+                        <p>A ready-to-use AI factory setup</p>
 
-					<video
-						src="assets/factory.mp4"
-						autoplay
-						muted
-						loop
-						style="width: 100%; border-radius: 10px;">
-					</video>
-				</section>
+                        <video
+                            src="assets/factory.mp4"
+                            autoplay
+                            muted
+                            loop
+                            style="width: 100%; border-radius: 10px"
+                        ></video>
+                    </section>
 
-				<section>
-					<h2>[Case Otto Group]</h2>
-				</section>
+                    <section></section>
+                </section>
+            </div>
+        </div>
 
-			</section>
-		</div>
-	</div>
-
-	<script src="dist/reveal.js"></script>
-	<script src="plugin/notes/notes.js"></script>
-	<script src="plugin/markdown/markdown.js"></script>
-	<script src="plugin/highlight/highlight.js"></script>
-	<script>
-		Reveal.initialize({
-			hash: true,
-			plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-		});
-	</script>
-</body>
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+            Reveal.initialize({
+                hash: true,
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            });
+        </script>
+    </body>
 </html>
